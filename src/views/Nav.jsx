@@ -11,16 +11,16 @@ function Nav() {
         </div>
         <div className="nav-links-container">
           <div className="nav-links">
-            <NavLink activeClassName exact className="nav-link" to="/">
+            <NavLink exact className="nav-link" to="/">
               Home
             </NavLink>
-            <NavLink activeClassName className="nav-link" to="/hfdsa">
+            <NavLink className="nav-link" to="/explore">
               Explore
             </NavLink>
-            <NavLink activeClassName className="nav-link" to="/fdsh">
+            <NavLink className="nav-link" to="/Cook">
               Cook
             </NavLink>
-            <NavLink activeClassName className="nav-link" to="/fsdah">
+            <NavLink className="nav-link" to="/Ingredients">
               Ingredients
             </NavLink>
           </div>

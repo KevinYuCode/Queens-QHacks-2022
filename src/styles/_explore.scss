@@ -1,0 +1,52 @@
+.explore-container {
+  @include c-jc-c-ai;
+  flex-direction: column;
+  margin-top: 4rem;
+}
+.explore-search {
+  width: 40%;
+  border: none;
+  border-bottom: 1.5px solid black;
+  margin: 4rem 0;
+  font-size: 1.5rem;
+  padding: 1rem 0.5rem;
+}
+.explore-search:focus {
+  border: none;
+  border-bottom: 1.5px solid black;
+  outline: none;
+}
+.explore-receipe-container {
+  display: flex;
+  justify-content: center;
+  margin: auto;
+  width: 100%;
+  flex-wrap: wrap;
+  grid-gap: 2rem;
+}
+.receipe-info-container {
+  text-align: left;
+  width: 100%;
+  padding-top: 1rem;
+}
+.explore-receipe {
+  @include c-jc-c-ai;
+  padding: 1rem;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  background: linear-gradient(#f5f2f1, #f2edeb);
+  flex-direction: column;
+}
+.receipe-image {
+  width: 350px;
+  height: 400px;
+  object-fit: cover;
+}
+.explore-cook {
+  margin: 1rem 0 0 0;
+  padding: 0.5rem 0;
+  width: 100%;
+  background: #f8d176;
+  border: none;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  cursor: pointer;
+}

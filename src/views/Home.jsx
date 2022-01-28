@@ -1,105 +1,27 @@
 import React, { useState, useEffect, useRef } from "react";
 import AccIcon from "../assets/JohnnyBravo.png";
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
-import image1 from "../assets/image1.jpeg";
-import image2 from "../assets/image2.jpeg";
-import image3 from "../assets/image3.jpeg";
-import image4 from "../assets/image4.jpeg";
-import image5 from "../assets/image5.jpeg";
-import image6 from "../assets/image6.jpeg";
+// import image1 from "../assets/image1.jpeg";
+// import image2 from "../assets/image2.jpeg";
+// import image3 from "../assets/image3.jpeg";
+// import image4 from "../assets/image4.jpeg";
+// import image5 from "../assets/image5.jpeg";
+// import image6 from "../assets/image6.jpeg";
+import { useDispatch, useSelector } from "react-redux";
+import { selectReceipeDb, setReceipeDb } from "../features/receipeSlice";
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
 import { Carousel } from "react-responsive-carousel";
 
 function Home() {
+  const receipe = useSelector(selectReceipeDb);
   const featuredRef = useRef();
-  const [featured, setFeatured] = useState([
-    {
-      name: "GOOD FOOD",
-      image: image1,
-    },
-    {
-      name: "GOOD FOOD",
-      image: image2,
-    },
-    {
-      name: "GOOD FOOD",
-      image: image3,
-    },
-    {
-      name: "GOOD FOOD",
-      image: image4,
-    },
-    {
-      name: "GOOD FOOD",
-      image: image5,
-    },
-    {
-      name: "GOOD FOOD",
-      image: image6,
-    },
-  ]);
-  const [recommended, setRecommended] = useState([
-    {
-      name: "GOOD FOOD",
-      image: image1,
-    },
-    {
-      name: "GOOD FOOD",
-      image: image2,
-    },
-    {
-      name: "GOOD FOOD",
-      image: image3,
-    },
-    {
-      name: "GOOD FOOD",
-      image: image4,
-    },
-    {
-      name: "GOOD FOOD",
-      image: image5,
-    },
-    {
-      name: "GOOD FOOD",
-      image: image6,
-    },
-    {
-      name: "GOOD FOOD",
-      image: image1,
-    },
-    {
-      name: "GOOD FOOD",
-      image: image2,
-    },
-    {
-      name: "GOOD FOOD",
-      image: image3,
-    },
-    {
-      name: "GOOD FOOD",
-      image: image4,
-    },
-    {
-      name: "GOOD FOOD",
-      image: image5,
-    },
-    {
-      name: "GOOD FOOD",
-      image: image6,
-    },
-  ]);
-
-  const autoScroll = (e) => {
-    console.log(featuredRef.current);
-    console.log(featuredRef.current.clientWidth);
-  };
 
   return (
     <div id="home" className="container home-bg">
       <div className="home-container">
         <div className="greeting-container">
           <div className="greeting-text">
-            <h1 className="home-title">Welcome to ML COOK</h1>
+            <h1 className="home-title">Welcome to Cook Hack</h1>
             <h3>Explore new receipes and share with others your new cooking skills!</h3>
           </div>
           <div className="cta-container">
@@ -113,11 +35,11 @@ function Home() {
               showThumbs={false}
               showIndicators={false}
               emulateTouch={true}
-              autoPlay={true}
+              autoPlay={false}
               infiniteLoop={true}
             >
-              {featured.map((dish) => (
-                <div className="dish-container" ref={featuredRef}>
+              {receipe.map((dish, i) => (
+                <div key={i} className="dish-container" ref={featuredRef}>
                   <div className="dish-image-container">
                     <img src={dish.image} alt="" className="dish-image" />
                     <p className="dish-name">{dish.name}</p>
