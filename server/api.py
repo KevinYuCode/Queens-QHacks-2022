@@ -21,9 +21,14 @@ def test():
     # would need to modify react script to accomodate the extra data for it to work
 
     # query.GETbyIngredient("yellow onions")
+<<<<<<< HEAD
     return query.GETall("recipes_reducedv3")
+=======
+    # query.GETall("user")
+    # query.GETall("recipes_reducedv3")
+>>>>>>> api_dev
     # query.POSTuser("test123@gmail.com", ["kale", "salad", "cucumbers"])
-    # query.POSTrecipe("cheese cake idk", 60, "['do some steps', 'do some more steps']", "test recipe yummy yummy good", "['insert random ingredients here']", "random url")
+    return query.POSTrecipe("whatever", "random url", "['insert random ingredients here']", 60, "test recipe yummy yummy good", "['do some steps', 'do some more steps']")
 
 
 
