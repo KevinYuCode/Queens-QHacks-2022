@@ -27,8 +27,6 @@ def test():
     return query.POSTrecipe("description", "random url", "['insert random ingredients here']", 60, "test recipe yummy yummy good", "['do some steps', 'do some more steps']")
 
 
-
-
 if __name__ == "__main__":
 
     app.run()  # start flask app
