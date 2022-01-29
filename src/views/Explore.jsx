@@ -43,12 +43,6 @@ function Explore() {
     setShowModal(!showModal);
   };
 
-  useEffect(()=>{
-    receipes.map((item)=>{
-      console.log(item)
-    })
-  },[])
-
   return (
     <div className="container explore-bg">
       <div className="explore-container">
@@ -60,16 +54,16 @@ function Explore() {
           className="explore-search"
           ref={queryRef}
           onChange={() => {
-            filterSearch();
+            // filterSearch();
           }}
         />
         <div className="explore-receipe-container">
           {filterList.map((dish, i) => (
             <div className="explore-receipe">
-              {/* <img key={i} src={dish} alt="" className="receipe-image" /> */}
+              <img key={i} src={dish.image} alt="" className="receipe-image" />
               <div className="receipe-info-container">
                 <h3>{dish.name}</h3>
-                {/* <p className="explore-dish-desc">Here is the description</p> */}
+                <p className="explore-dish-desc">Here is the description</p>
                 <button
                   className="explore-cook"
                   onClick={() => {

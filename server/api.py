@@ -4,7 +4,7 @@
 # initialize virtual env called flask: python -m venv flask
 # .\flask\Scripts\activate to initialize virtual environment
 # install flask: pip install flask pandas pymongo dnspython
-
+# Py
 # runs on local port 5000: proxy set up with react for testing in package.json
 
 from flask import Flask
@@ -23,7 +23,7 @@ def test():
     # query.GETbyIngredient("yellow onions")
     return query.GETall("recipes_reducedv3")
     # query.POSTuser("test123@gmail.com", ["kale", "salad", "cucumbers"])
-    # query.POSTrecipe("cheese cake idk", 60, "['do some steps', 'do some more steps']", "test recipe yummy yummy good", "['insert random ingredients here']", "random url")
+    # return query.POSTrecipe("whatever", "random url", "['insert random ingredients here']", 60, "test recipe yummy yummy good", "['do some steps', 'do some more steps']")
 
 
 
