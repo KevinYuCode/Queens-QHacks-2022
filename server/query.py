@@ -23,13 +23,12 @@ def GETall(dbName):
     collection_name = db[dbName]  # specify collection using parameter name
 
     # GET all (except id : not needed for use case)
-    item_details = collection_name.find({}, {"_id": 0})
-    print(item_details)
-    items_df = DataFrame(
-        item_details
-    ).to_json()  # format to dictionary to output to React in JSON FORMAT
-    #print(items_df)  # print to cmd line for testing
-    return items_df
+    item_details = [doc for doc in (collection_name.find({}, {"_id": 0}))]
+    json_string = json.dumps(item_details)
+    
+    print(json_string)  # print to cmd line for testing
+    return json_string
+    
 
 
 # query test to get elements of db by ingredient search
