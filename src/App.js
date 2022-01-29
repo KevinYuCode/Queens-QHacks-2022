@@ -19,7 +19,8 @@ function App() {
       .then((res) => res.json())
       .then((data) => {
         setData(data);
-        dispatch(setReceipeDb(data));
+        //dispatch(setReceipeDb(data));
+        console.log(data)
       });
 
   };
@@ -31,6 +32,7 @@ function App() {
 
   return (
     <div className="App">
+      
       git{" "}
       <Router>
         <Nav />

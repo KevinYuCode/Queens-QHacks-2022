@@ -27,7 +27,7 @@ function Menu() {
                 <h3 className="menu-sub-title">Description</h3>
                 <p className="description">
                   Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ipsa eius fugiat enim cupiditate
-                  consequuntur dolorem, nihil adipisci labore ipsum fugit.
+                  consequuntur dolorem, nihil adipisci labore ipsum fugit. 
                 </p>
               </div>
             </div>

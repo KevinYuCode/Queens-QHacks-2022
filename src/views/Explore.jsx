@@ -44,7 +44,7 @@ function Explore() {
   };
 
   useEffect(()=>{
-    receipes.name.map((item)=>{
+    receipes.map((item)=>{
       console.log(item)
     })
   },[])

@@ -11,8 +11,6 @@ function Home() {
   const featuredRef = useRef();
   const [data, setData] = useState([{}]) // state for api query
 
-
-
   return (
     <div id="home" className="container home-bg">
       <div className="home-container">
