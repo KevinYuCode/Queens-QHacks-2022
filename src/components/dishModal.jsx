@@ -3,6 +3,7 @@ import { AiOutlineClose } from "react-icons/ai";
 import { NavLink } from "react-router-dom";
 
 function dishModal({ modalProps, toggleModal }) {
+  
   return (
     <div className="modal-container">
       <div className="modal-image-container">
@@ -16,7 +17,7 @@ function dishModal({ modalProps, toggleModal }) {
         </p>
         <div className="modal-btn-container">
           <NavLink to="/cook">
-            <button className="modal-cook-btn">Start Cooking</button>
+            <button className="modal-cook-btn" on>Start Cooking</button>
           </NavLink>
         </div>
         <div
