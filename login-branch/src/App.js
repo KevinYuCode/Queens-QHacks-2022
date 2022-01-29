@@ -23,8 +23,8 @@ function App() {
   console.log("ASFJSFLKJASFL:K");
 
   return (
-    <Container className = "d-flex align-itmes-center justify-content-center" style ={{minheight: "100vh"}}>
-      <div className = "w-100" style={{maxWidth: '400px '}}>
+    //  <Container className = "d-flex align-itmes-center justify-content-center" style ={{minheight: "100vh"}}>
+      /* <div className = "w-100" style={{maxWidth: '400px '}}> */
         <Router>
           <AuthProvider>
             <Routes>
@@ -38,9 +38,9 @@ function App() {
             </Routes>
           </AuthProvider>
         </Router>
-      </div>
+      /* </div> */
 
-    </Container>
+    // </Container>
     
   );
 }

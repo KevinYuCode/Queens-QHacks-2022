@@ -10,12 +10,12 @@ const firebaseConfig = firebase.initializeApp({
         storageBucket: process.env.REACT_APP_FIREBASE_STORAGE_BUCKET,
         messagingSenderId: process.env.REACT_APP_FIREBASE_MESSAGING_SENDER_ID,
         appId: process.env.REACT_APP_FIREBASE_APP_ID*/
-        apiKey: "AIzaSyB8wq6FFk8_FGbR4KNlwB3rFHYArMmTpmc",
-        authDomain: "qhacks-2022.firebaseapp.com",
-        projectId: "qhacks-2022",
-        storageBucket:  "qhacks-2022.appspot.com",
-        messagingSenderId: "525377169542",
-        appId: "1:525377169542:web:f114c8d5a99f45804ec907"
+        apiKey: "AIzaSyBsEZEsDK9ksQGSw3zoO9-7xW3rbkQraWg",
+        authDomain: "qhacks-2022-7d708.firebaseapp.com",
+        projectId: "qhacks-2022-7d708",
+        storageBucket: "qhacks-2022-7d708.appspot.com",
+        messagingSenderId: "53936441897",
+        appId: "1:53936441897:web:353b5d03086066f7096a38"
 })
 
 export const auth = firebaseConfig.auth()

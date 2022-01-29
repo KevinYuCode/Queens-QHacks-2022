@@ -1,26 +1,36 @@
 import React, {useEffect, useState} from 'react';
-import {getDocs, collection, deleteDoc, doc} from 'firebase/firestore'
+import {getDocs, collection, deleteDoc, doc, onSnapshot} from 'firebase/firestore'
 import {auth, db} from '../firebase/firebase'
 import '../styles/Review.css'
 
 function Review({isAuth}) {
-
     const [postLists, setPostList] = useState([])
     const postsCollectionRef = collection(db, "posts")
-
-    useEffect(() => { //called when page is loaded
-        const getPosts = async () => {
-            const data = await getDocs(postsCollectionRef);
-            setPostList(data.docs.map((doc) => ({...doc.data(), id: doc.id })));
-        };
-        getPosts();
-
-    });
+    const [reRender, setRerender] = useState(0)
 
     const deletePost = async (id) => {
         const postDoc = doc(db, "posts", id)
-        await deleteDoc(postDoc)
+        await deleteDoc(postDoc);
+        getPosts();
     }
+
+    //
+     const getPosts = async () => {
+        const data = await getDocs(postsCollectionRef);
+        setPostList(data.docs.map((doc) => ({...doc.data(), id: doc.id })));
+    };
+    
+    useEffect(async () => { //called when page is loaded
+        // const getPosts = async () => {
+            const data = await getDocs(postsCollectionRef);
+            setPostList(data.docs.map((doc) => ({...doc.data(), id: doc.id })));
+        // };
+        // getPosts();
+
+    }, []);
+
+
+
 
   return <div className="Review-page">
         {postLists.map((post) => {
@@ -34,7 +44,8 @@ function Review({isAuth}) {
                         {post.author.id == auth.currentUser.uid && (
                         <button 
                             onClick = {() => {
-                                deletePost(post.id)
+                                deletePost(post.id);
+                                setRerender(reRender +1);
                             }}
                         >
                             &#128465;

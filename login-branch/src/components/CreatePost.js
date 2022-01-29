@@ -14,7 +14,7 @@ export default function CreatePost({isAuth}) {
 
     const createPost = async () => {
         await addDoc(postsCollectionRef, {title: title, postText: postText, author: {name: auth.currentUser.email, id: auth.currentUser.uid}})
-        navigate("/")
+        navigate("/review")
     }
 
 /*useEffect (() => {
@@ -27,11 +27,11 @@ export default function CreatePost({isAuth}) {
   <div className="CreatePost-page">
       <div className="CreatePost-container">
         <h1 className="CreatePost-header">Create A Post</h1>
-        <div clasName="inputGp">
+        <div className="inputGp">
             <label className ="CreatePost-title"> Title: </label>
             <input  className="CreatePost-input" placeholder="Title..." onChange={(event) => {setTitle(event.target.value)}}/>
         </div>
-        <div clasName="inputGp">
+        <div className="inputGp">
             <label className="CreatePost-post"> Post:</label>
             <textarea className="CreatePost-textarea" placeholder="Post..." onChange={(event) => {setPostText(event.target.value)}}/>
         </div>
