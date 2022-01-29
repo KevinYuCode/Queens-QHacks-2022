@@ -36,9 +36,9 @@ def GETall(dbName):
 # query test to get elements of db by ingredient search
 def GETbyIngredient(ingredient):
     db = get_database()
-    collection_name = db["recipes_reduced"]  # specify collection name
+    recipes_reduced = db["recipes_reduced"]  # specify collection name
     # query using ingredient parameter, exclude id field for cleaner output
-    item_details = collection_name.find({"Ingredients": ingredient}, {"_id": 0})
+    item_details = recipes_reduced.find({"Ingredients": ingredient}, {"_id": 0})
     items_df = DataFrame(item_details).to_json()  # format output to dictionnary
     print(items_df)  # print output to cmd line
     return items_df
@@ -47,9 +47,9 @@ def GETbyIngredient(ingredient):
 # query test to get elements of db by name search
 def GETbyName(name):
     db = get_database()
-    collection_name = db["recipes_reduced"]  # go to recipe_info collection
+    recipes_reduced = db["recipes_reduced"]  # go to recipe_info collection
     # query with name parameter, exclude id for cleaner output
-    item_details = collection_name.find({"name": name}, {"_id": 0})
+    item_details = recipes_reduced.find({"name": name}, {"_id": 0})
     items_df = DataFrame(item_details).to_json()  # format output to dictionnary
     print(items_df)
     return items_df
@@ -58,9 +58,9 @@ def GETbyName(name):
 # test to add ingredient to user ingredient list
 def POSTuser(email, ingredients):
     db = get_database()
-    collection_name = db["user"]
+    user = db["user"]
     # insert ingredient document to user collection
-    collection_name.insert_one({"user": email, "ingredients": ingredients})
+    user.insert_one({"user": email, "ingredients": ingredients})
     print("User POST Successful")
     return {"User POST Successful": 0}  # return msg in json format for confirmation
 
@@ -68,8 +68,8 @@ def POSTuser(email, ingredients):
 # function which adds recipe with the given parameters to the recipes_reduces collection (mongo)
 def POSTrecipe(name, minutes, steps, description, ingredients, image):
     db = get_database()
-    collection_name = db["recipes_reduced"]
-    collection_name.insert_one(
+    recipes_reduced = db["recipes_reduced"]
+    recipes_reduced.insert_one(
         {
             "name": name,
             "minutes": minutes,
