@@ -21,11 +21,19 @@ def test():
     # would need to modify react script to accomodate the extra data for it to work
 
     # query.GETbyIngredient("yellow onions")
-    # return query.GETall("recipes_reduced")
+    return query.GETall("user")
     # query.POSTuser("test123@gmail.com", ["kale", "salad", "cucumbers"])
-    return query.POSTrecipe("test recipe name", 60, "['do some steps', 'do some more steps']", "test recipe yummy yummy good", "['insert random ingredients here']", "random url")
+    # query.POSTrecipe("cheese cake idk", 60, "['do some steps', 'do some more steps']", "test recipe yummy yummy good", "['insert random ingredients here']", "random url")
+
+
 
 
 if __name__ == "__main__":
 
     app.run()  # start flask app
+
+
+# when user logs in: check to see if email is in db
+
+# return recipes array associated with that email
+
