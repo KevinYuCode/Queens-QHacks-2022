@@ -8,6 +8,7 @@ import Login from './components/Login'
 import Dashboard from './components/Dashboard'
 import PrivateRoute from './components/PrivateRoute'
 import Users from './Users'
+import CreatePost from './components/CreatePost'
 
 
 function App() {
@@ -26,9 +27,10 @@ function App() {
             <Routes>
               <Route exact path="/" element={<PrivateRoute><Dashboard /></PrivateRoute>}/>
               <Route exact path="*" element={<PrivateRoute><Dashboard /></PrivateRoute>}/>
-              <Route exact path ="signup" element={<Signup />}/>
-              <Route exact path ="login" element={<Login />}/>
-              <Route exact path ="users" element={<Users />}/>
+              <Route path ="/signup" element={<Signup />}/>
+              <Route path ="/login" element={<Login />}/>
+              <Route path ="/users" element={<Users />}/>
+              <Route path ="/createpost" element={<CreatePost />}/>
             </Routes>
           </AuthProvider>
         </Router>

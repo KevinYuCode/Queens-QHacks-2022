@@ -28,7 +28,7 @@ const history = useNavigate()
                     </h2>
                     {error && <Alert variant="danger">{error}</Alert>}
                     <strong>Emai:</strong> {currentUser.email}
-                    <Link to="/users" className="btn btn-primary w-100 mt-3"> Test </Link>
+                    <Link to="/createpost" className="btn btn-primary w-100 mt-3"> Blog </Link>
                 </Card.Body>
 
             </Card>
