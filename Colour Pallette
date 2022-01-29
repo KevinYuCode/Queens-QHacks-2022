@@ -1,0 +1,31 @@
+Yellow
+#F8D176
+
+Beige
+#FEF7ED
+
+
+
+          <Carousel showIndicators={false} emulateTouch={true} infiniteLoop={true}>
+            {featured.map((dish, i) => (
+              <div className="dishes-container">
+                <div className="dish-container">
+                  <img src={dish.image2} alt="" className="dish-image" />
+                  <p className="dish-name">{dish.name2}</p>
+                </div>
+                <div className="dish-container" style={{ backgroundImage: `url(${dish.image1})` }}>
+                  {/* <img src={dish.image1} alt="" className="dish-image" /> */}
+                  <div className="frosted">Hello world</div>
+                  {/* <p className="dish-name">{dish.name1}</p> */}
+                </div>
+                <div className="dish-container">
+                  <img src={dish.image3} alt="" className="dish-image" />
+                  <p className="dish-name">{dish.name3}</p>
+                </div>
+                <div className="dish-container">
+                  <img src={dish.image4} alt="" className="dish-image" />
+                  <p className="dish-name">{dish.name4}</p>
+                </div>
+              </div>
+            ))}
+          </Carousel>

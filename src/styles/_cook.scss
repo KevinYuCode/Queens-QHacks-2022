@@ -1,0 +1,160 @@
+.cook-container {
+  @include c-jc-c-ai;
+  margin: auto;
+  height: 90vh;
+}
+.cook-header {
+  display: grid;
+  grid-template-columns: 4fr 1fr;
+  width: 100%;
+  margin: 1rem;
+  column-gap: 2rem;
+  .cook-image-container {
+    grid-column: 2/3;
+    background: #f8d176;
+    // padding: 1rem;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    height: 100%;
+
+    .cook-image {
+      padding: 1rem;
+      max-width: 500px;
+    }
+  }
+  .cook-content-container {
+    display: grid;
+    grid-template-columns: 3fr 1fr;
+    height: 100%;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    position: relative;
+    .cook-receipe-name {
+      font-size: 3rem;
+    }
+    .instructions-title {
+      margin-top: 5rem;
+      font-size: 2.5rem;
+      font-weight: 200;
+      margin-bottom: 1rem;
+    }
+    .instructions-container {
+      @include c-jc-s-ai;
+      flex-direction: column;
+      justify-content: start;
+      padding: 2rem 2rem;
+    }
+    .instruction-batch {
+      box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+      width: 80%;
+      padding: 1rem 0;
+      position: relative;
+    }
+    $borderlen: 100px;
+    .border-style1 {
+      content: "";
+      background: black;
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 3px;
+      width: $borderlen;
+    }
+    .border-style2 {
+      content: "";
+      background: black;
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: $borderlen;
+      width: 3px;
+    }
+    .border-style3 {
+      content: "";
+      background: black;
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      height: $borderlen;
+      width: 3px;
+    }
+    .border-style4 {
+      content: "";
+      background: black;
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      height: 3px;
+      width: $borderlen;
+    }
+    .instruction-item {
+      padding: 0.5rem 0 0.5rem 2rem;
+      @include s-jc-c-ai;
+      .instruction-checkbox {
+        width: 25px;
+        height: 25px;
+      }
+      .instruction {
+        font-size: 1.4rem;
+        padding-left: 2rem;
+      }
+    }
+    // Instructions button
+    .steps-btn-container {
+      width: 100%;
+      @include s-jc-c-ai;
+      margin-top: 5rem;
+      column-gap: 3rem;
+      position: absolute;
+      bottom: 2rem;
+      left: 2rem;
+
+      button {
+        border: none;
+        padding: 1rem 2rem;
+        cursor: pointer;
+        min-width: 200px;
+        font-size: 1.2rem;
+        box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+      }
+      .next-instruction {
+        // background: #4b8f8c;
+        color: white;
+        background: #28a745;
+      }
+      .prev-instruction {
+        @extend .next-instruction;
+        background: #dc3545;
+      }
+    }
+    .ingredients-container {
+      grid-column: 2/3;
+      grid-row: 1/-1;
+      height: 100%;
+      background-color: #f4f1f0;
+      @include c-jc-c-ai;
+      justify-content: flex-start;
+      flex-direction: column;
+      h3 {
+        padding: 2rem 0 0 0;
+
+        font-size: 1.5rem;
+      }
+    }
+    .ingredient-list {
+      width: 100%;
+      padding: 2rem 0;
+      margin-left: 2rem;
+      .ingredient {
+        @include s-jc-c-ai;
+        .checkmark {
+          font-size: 2rem;
+          @include c-jc-c-ai;
+        }
+        p {
+          padding-left: 2rem;
+          font-size: 1.4rem;
+          margin: 0.2rem 0;
+        }
+      }
+    }
+  }
+}

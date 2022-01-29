@@ -1,0 +1,62 @@
+.modal-container {
+  position: fixed;
+  top: 5rem;
+  bottom: 1rem;
+  left: 1rem;
+  right: 1rem;
+  background: rgba(255, 255, 255, 0.96);
+  box-shadow: 0 0 1rem 0 rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(50px);
+  z-index: 5;
+  display: grid;
+  grid-template-columns: 1fr 1.5fr;
+  // border:solid 2px black;
+}
+.modal-image-container {
+  grid-column: 1/2;
+  overflow: hidden;
+  // padding: 1rem;
+  // grid-row: 1/-1;
+  @include c-jc-c-ai;
+}
+.modal-image {
+  width: 100%;
+  object-fit: cover;
+  height: auto;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+.modal-dish-info {
+  @include c-jc-s-ai;
+  flex-direction: column;
+  text-align: left;
+  padding-left: 7rem;
+  // justify-content: flex-end;
+  // padding-bottom: 3rem;
+  .modal-dish-name {
+    font-size: 2.5rem;
+    padding-bottom: 1.5rem;
+  }
+  .modal-description {
+    font-size: 1.6rem;
+  }
+  .modal-description {
+    width: 80%;
+  }
+  .modal-cook-btn {
+    border: none;
+    font-size: 1.5rem;
+    background: #f8d176;
+    padding: 1rem 2rem;
+    margin-top: 5rem;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    cursor: pointer;
+    color:rgb(0, 0, 0);
+  }
+  .modal-exit-btn {
+    position: absolute;
+    top: 2rem;
+    right: 2rem;
+    font-size: 2.5rem;
+    cursor: pointer;
+  }
+}
