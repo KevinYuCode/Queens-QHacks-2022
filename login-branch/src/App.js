@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import './App.css';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Signup from "./components/Signup"
@@ -9,10 +9,13 @@ import Dashboard from './components/Dashboard'
 import PrivateRoute from './components/PrivateRoute'
 import Users from './Users'
 import CreatePost from './components/CreatePost'
+import Review from './components/Review'
+import { auth } from './firebase/firebase'
 
 
 function App() {
   console.log(process.env.REACT_APP_FIREBASE_API_KEY);
+  const [isAuth, setIsAuth] = useState(localStorage.getItem("isAuth"))
 
   // const db = firebase.firestore().collection("");
   // console.log("HI");
@@ -31,6 +34,7 @@ function App() {
               <Route path ="/login" element={<Login />}/>
               <Route path ="/users" element={<Users />}/>
               <Route path ="/createpost" element={<CreatePost />}/>
+              <Route path ="/review" element={<Review isAuth={isAuth}/>}/>
             </Routes>
           </AuthProvider>
         </Router>

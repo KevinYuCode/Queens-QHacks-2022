@@ -1,37 +1,63 @@
 .CreatePost-page {
     width: 100%;
-    height: calc(100vh-80px);
+    height: calc(100vh - 80px);
     display: grid;
     place-items: center;
-
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
 }
 
 .CreatePost-container {
     width: 500px;
-    height:auto;
+    height: auto;
     padding: 20px;
     background-color: black;
     border-radius: 12px;
     color: white;
     display: flex;
     flex-direction: column;
+
 }
 
-.CreatePost-container h1 {
-    text-align: center;
-}
 
-.CreatePost-container label{
-    font-size: 25px;
-}
-
-.CreatePost-container .inputGp {
+.CreatePost-title {
     margin-top: 30px;
     display: flex;
     flex-direction: column;
 }
 
-.CreatePost-container button {
+.CreatePost-post {
+    margin-top: 30px;
+    display: flex;
+    flex-direction: column;
+}
+
+.CreatePost-input {
+    font-size: 18px;
+    border: none;
+    border-radius: 2px;
+    padding: 5px;
+    height: 40px;
+    margin-top: 5px;
+    width: 100%;
+}
+
+.CreatePost-textarea {
+    font-size: 18px;
+    border: none;
+    border-radius: 2px;
+    padding: 5px;
+    height: 150px;
+    margin-top: 5px;
+    width: 100%;
+}
+
+.CreatePost-header {
+    text-align: center;
+}
+
+.CreatePost-button {
     margin-top: 20px;
     height: 40px;
     border: none;
@@ -40,23 +66,6 @@
     font-size: 18px;
 }
 
-.inputGp input, 
-.inputGp textarea {
-    font-size: 18px;
-    border: none;
-    border-radius: 2px;
-    padding: 5px;
-}
-
-.inputGp input {
-    height: 40px;
-}
-
-.inputGp textarea {
-    height: 150px;
-}
-
-input,
-textarea {
-    margin-top: 5px;
+.CreatePost-container label{
+    font-size: 25px;
 }

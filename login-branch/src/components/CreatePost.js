@@ -1,10 +1,10 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import "../styles/CreatePost.css"
 import {addDoc, collection} from 'firebase/firestore'
 import { db, auth } from '../firebase/firebase'
 import { useNavigate } from 'react-router-dom'
 
-export default function CreatePost() {
+export default function CreatePost({isAuth}) {
 
     const [title, setTitle] = useState("")
     const [postText, setPostText] = useState("")
@@ -17,19 +17,25 @@ export default function CreatePost() {
         navigate("/")
     }
 
+/*useEffect (() => {
+    if (!isAuth) {
+        navigate("/login")
+    }
+})*/
+
   return (
   <div className="CreatePost-page">
       <div className="CreatePost-container">
-        <h1>Create A Post</h1>
+        <h1 className="CreatePost-header">Create A Post</h1>
         <div clasName="inputGp">
-            <label> Title: </label>
-            <input placeholder="Title..." onChange={(event) => {setTitle(event.target.value)}}/>
+            <label className ="CreatePost-title"> Title: </label>
+            <input  className="CreatePost-input" placeholder="Title..." onChange={(event) => {setTitle(event.target.value)}}/>
         </div>
         <div clasName="inputGp">
-            <label> Post:</label>
-            <textarea placeholder="Post..." onChange={(event) => {setPostText(event.target.value)}}/>
+            <label className="CreatePost-post"> Post:</label>
+            <textarea className="CreatePost-textarea" placeholder="Post..." onChange={(event) => {setPostText(event.target.value)}}/>
         </div>
-        <button onClick={createPost}>Submit Post</button>
+        <button className="CreatePost-button" onClick={createPost}>Submit Post</button>
       </div>
   </div>
   )}
