@@ -13,9 +13,7 @@ function dishModal({ modalProps, toggleModal }) {
         <h2 className="modal-dish-name">{modalProps.name}</h2>
         {/* <p className="modal-description">{modalProps.description}</p> */}
         <p className="modal-description">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Excepturi nam aut doloribus cum, a totam
-          quibusdam saepe rem fuga eligendi autem eius, quo dolores consequuntur distinctio porro dolorem
-          quaerat iure?
+          {modalProps.description}
         </p>
         <div className="modal-btn-container">
           <NavLink to="/cook">

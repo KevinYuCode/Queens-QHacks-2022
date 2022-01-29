@@ -8,9 +8,9 @@ import { Carousel } from "react-responsive-carousel";
 
 function Home() {
   const receipe = useSelector(selectReceipeDb);
-  
+
   const featuredRef = useRef();
-  const [data, setData] = useState([{}]); // state for api query
+  const [data, setData] = useState([{}]) // state for api query
 
   return (
     <div id="home" className="container home-bg">

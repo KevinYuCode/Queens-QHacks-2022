@@ -57,23 +57,22 @@ function Explore() {
             filterSearch();
           }}
         />
-          <div className="explore-receipe-container">
-            {filterList.map((dish, i) => (
-              <div className="explore-receipe">
-                <img key={i} src={dish.image} alt="" className="receipe-image" />
-                <div className="receipe-info-container">
-                  <h3>{dish.name}</h3>
-                  <p className="explore-dish-desc">Here is the description</p>
-                  <button
-                    className="explore-cook"
-                    onClick={() => {
-                      toggleModal();
-                      passModalProps(dish.name, dish.image, dish.description);
-                    }}
-                  >
-                    See More
-                  </button>
-                </div>
+        <div className="explore-receipe-container">
+          {filterList.map((dish, i) => (
+            <div className="explore-receipe">
+              <img key={i} src={dish.image} alt="" className="receipe-image" />
+              <div className="receipe-info-container">
+                <h3>{dish.name}</h3>
+                <p className="explore-dish-desc">Click below to see more</p>
+                <button
+                  className="explore-cook"
+                  onClick={() => {
+                    toggleModal();
+                    passModalProps(dish.name, dish.image, dish.description);
+                  }}
+                >
+                  See More
+                </button>
               </div>
             ))}
           </div>
