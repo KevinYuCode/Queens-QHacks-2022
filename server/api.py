@@ -26,6 +26,17 @@ def test():
     # query.POSTuser("test123@gmail.com", ["kale", "salad", "cucumbers"])
     # query.POSTrecipe("description", "random url", "['insert random ingredients here']", 60, "test recipe yummy yummy good", "['do some steps', 'do some more steps']")
 
+# Route posts user email and ingredients list to user collection
+@app.route("/user")
+def login(email, ingredients):
+    return query.POSTuser(email, ingredients)
+    #return query.POSTuser("test123@gmail.com", ["kale", "salad", "cucumbers"])
+
+# Route posts new recipe document to recipes_reducedv3 collection
+@app.route("/post")
+def postRecipe(description, image, ingredients, minutes, name, steps):
+    return query.POSTrecipe(description, image, ingredients, minutes, name, steps)
+
 
 if __name__ == "__main__":
 
@@ -33,6 +44,5 @@ if __name__ == "__main__":
 
 
 # when user logs in: check to see if email is in db
-
 # return recipes array associated with that email
-
+# check to see if you can return a list of all the unique ingredients

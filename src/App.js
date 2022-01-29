@@ -14,12 +14,12 @@ import { setReceipeDb } from "./features/receipeSlice";
 function App() {
   const [data, setData] = useState([]);
   const dispatch = useDispatch();
-  const fetchData = async () => {
+  const fetchData = async () => { // fetch full recipe data from flask on startup
     fetch("/data")
       .then((res) => res.json())
       .then((data) => {
         setData(data);
-        console.log(data)
+        console.log(data) // test out api fetch
         dispatch(setReceipeDb(data));
       });
 
