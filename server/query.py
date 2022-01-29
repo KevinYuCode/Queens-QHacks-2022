@@ -15,6 +15,8 @@ def get_database():
     return client["qhacks"]
 
 
+# ====================== REQUESTS THAT RETRIEVE DATA FROM MONGODB ===============================
+
 # query test to get all the elements from db
 def GETall(dbName):
     db = get_database()  # get qhacks db

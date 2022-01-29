@@ -1,5 +1,5 @@
-import React, { useRef, useState } from "react";
-import { AiOutlinePlus } from "react-icons/ai";
+import React, { useEffect, useRef, useState } from "react";
+import { AiOutlinePlus, AiOutlineCheckSquare } from "react-icons/ai";
 import { BsTrash } from "react-icons/bs";
 import IngredientsBg from "../assets/IngredientsBG.jpeg";
 import { useDispatch, useSelector } from "react-redux";
@@ -7,8 +7,9 @@ import { selectInventory, selectIngredients } from "../features/receipeSlice";
 function Ingredients() {
   const inventory = useSelector(selectInventory);
   const [updating, setUpdating] = useState(false);
-  const [tempList, setTempList] = useState(["Item", "Item", "Item", "Item", "Item", "Item"]);
+  const [tempList, setTempList] = useState([]);
   const [suggested, setSuggested] = useState([]);
+  const [reRender, setRerender] = useState(0);
   const ingredients = useSelector(selectIngredients);
   const queryRef = useRef();
 
@@ -18,41 +19,78 @@ function Ingredients() {
 
     if (query === "") {
       setSuggested([]);
+      return;
     }
 
     const regex = new RegExp(query, "i");
     for (let i = 0; i < ingredients.length; i++) {
-      if (regex.test(ingredients[i].name)) {
+      if (regex.test(ingredients[i])) {
         filtered.push(ingredients[i]);
       }
     }
     setSuggested(filtered);
   };
+
+  const addTempStock = (e) => {
+    let itemName = e.target.nextElementSibling.innerText;
+    for (let i = 0; i < tempList.length; i++) {
+      if (tempList[i] === itemName) {
+        console.log("OOF");
+        return;
+      }
+    }
+    tempList.push(itemName);
+    setRerender(reRender + 1);
+  };
+  const deleteTempItem = (index) => {
+    setTempList(tempList.filter((item) => tempList[index] !== item));
+  };
   return (
     <div className="ingredient-container">
-      {/* Right Side Modal */}
+      {/* UPDATE INGREDIENTS */}
       {updating && (
         <div className="ingredient-input-container">
           <h2>Add Ingredients</h2>
           <input
             ref={queryRef}
             className="ingredient-search-input"
-            onChange={() => {
-              filterIngredient();
-            }}
+            onChange={filterIngredient}
             placeholder="Search Ingredient"
             type="text"
           />
-
           <div className="suggested-ingredient">
-            {suggested.length !== 0 && suggested.map((item) => <div className="suggested-item">{item}</div>)}
+            {suggested.map((item) => (
+              <div className="suggested-item">
+                <button
+                  onClick={(e) => {
+                    addTempStock(e);
+                  }}
+                >
+                  +
+                </button>
+                <p>{item}</p>
+              </div>
+            ))}
           </div>
 
-          {/* <div className="added-stock-container">
-            {tempList.map((item) => (
-              <div className="temp-stock">{item}</div>
-            ))}
-          </div> */}
+          <div className="added-stock-container">
+            <h2>Ingredients List</h2>
+            <div className="stock-list">
+              {tempList.map((item, i) => (
+                <div key={i} className="temp-stock">
+                  <button
+                    className="delete-temp-stock"
+                    onClick={() => {
+                      deleteTempItem(i);
+                    }}
+                  >
+                    X
+                  </button>
+                  <p>{item}</p>
+                </div>
+              ))}
+            </div>
+          </div>
           <button className="save-list">Update Inventory</button>
         </div>
       )}

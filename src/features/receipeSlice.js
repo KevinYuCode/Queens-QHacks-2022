@@ -6,132 +6,111 @@ import image4 from "../assets/image4.jpeg";
 import image5 from "../assets/image5.jpeg";
 import image6 from "../assets/image6.jpeg";
 const initialState = {
-    receipeDb: [{
-        name: "GOOD FOOD",
-        image: image1,
+  receipeDb: [
+    {
+      name: "new word",
+      image: image3,
+      description: "HI",
     },
     {
-        name: "GOOD",
-        image: image2,
+      name: "new word",
+      image: image4,
+      description: "HI",
     },
     {
-        name: "GOOD FOOD",
-        image: image3,
+      name: "new word",
+      image: image4,
+      description: "HI",
     },
     {
-        name: "GOOD FOOD",
-        image: image4,
+      name: "new word",
+      image: image4,
+      description: "HI",
     },
     {
-        name: "GOOD FOOD",
-        image: image5,
+      name: "new word",
+      image: image4,
+      description: "HI",
     },
     {
-        name: "GOOD FOOD",
-        image: image6,
+      name: "new word",
+      image: image4,
+      description: "HI",
     },
     {
-        name: "GOOD FOOD",
-        image: image3,
+      name: "new word",
+      image: image4,
+      description: "HI",
     },
     {
-        name: "GOOD FOOD",
-        image: image4,
+      name: "new word",
+      image: image4,
+      description: "HI",
     },
     {
-        name: "GOOD FOOD",
-        image: image5,
+      name: "new word",
+      image: image4,
+      description: "HI",
     },
     {
-        name: "new word",
-        image: image6,
+      name: "new word",
+      image: image4,
+      description: "HI",
+    },
+  ],
+  menu: [
+    {
+      name: "new word",
+      image: image3,
     },
     {
-        name: "new word",
-        image: image3,
+      name: "new word",
+      image: image4,
     },
     {
-        name: "new word",
-        image: image4,
+      name: "GOOfhgD FOOD",
+      image: image5,
     },
     {
-        name: "new word",
-        image: image5,
+      name: "GOOD FOOD",
+      image: image6,
     },
-    {
-        name: "new word",
-        image: image6,
-    },
-    {
-        name: "new word",
-        image: image3,
-    },
-    {
-        name: "new word",
-        image: image4,
-    },
-    {
-        name: "GOOfhgD FOOD",
-        image: image5,
-    },
-    {
-        name: "GOOD FOOD",
-        image: image6,
-    },
-    ],
-    menu: [
-        {
-            name: "new word",
-            image: image3,
-        },
-        {
-            name: "new word",
-            image: image4,
-        },
-        {
-            name: "GOOfhgD FOOD",
-            image: image5,
-        },
-        {
-            name: "GOOD FOOD",
-            image: image6,
-        },
-    ],
-    cookingReceipe: {
-        name: "new word",
-        image: image3,
-        instructions: ""
-    },
-    inventory: [],
-    ingredients: ["Tomato", "Potato", "peas", "Maccoroni", "Cheese"]
-
+  ],
+  cookingReceipe: {
+    name: "new word",
+    image: image3,
+    instructions: "",
+  },
+  inventory: [],
+  ingredients: ["Tomato", "Potato", "peas", "Maccoroni", "Cheese"],
 };
 
 const receipeSlice = createSlice({
-    name: "receipe",
-    initialState,
+  name: "receipe",
+  initialState,
 
-    reducers: {
-        setReceipe: (state, action) => {
-            state.receipeDb = action.payload;
-        },
-        setMenu: (state, action) => {
-            state.menu = action.payload;
-        },
-        setCookingReceipe: (state, action) => {
-            console.log(action.payload);
-            state.cookingReceipe = action.payload;
-        },
-        setInventory: (state, action) => {
-            state.inventory = action.payload;
-        },
-        setIngredients: (state, action) => {
-            state.ingredients = action.payload;
-        }
+  reducers: {
+    setReceipeDb: (state, action) => {
+      state.receipeDb = action.payload;
     },
+    setMenu: (state, action) => {
+      state.menu = action.payload;
+    },
+    setCookingReceipe: (state, action) => {
+      console.log(action.payload);
+      state.cookingReceipe = action.payload;
+    },
+    setInventory: (state, action) => {
+      state.inventory = action.payload;
+    },
+    setIngredients: (state, action) => {
+      state.ingredients = action.payload;
+    },
+  },
 });
 
-export const { setReceipeDb, setMenu, setCookingReceipe, setInventory, setIngredients } = receipeSlice.actions;
+export const { setReceipeDb, setMenu, setCookingReceipe, setInventory, setIngredients } =
+  receipeSlice.actions;
 
 export const selectReceipeDb = (state) => state.receipe.receipeDb;
 export const selectMenu = (state) => state.receipe.menu;

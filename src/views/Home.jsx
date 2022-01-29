@@ -1,12 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import AccIcon from "../assets/JohnnyBravo.png";
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
-// import image1 from "../assets/image1.jpeg";
-// import image2 from "../assets/image2.jpeg";
-// import image3 from "../assets/image3.jpeg";
-// import image4 from "../assets/image4.jpeg";
-// import image5 from "../assets/image5.jpeg";
-// import image6 from "../assets/image6.jpeg";
 import { useDispatch, useSelector } from "react-redux";
 import { selectReceipeDb, setReceipeDb } from "../features/receipeSlice";
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
@@ -17,23 +11,6 @@ function Home() {
   const featuredRef = useRef();
   const [data, setData] = useState([{}]) // state for api query
 
-
-  useEffect(() => {
-
-    // GET request to localhost:5000/
-    fetch("/data").then(
-
-      // response format: json
-      res => res.json()
-    ).then(
-
-      // set data to "data" and log
-      data => {
-        setData(data)
-        console.log(data);
-      }
-    )
-  }, []) // empty array makes useEffect run a single time
 
 
   return (

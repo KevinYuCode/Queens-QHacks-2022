@@ -4,7 +4,7 @@
 # initialize virtual env called flask: python -m venv flask
 # .\flask\Scripts\activate to initialize virtual environment
 # install flask: pip install flask pandas pymongo dnspython
-
+# Py
 # runs on local port 5000: proxy set up with react for testing in package.json
 
 from flask import Flask
@@ -13,8 +13,8 @@ import query
 # flask app instance
 app = Flask(__name__)
 
-
-@app.route("/data")
+# Route calls the "test" function 
+@app.route("/data") 
 def test():
 
     # note to self: can return multiple queries in a single api request:
