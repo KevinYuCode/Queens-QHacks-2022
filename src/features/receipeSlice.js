@@ -102,7 +102,8 @@ const initialState = {
         image: image3,
         instructions: ""
     },
-    inventory: []
+    inventory: [],
+    ingredients: ["Tomato", "Potato", "peas", "Maccoroni", "Cheese"]
 
 };
 
@@ -123,15 +124,18 @@ const receipeSlice = createSlice({
         },
         setInventory: (state, action) => {
             state.inventory = action.payload;
+        },
+        setIngredients: (state, action) => {
+            state.ingredients = action.payload;
         }
     },
 });
 
-export const { setReceipeDb, setMenu, setCookingReceipe, setInventory } = receipeSlice.actions;
+export const { setReceipeDb, setMenu, setCookingReceipe, setInventory, setIngredients } = receipeSlice.actions;
 
 export const selectReceipeDb = (state) => state.receipe.receipeDb;
 export const selectMenu = (state) => state.receipe.menu;
 export const selectCookingReceipe = (state) => state.receipe.cookingReceipe;
 export const selectInventory = (state) => state.receipe.inventory;
-
+export const selectIngredients = (state) => state.receipe.ingredients;
 export default receipeSlice.reducer;

@@ -43,28 +43,47 @@
       padding: 2rem 2rem;
     }
     .instruction-batch {
-      // box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-      width: 100%;
+      box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+      width: 80%;
       padding: 1rem 0;
       position: relative;
     }
-    .instruction-batch::after {
-      content: "";
-      background: black;
-      position: absolute;
-      top: 0;
-      left: 0;
-      height: 50%;
-      width: 3px;
-    }
-    .instruction-batch::after {
+    $borderlen: 100px;
+    .border-style1 {
       content: "";
       background: black;
       position: absolute;
       top: 0;
       left: 0;
       height: 3px;
-      width: 50%;
+      width: $borderlen;
+    }
+    .border-style2 {
+      content: "";
+      background: black;
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: $borderlen;
+      width: 3px;
+    }
+    .border-style3 {
+      content: "";
+      background: black;
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      height: $borderlen;
+      width: 3px;
+    }
+    .border-style4 {
+      content: "";
+      background: black;
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      height: 3px;
+      width: $borderlen;
     }
     .instruction-item {
       padding: 0.5rem 0 0.5rem 2rem;
@@ -110,7 +129,7 @@
       grid-column: 2/3;
       grid-row: 1/-1;
       height: 100%;
-      background-color: #f2f7f2;
+      background-color: #f4f1f0;
       @include c-jc-c-ai;
       justify-content: flex-start;
       flex-direction: column;

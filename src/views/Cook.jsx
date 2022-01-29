@@ -21,6 +21,7 @@ function Cook() {
             <h1 className="cook-receipe-name">{name}</h1>
             <h3 className="instructions-title">Instructions</h3>
             <div className="instruction-batch">
+
               {instructionBatch.map((step) => (
                 <div className="instruction-item">
                   <input type="checkbox" className="instruction-checkbox" />
