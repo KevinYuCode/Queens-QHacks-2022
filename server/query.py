@@ -59,3 +59,11 @@ def POSTuser(email, ingredients):
     collection_name.insert_one({"user": email, "ingredients": ingredients})
     print("User POST Successful")
     return {"User POST Successful": 0}  # return msg in json format for confirmation
+
+
+def POSTrecipe(name, minutes, steps, description, ingredients, image):
+    db = get_database()
+    collection_name = db["recipes_reduced"]
+    collection_name.insert_one({"name": name, "minutes": minutes, "steps": steps, "description": description, "ingredients": ingredients, "image": image})
+    print("Recipe POST Successful")
+    return {"Recipe POST Successful": 0}

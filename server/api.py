@@ -22,7 +22,8 @@ def test():
 
     # query.GETbyIngredient("yellow onions")
     # return query.GETall("recipes_reduced")
-    return query.POSTuser("test123@gmail.com", ["kale", "salad", "cucumbers"])
+    # query.POSTuser("test123@gmail.com", ["kale", "salad", "cucumbers"])
+    return query.POSTrecipe("test recipe name", 60, "['do some steps', 'do some more steps']", "test recipe yummy yummy good", "['insert random ingredients here']", "random url")
 
 
 if __name__ == "__main__":
