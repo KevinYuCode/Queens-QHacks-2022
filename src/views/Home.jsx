@@ -15,6 +15,26 @@ import { Carousel } from "react-responsive-carousel";
 function Home() {
   const receipe = useSelector(selectReceipeDb);
   const featuredRef = useRef();
+  const [data, setData] = useState([{}]) // state for api query
+
+
+  useEffect(() => {
+
+    // GET request to localhost:5000/
+    fetch("/data").then(
+
+      // response format: json
+      res => res.json()
+    ).then(
+
+      // set data to "data" and log
+      data => {
+        setData(data)
+        console.log(data);
+      }
+    )
+  }, []) // empty array makes useEffect run a single time
+
 
   return (
     <div id="home" className="container home-bg">
@@ -23,6 +43,7 @@ function Home() {
           <div className="greeting-text">
             <h1 className="home-title">Welcome to Cook Hack</h1>
             <h3>Explore new receipes and share with others your new cooking skills!</h3>
+            <p>{JSON.stringify(data)}</p>
           </div>
           <div className="cta-container">
             <button className="start-btn">Start Cooking</button>
