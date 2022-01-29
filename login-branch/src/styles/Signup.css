@@ -1,0 +1,17 @@
+.Signup-button {
+    background-color: #f8d176 !important;
+    border-color: #f8d176 !important;
+    margin-top: 1rem;
+}
+
+.Signup-card {
+    margin-top: 3rem;
+}
+
+.Signup-link {
+    color: #f8d176;
+}
+
+.Signup-link:hover {
+    color: #f8d176;
+}
