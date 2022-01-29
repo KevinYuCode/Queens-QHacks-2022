@@ -52,10 +52,10 @@ def GETbyName(name):
 
 
 # test to add ingredient to user ingredient list
-def POSTuser(ingredient):
+def POSTuser(email, ingredients):
     db = get_database()
     collection_name = db["user"]
     # insert ingredient document to user collection
-    collection_name.insert_one({"Ingredients": ingredient})
+    collection_name.insert_one({"user": email, "ingredients": ingredients})
     print("User POST Successful")
     return {"User POST Successful": 0}  # return msg in json format for confirmation
