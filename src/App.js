@@ -19,13 +19,15 @@ function App() {
       .then((res) => res.json())
       .then((data) => {
         setData(data);
+        console.log(data)
         dispatch(setReceipeDb(data));
       });
 
   };
 
   useEffect(() => {
-    // fetchData();
+    fetchData();
+    
   }, []);
 
 
