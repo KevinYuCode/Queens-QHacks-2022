@@ -19,13 +19,7 @@ import Review from './components/Review'
 import { auth } from './firebase/firebase'
 
 function App() {
-  console.log(process.env.REACT_APP_FIREBASE_API_KEY);
   const [isAuth, setIsAuth] = useState(localStorage.getItem("isAuth"))
-
-  // const db = firebase.firestore().collection("");
-  // console.log("HI");
-
-  console.log("ASFJSFLKJASFL:K");
 
   return (
     //  <Container className = "d-flex align-itmes-center justify-content-center" style ={{minheight: "100vh"}}>
@@ -33,20 +27,23 @@ function App() {
       <div className="App">
         <Router>
           <AuthProvider>
+            
             <Routes>
               {/* <Route exact path="/" element={<PrivateRoute><Dashboard /></PrivateRoute>}/>
               <Route exact path="*" element={<PrivateRoute><Dashboard /></PrivateRoute>}/> */}
                <Route exact path="/" element={(<Home />)} />
+               <Route path="/explore" element={(<Explore />)} />
+              <Route path="/menu" element={(<Menu />)} />
+              <Route path="/cook" element={(<Cook />)} />
+              <Route path="/ingredients" element={(<Ingredients/>)} />
               <Route path ="/signup" element={<Signup />}/>
               <Route path ="/login" element={<Login />}/>
               <Route path ="/createpost" element={<CreatePost />}/>
               <Route path ="/review" element={<Review isAuth={isAuth}/>}/>
 
-              <Route path="/explore" element={(<Explore />)} />
-              <Route path="/menu" element={(<Menu />)} />
-              <Route path="/cook" element={(<Cook />)} />
-              <Route path="/ingredients" element={(<Ingredients/>)} />
+
             </Routes>
+            
           </AuthProvider>
         </Router>
      </div> 

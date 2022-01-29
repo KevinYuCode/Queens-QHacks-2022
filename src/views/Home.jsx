@@ -11,6 +11,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { selectReceipeDb, setReceipeDb } from "../features/receipeSlice";
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
 import { Carousel } from "react-responsive-carousel";
+import Nav from "./Nav";
 
 function Home() {
   const receipe = useSelector(selectReceipeDb);
@@ -37,7 +38,11 @@ function Home() {
 
 
   return (
+    
+    <div>
+    <Nav />
     <div id="home" className="container home-bg">
+      
       <div className="home-container">
         <div className="greeting-container">
           <div className="greeting-text">
@@ -81,6 +86,7 @@ function Home() {
           ))}
         </div> */}
       </div>
+    </div>
     </div>
   );
 }

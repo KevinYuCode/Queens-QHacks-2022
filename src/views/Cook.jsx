@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { selectCookingReceipe } from "../features/receipeSlice";
 import { AiOutlineCheckSquare } from "react-icons/ai";
+import Nav from "./Nav";
 
 function Cook() {
   const cookingReceipe = useSelector(selectCookingReceipe);
@@ -14,6 +15,8 @@ function Cook() {
     "Put rice in microwave",
   ]);
   return (
+    <div>
+      <Nav />
     <div className="cook-container">
       <div className="cook-header">
         <div className="cook-content-container">
@@ -63,6 +66,7 @@ function Cook() {
           <img className="cook-image" src={image} alt="Dish Image" />
         </div>
       </div>
+    </div>
     </div>
   );
 }

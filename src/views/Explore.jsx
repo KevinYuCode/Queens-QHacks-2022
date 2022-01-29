@@ -2,6 +2,7 @@ import React, { useState, useRef, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { selectReceipeDb, setReceipeDb } from "../features/receipeSlice";
 import DishModal from "../components/dishModal";
+import Nav from "./Nav";
 
 function Explore() {
   const [showModal, setShowModal] = useState(false);
@@ -44,6 +45,8 @@ function Explore() {
   };
 
   return (
+    <div>
+      <Nav />
     <div className="container explore-bg">
       <div className="explore-container">
         {/* Search Dishes */}
@@ -79,6 +82,7 @@ function Explore() {
         </div>
       </div>
       {showModal && <DishModal toggleModal={toggleModal} modalProps={modalProps} />}
+    </div>
     </div>
   );
 }

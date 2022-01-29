@@ -1,6 +1,7 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { selectMenu, setCookingReceipe } from "../features/receipeSlice";
+import Nav from "./Nav";
 
 function Menu() {
   const dispatch = useDispatch();
@@ -14,6 +15,8 @@ function Menu() {
     );
   };
   return (
+    <div>
+      <Nav />
     <div className="menu-container">
       {menu.map((dish, i) => (
         <div className="menu-card" key={i}>
@@ -42,6 +45,7 @@ function Menu() {
           </div>
         </div>
       ))}
+    </div>
     </div>
   );
 }

@@ -4,6 +4,8 @@ import { BsTrash } from "react-icons/bs";
 import IngredientsBg from "../assets/IngredientsBG.jpeg";
 import { useDispatch, useSelector } from "react-redux";
 import { selectInventory, selectIngredients } from "../features/receipeSlice";
+import Nav from "./Nav";
+
 function Ingredients() {
   const inventory = useSelector(selectInventory);
   const [updating, setUpdating] = useState(false);
@@ -46,6 +48,8 @@ function Ingredients() {
     setTempList(tempList.filter((item) => tempList[index] !== item));
   };
   return (
+    <div>
+      <Nav />
     <div className="ingredient-container">
       {/* UPDATE INGREDIENTS */}
       {updating && (
@@ -137,6 +141,7 @@ function Ingredients() {
           X
         </div>
       )}
+    </div>
     </div>
   );
 }

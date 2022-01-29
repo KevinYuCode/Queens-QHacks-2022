@@ -2,7 +2,7 @@ import React, { useRef, useState} from 'react'
 import { Form, Button, Card, Alert } from 'react-bootstrap'
 import {useAuth} from '../contexts/AuthContext'
 import { Link, useNavigate } from 'react-router-dom'
-import "../styles/Login.css"
+//import "../styles/Login.css"
 
 function Login() {
 
@@ -32,26 +32,32 @@ async function handleSubmit(e){
 
     return (
         <>
+        <div className="Login-page">
             <Card className="Login-card">
                 <Card.Body>
                     <h2 className="text-center mb-4"> Log In</h2>
                     {error && <Alert variant="danger"> {error}</Alert>}
-                    <Form onSubmit = {handleSubmit}>
-                        <Form.Group id="email">
-                            <Form.Label>Email</Form.Label>
-                            <Form.Control type = "email" ref={emailRef} required />
+                    <Form onSubmit = {handleSubmit} className="Login-form">
+                        <Form.Group id="email" >
+                            <Form.Label className="Login-input">Email</Form.Label>
+                            <Form.Control  type = "email" ref={emailRef} required />
                         </Form.Group>
                         <Form.Group id="password">
-                            <Form.Label>Password</Form.Label>
+                            <Form.Label className="Login-input">Password</Form.Label>
                             <Form.Control type = "password" ref={passwordRef} required />
                         </Form.Group>
-                        <Button disabled = {loading} className = "w-100 Login-button" type = "submit">Log In</Button>
+                        <Button disabled = {loading} className = "Login-button" type = "submit">Log In</Button>
                     </Form>
                 </Card.Body>
+                <div className = "Login-signup">
+                Don't have an account? <Link to="/signup" className="Login-link">Signup</Link>
+                </div>
             </Card>
-            <div className="w-100 text-center mt-2">
+            
+            {/* <div className="w-100 text-center mt-2">
                 Don't have an account? <Link to="/signup" className="Login-link">Signup</Link>
 
+            </div> */}
             </div>
         </>
     )
