@@ -2,6 +2,8 @@
   @include c-jc-c-ai;
   flex-direction: column;
   margin-top: 4rem;
+  position: relative;
+  background-attachment: fixed;
 }
 .explore-search {
   width: 40%;

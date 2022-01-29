@@ -17,10 +17,13 @@ function Nav() {
             <NavLink className="nav-link" to="/explore">
               Explore
             </NavLink>
-            <NavLink className="nav-link" to="/Cook">
+            <NavLink className="nav-link" to="/menu">
+              Menu
+            </NavLink>
+            <NavLink className="nav-link" to="/cook">
               Cook
             </NavLink>
-            <NavLink className="nav-link" to="/Ingredients">
+            <NavLink className="nav-link" to="/ingredients">
               Ingredients
             </NavLink>
           </div>

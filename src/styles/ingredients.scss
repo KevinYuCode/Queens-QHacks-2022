@@ -1,0 +1,69 @@
+.ingredients-container {
+  @include c-jc-c-ai;
+  position: relative;
+}
+.ingredients-header {
+  width: 95vw;
+  margin: auto;
+  margin-top: 3rem;
+  // background-color:blue;
+  //   background-size: contain;
+  height: 200px;
+  @include c-jc-c-ai;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+
+  h1 {
+    font-size: 2rem;
+  }
+}
+.add-ingredient {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  width: 50px;
+  height: 50px;
+  background: #28a745;
+  @include c-jc-c-ai;
+  color: white;
+  font-size: 2rem;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  cursor: pointer;
+}
+.inventory-container {
+  margin-top: 5rem;
+  @include c-jc-c-ai;
+  flex-wrap: wrap;
+  grid-gap: 2rem;
+  .ingredient {
+    position: relative;
+    @include c-jc-c-ai;
+    width: 250px;
+    height: 250px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    font-size: 2rem;
+    border-radius: 1rem;
+  }
+  .trash {
+    position: absolute;
+    bottom: 0;
+    background: #dc3545;
+    color: white;
+    padding: 0.5rem;
+    left: 0;
+    border-bottom-left-radius: 1rem;
+    border-top-right-radius: 1rem;
+    cursor: pointer;
+    @include c-jc-c-ai;
+    // margin-bottom: 1rem;
+  }
+}
+.empty-inventory-container {
+  text-align: center;
+  h2 {
+    font-size: 2rem;
+  }
+  p {
+    padding: 1rem 0;
+    font-size: 1.5rem;
+  }
+}

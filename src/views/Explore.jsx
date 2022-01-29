@@ -1,8 +1,15 @@
 import React, { useState, useRef, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { selectReceipeDb, setReceipeDb } from "../features/receipeSlice";
+import DishModal from "../components/dishModal";
 
 function Explore() {
+  const [showModal, setShowModal] = useState(false);
+  const [modalProps, setModalProps] = useState({
+    name: "",
+    image: "",
+    description: "",
+  });
   const receipes = useSelector(selectReceipeDb);
   const queryRef = useRef();
 
@@ -25,6 +32,17 @@ function Explore() {
     setFilterList(filtered);
   };
 
+  const passModalProps = (name, image, description) => {
+    setModalProps({
+      name,
+      image,
+      description,
+    });
+  };
+  const toggleModal = () => {
+    setShowModal(!showModal);
+  };
+
   return (
     <div className="container explore-bg">
       <div className="explore-container">
@@ -39,20 +57,28 @@ function Explore() {
             filterSearch();
           }}
         />
-
         <div className="explore-receipe-container">
           {filterList.map((dish, i) => (
             <div className="explore-receipe">
               <img key={i} src={dish.image} alt="" className="receipe-image" />
               <div className="receipe-info-container">
                 <h3>{dish.name}</h3>
-                <p className="explore-dish-desc">Here is the description</p>
-                <button className="explore-cook">See More</button>
+                {/* <p className="explore-dish-desc">Here is the description</p> */}
+                <button
+                  className="explore-cook"
+                  onClick={() => {
+                    toggleModal();
+                    passModalProps(dish.name, dish.image, dish.description);
+                  }}
+                >
+                  See More
+                </button>
               </div>
             </div>
           ))}
         </div>
       </div>
+      {showModal && <DishModal toggleModal={toggleModal} modalProps={modalProps} />}
     </div>
   );
 }

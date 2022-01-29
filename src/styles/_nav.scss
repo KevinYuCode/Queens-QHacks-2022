@@ -48,18 +48,6 @@
       transition: none;
       transform: scaleX(1.3);
     }
-    // .active {
-    //   content: "";
-    //   display: flex;
-    //   justify-content: center;
-    //   align-items: center;
-    //   position: relative;
-    //   width: 70px;
-    //   right: 15%;
-    //   height: 2px;
-    //   margin-top: 0.3rem;
-    //   background-color: white;
-    // }
   }
   .nav-login-icon {
   }
@@ -69,12 +57,12 @@
     object-fit: cover;
     border-radius: 50%;
     margin-left: 4rem;
-    box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
     transition: all 0.4s;
     cursor: pointer;
   }
   .login-icon:hover {
     border: none;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
     transform: scale(1.1);
   }
 }

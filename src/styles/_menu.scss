@@ -1,0 +1,62 @@
+.menu-container {
+  @include c-jc-c-ai;
+  //   height: 100vh;
+  //   overflow: hidden;
+  flex-direction: column;
+  row-gap: 20rem;
+  padding: 10rem 0;
+}
+
+.menu-card {
+  min-width: 500px;
+  width: 1100px;
+  height: 500px;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+}
+.menu-dish-image-container {
+  position: relative;
+  grid-column: 1/2;
+  width: 300px;
+}
+.menu-dish-image {
+  width: 450px;
+  height: 450px;
+  object-fit: cover;
+  border-radius: 50%;
+  grid-column: 1/2;
+  position: absolute;
+  top: -20%;
+  left: -50%;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+}
+.menu-content {
+  padding-left: 5rem;
+  padding-right: 2rem;
+  @include sa-jc-c-ai;
+  flex-direction: column;
+  align-items: flex-start;
+  .menu-info {
+    padding: 2rem 0 3rem 0;
+    .menu-dish-name {
+      font-size: 3rem;
+    }
+    .menu-description {
+      padding-top: 1rem;
+      font-weight: 200;
+      h3 {
+        font-size: 1.5rem;
+        font-weight: 300;
+      }
+    }
+  }
+  .menu-cook-btn {
+    border: none;
+    background: #f8d176;
+    padding: 1rem 5rem;
+    font-size: 1.2rem;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    cursor: pointer;
+  }
+}

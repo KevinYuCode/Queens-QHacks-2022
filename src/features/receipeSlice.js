@@ -79,6 +79,30 @@ const initialState = {
         image: image6,
     },
     ],
+    menu: [
+        {
+            name: "new word",
+            image: image3,
+        },
+        {
+            name: "new word",
+            image: image4,
+        },
+        {
+            name: "GOOfhgD FOOD",
+            image: image5,
+        },
+        {
+            name: "GOOD FOOD",
+            image: image6,
+        },
+    ],
+    cookingReceipe: {
+        name: "new word",
+        image: image3,
+        instructions: ""
+    },
+    inventory: []
 
 };
 
@@ -87,14 +111,27 @@ const receipeSlice = createSlice({
     initialState,
 
     reducers: {
-        setFsReceipts: (state, action) => {
+        setReceipe: (state, action) => {
             state.receipeDb = action.payload;
         },
+        setMenu: (state, action) => {
+            state.menu = action.payload;
+        },
+        setCookingReceipe: (state, action) => {
+            console.log(action.payload);
+            state.cookingReceipe = action.payload;
+        },
+        setInventory: (state, action) => {
+            state.inventory = action.payload;
+        }
     },
 });
 
-export const { setReceipeDb } = receipeSlice.actions;
+export const { setReceipeDb, setMenu, setCookingReceipe, setInventory } = receipeSlice.actions;
 
 export const selectReceipeDb = (state) => state.receipe.receipeDb;
+export const selectMenu = (state) => state.receipe.menu;
+export const selectCookingReceipe = (state) => state.receipe.cookingReceipe;
+export const selectInventory = (state) => state.receipe.inventory;
 
 export default receipeSlice.reducer;

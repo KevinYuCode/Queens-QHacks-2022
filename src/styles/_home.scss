@@ -59,7 +59,7 @@
 .image-slider-container {
   grid-column: 2/3;
   overflow-x: hidden;
-  max-width: 60%;
+  max-width: 90%;
   margin: auto;
 }
 
@@ -86,7 +86,7 @@
 .dish-container {
   @include c-jc-c-ai;
   flex-direction: column;
-  max-width: 500px;
+  max-width: 500px; //Changes the Carousel image height
 }
 .dish-image-container {
   position: relative;
