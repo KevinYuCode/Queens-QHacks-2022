@@ -21,9 +21,9 @@ def test():
     # would need to modify react script to accomodate the extra data for it to work
 
     # query.GETbyIngredient("yellow onions")
-    return query.GETall("recipes_reduced")
-    # query.POSTuser("encore des raisins")
-    # query.GETall("recipes_reduced")
+    # return query.GETall("recipes_reduced")
+    # query.POSTuser("test123@gmail.com", ["kale", "salad", "cucumbers"])
+    return query.POSTrecipe("test recipe name", 60, "['do some steps', 'do some more steps']", "test recipe yummy yummy good", "['insert random ingredients here']", "random url")
 
 
 if __name__ == "__main__":
