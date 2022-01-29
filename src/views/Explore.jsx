@@ -63,7 +63,7 @@ function Explore() {
               <img key={i} src={dish.image} alt="" className="receipe-image" />
               <div className="receipe-info-container">
                 <h3>{dish.name}</h3>
-                <p className="explore-dish-desc">Here is the description</p>
+                <p className="explore-dish-desc">Click below to see more</p>
                 <button
                   className="explore-cook"
                   onClick={() => {

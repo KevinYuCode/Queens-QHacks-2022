@@ -19,13 +19,8 @@ function App() {
       .then((res) => res.json())
       .then((data) => {
         setData(data);
-<<<<<<< HEAD
-        //dispatch(setReceipeDb(data));
-        console.log(data)
-=======
         console.log(data)
         dispatch(setReceipeDb(data));
->>>>>>> 674b7c9a131812208ee4006a3a922ad5de0a17c1
       });
 
   };
