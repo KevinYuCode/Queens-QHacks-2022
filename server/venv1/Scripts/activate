@@ -37,7 +37,7 @@ deactivate () {
 # unset irrelevant variables
 deactivate nondestructive
 
-VIRTUAL_ENV="C:\Users\yukev\Flask\qhacks_beta\server\venv1"
+VIRTUAL_ENV="C:\Users\logan\Documents\GitHub\QHACKS_2022\server\venv1"
 export VIRTUAL_ENV
 
 _OLD_VIRTUAL_PATH="$PATH"

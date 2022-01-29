@@ -6,78 +6,7 @@ import image4 from "../assets/image4.jpeg";
 import image5 from "../assets/image5.jpeg";
 import image6 from "../assets/image6.jpeg";
 const initialState = {
-    receipeDb: [{
-        name: "GOOD FOOD",
-        image: image1,
-    },
-    {
-        name: "GOOD",
-        image: image2,
-    },
-    {
-        name: "GOOD FOOD",
-        image: image3,
-    },
-    {
-        name: "GOOD FOOD",
-        image: image4,
-    },
-    {
-        name: "GOOD FOOD",
-        image: image5,
-    },
-    {
-        name: "GOOD FOOD",
-        image: image6,
-    },
-    {
-        name: "GOOD FOOD",
-        image: image3,
-    },
-    {
-        name: "GOOD FOOD",
-        image: image4,
-    },
-    {
-        name: "GOOD FOOD",
-        image: image5,
-    },
-    {
-        name: "new word",
-        image: image6,
-    },
-    {
-        name: "new word",
-        image: image3,
-    },
-    {
-        name: "new word",
-        image: image4,
-    },
-    {
-        name: "new word",
-        image: image5,
-    },
-    {
-        name: "new word",
-        image: image6,
-    },
-    {
-        name: "new word",
-        image: image3,
-    },
-    {
-        name: "new word",
-        image: image4,
-    },
-    {
-        name: "GOOfhgD FOOD",
-        image: image5,
-    },
-    {
-        name: "GOOD FOOD",
-        image: image6,
-    },
+    receipeDb: [
     ],
     menu: [
         {
@@ -112,7 +41,9 @@ const receipeSlice = createSlice({
     initialState,
 
     reducers: {
-        setReceipe: (state, action) => {
+        setReceipeDb: (state, action) => {
+            console.log("FROM REDUX");
+            console.log(action.payload.name);
             state.receipeDb = action.payload;
         },
         setMenu: (state, action) => {

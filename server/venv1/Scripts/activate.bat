@@ -8,7 +8,7 @@ if defined _OLD_CODEPAGE (
     "%SystemRoot%\System32\chcp.com" 65001 > nul
 )
 
-set VIRTUAL_ENV=C:\Users\yukev\Flask\qhacks_beta\server\venv1
+set VIRTUAL_ENV=C:\Users\logan\Documents\GitHub\QHACKS_2022\server\venv1
 
 if not defined PROMPT set PROMPT=$P$G
 
