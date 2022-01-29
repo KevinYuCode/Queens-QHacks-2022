@@ -3,7 +3,6 @@ import "../styles/CreatePost.css"
 import {addDoc, collection} from 'firebase/firestore'
 import { db, auth } from '../firebase/firebase'
 import { useNavigate } from 'react-router-dom'
-import Nav from '../views/Nav'
 
 export default function CreatePost({isAuth}) {
 
@@ -25,8 +24,6 @@ export default function CreatePost({isAuth}) {
 })*/
 
   return (
-      <div>
-          <Nav />
   <div className="CreatePost-page">
       <div className="CreatePost-container">
         <h1 className="CreatePost-header">Create A Post</h1>
@@ -40,6 +37,5 @@ export default function CreatePost({isAuth}) {
         </div>
         <button className="CreatePost-button" onClick={createPost}>Submit Post</button>
       </div>
-  </div>
   </div>
   )}

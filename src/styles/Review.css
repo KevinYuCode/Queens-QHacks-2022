@@ -10,26 +10,39 @@
     flex-direction: column;
     align-items: center;
     padding-top: 20px;
-    background-color: rgb(214, 214, 214);
+    background-color: rgb(255, 255, 255);
     
 }
 
 .Review-post {
-    width: 100%;
+    width: 75%;
     height: auto;
     max-height: 600px;
-    background-color: #ffffff;
+    background-color: #f8d176;
     /* box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px; */
     margin: 5px;
-    padding: 20px;
+    padding: 10px;
      border-radius: 5px; 
     border-color: black;
+    text-align: left;
 }
 
 .Review-postheader {
     display: flex;
     justify-content: center;
      width: 100%; 
+}
+
+.Review-button {
+    background-color: #f8d176;
+    border-color: #f8d176;
+    font-size: 20px;
+}
+
+.Review-createpost {
+    position: absolute;
+    top: 6rem; 
+    right: 1rem; 
 }
 
 .Review-title {
@@ -43,7 +56,9 @@
     width: 100%; 
     overflow: hidden;
     overflow-y: auto;
-    font-size: 20px;
+    font-size: 18px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin-top: 10px;
 }
 
 .Review-header1 {
@@ -52,9 +67,8 @@
 
 .Review-header3 {
     width: 100%; 
-    font-size: 8px;
-}
+    font-size: 10px;
+    margin-top: -5px;
+    font-style: italic;
 
-.w-100 {
-    max-width: 10000px !important;
 }
