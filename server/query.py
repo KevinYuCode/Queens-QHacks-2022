@@ -61,9 +61,19 @@ def POSTuser(email, ingredients):
     return {"User POST Successful": 0}  # return msg in json format for confirmation
 
 
+# function which adds recipe with the given parameters to the recipes_reduces collection (mongo)
 def POSTrecipe(name, minutes, steps, description, ingredients, image):
     db = get_database()
     collection_name = db["recipes_reduced"]
-    collection_name.insert_one({"name": name, "minutes": minutes, "steps": steps, "description": description, "ingredients": ingredients, "image": image})
+    collection_name.insert_one(
+        {
+            "name": name,
+            "minutes": minutes,
+            "steps": steps,
+            "description": description,
+            "ingredients": ingredients,
+            "image": image,
+        }
+    )
     print("Recipe POST Successful")
     return {"Recipe POST Successful": 0}
