@@ -5,12 +5,13 @@ import { useDispatch, useSelector } from "react-redux";
 import { selectReceipeDb, setReceipeDb } from "../features/receipeSlice";
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
 import { Carousel } from "react-responsive-carousel";
+import { NavLink } from "react-router-dom";
 
 function Home() {
   const receipe = useSelector(selectReceipeDb);
 
   const featuredRef = useRef();
-  const [data, setData] = useState([{}]) // state for api query
+  const [data, setData] = useState([{}]); // state for api query
 
   return (
     <div id="home" className="container home-bg">
@@ -21,8 +22,12 @@ function Home() {
             <h3>Explore new receipes and share with others your new cooking skills!</h3>
           </div>
           <div className="cta-container">
-            <button className="start-btn">Start Cooking</button>
-            <button className="explore-btn">See More</button>
+            <NavLink to="/menu" className="start-btn">
+              Start Cooking
+            </NavLink>
+            <NavLink to="/explore" className="explore-btn">
+              See More
+            </NavLink>
           </div>
         </div>
         <div className="image-slider-container">
@@ -51,13 +56,6 @@ function Home() {
           )}
         </div>
         <div id="featured" className="featured-dishes-container"></div>
-
-        {/* <h1 className="recommended-title">Recommended Dishes</h1>
-        <div className="recommended-container">
-          {recommended.map((dish, i) => (
-            <img src={dish.image} alt="" className="recommend-dish" />
-          ))}
-        </div> */}
       </div>
     </div>
   );

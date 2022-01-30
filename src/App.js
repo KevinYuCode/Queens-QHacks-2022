@@ -22,7 +22,6 @@ function App() {
         console.log(data)
         dispatch(setReceipeDb(data));
       });
-
   };
 
   useEffect(() => {
