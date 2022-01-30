@@ -14,6 +14,7 @@ import { setReceipeDb, selectReceipeDb, setIngredients } from "./features/receip
 function App() {
   // const [data, setData] = useState([]);
   const dispatch = useDispatch();
+<<<<<<< HEAD
 
   const fetchData = async () => {
     let mainIngredients = [];
@@ -44,32 +45,45 @@ function App() {
         });
         // console.log(data);
         dispatch(setIngredients(mainIngredients));
+=======
+  const fetchData = async () => {
+    // fetch full recipe data from flask on startup
+    fetch("/data")
+      .then((res) => res.json())
+      .then((data) => {
+        setData(data);
+        console.log(data); // test out api fetch
+>>>>>>> api_dev
         dispatch(setReceipeDb(data));
       });
   };
 
   // this fetches user's ingredient list
   const [Userdata, setUserData] = useState([]);
-  const fetchUserData = async () => { // fetch full recipe data from flask on startup
+  const fetchUserData = async () => {
+    // fetch full recipe data from flask on startup
     fetch("/availability")
       .then((res) => res.json())
       .then((Userdata) => {
+<<<<<<< HEAD
         // setData(Userdata);
         console.log(Userdata) // test out api fetch
+=======
+        setData(Userdata);
+        console.log(Userdata); // test out api fetch
+>>>>>>> api_dev
         //dispatch(setReceipeDb(data));
       });
-
   };
 
   useEffect(() => {
     fetchData();
-    fetchUserData();
+    // fetchUserData();
   }, []);
 
   return (
     <div className="App">
       <Router>
-        <Nav />
         <Routes>
           <Route exact path="/" element={<Home />} />
           <Route path="/explore" element={<Explore />} />

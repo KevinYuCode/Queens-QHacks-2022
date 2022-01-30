@@ -7,6 +7,10 @@ import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a lo
 import { Carousel } from "react-responsive-carousel";
 import { NavLink } from "react-router-dom";
 
+<<<<<<< HEAD
+=======
+import Nav from "./Nav";
+>>>>>>> api_dev
 
 function Home() {
   const dispatch = useDispatch();
@@ -18,7 +22,11 @@ function Home() {
   const [data, setData] = useState([{}]); // state for api query
 
   return (
+    
+    <div>
+    <Nav />
     <div id="home" className="container home-bg">
+      
       <div className="home-container">
         <div className="greeting-container">
           <div className="greeting-text">
@@ -67,6 +75,7 @@ function Home() {
         </div>
         <div id="featured" className="featured-dishes-container"></div>
       </div>
+    </div>
     </div>
   );
 }

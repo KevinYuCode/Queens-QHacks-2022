@@ -4,6 +4,7 @@ import { selectMenu, setCookingReceipe, selectReceipeDb} from "../features/recei
 import DishModal from "../components/dishModal";
 import { NavLink } from "react-router-dom";
 
+import Nav from "./Nav";
 
 function Menu() {
   const dispatch = useDispatch();
@@ -23,6 +24,8 @@ function Menu() {
   };
 
   return (
+    <div>
+      <Nav />
     <div className="menu-container">
       {menu.map((dish, i) => (
         <div className="menu-card" key={i}>
@@ -52,6 +55,7 @@ function Menu() {
           </div>
         </div>
       ))}
+    </div>
     </div>
   );
 }
