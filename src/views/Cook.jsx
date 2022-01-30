@@ -12,9 +12,10 @@ function Cook() {
   const displayList = [];
   const [instructionBatch, setInstructionBatch] = useState([[]]);
   const [batchIndex, setBatchIndex] = useState(0);
-  const ingredients = useSelector(selectIngredients);
+  // const ingredients = useSelector(selectIngredients);
 
-  let chopped = "";
+
+  console.log(cookingReceipe.steps);
   // chopped = cookingReceipe.length > 0 ? cookingReceipe.steps.split(",") : [];
 
   // const [mainInstructions, setMainInstructions] = useState(chopped);

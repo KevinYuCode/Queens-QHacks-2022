@@ -40,7 +40,8 @@ function App() {
           lastItem = lastItem.slice(0, lastItem.length - 1);
           buildItems[buildItems.length - 1] = lastItem;
 
-          const buildItems2 = item.ingredients.split(",");
+          const buildItems2 = item.steps.split(",");
+          console.log(buildItems2);
           buildItems2[0] = buildItems2[0].slice(1, buildItems2[0].length);
           let lastItem2 = buildItems2[buildItems2.length - 1];
           lastItem2 = lastItem2.slice(0, lastItem2.length - 1);
@@ -51,6 +52,7 @@ function App() {
 
           for (let i = 0; i < buildItems.length; i++) {
             mainIngredients.push(buildItems[i]);
+            // mainSteps.push(buildItems2[i]);
           }
         });
         // console.log(data);
