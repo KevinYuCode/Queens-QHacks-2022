@@ -5,6 +5,9 @@ import ReactDOM from "react-dom";
 import backend from "@hotg-ai/rune-tflite";
 import Webcam from "react-webcam";
 import { Parameters, useForge, registerBackend, OutputValue } from "@hotg-ai/forge";
+import Nav from '../views/Nav'
+import { NavLink } from 'react-router-dom'
+import "../styles/Index.css"
 
 // Tell forge to use the tflite model handler
 registerBackend(backend());
@@ -67,9 +70,14 @@ export default function App() {
         .map((p, i) => (<li key={i}>{p}</li>));
 
     return (
-        <div className="App">
-            <h1>Inception ({forge.state})</h1>
-            <Webcam
+        <div className="index-bg">
+            
+        <div className="index-bg">
+            {/* <h1>Process: ({forge.state})</h1> */}
+            <a href='\' className="index-back"> 
+                Back
+             </a>
+            <Webcam className="index-webcam"
                 audio={false}
                 height={videoConstraints.height}
                 width={videoConstraints.width}
@@ -79,6 +87,10 @@ export default function App() {
                 onTimeUpdate={onTimeUpdated}
             />
             <ul>{predictions}</ul>
+        </div>
+        
+            
+             
         </div>
     );
 }

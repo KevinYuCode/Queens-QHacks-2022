@@ -45,6 +45,9 @@ function Nav() {
             <NavLink className="nav-link" to="/ingredients">
               Ingredients
             </NavLink>
+            <NavLink className="nav-link" to="/hotg">
+              HOTG
+            </NavLink>
             <NavLink className="nav-link" to="/login" onClick={handleLogout}>
               Log Out
             </NavLink>

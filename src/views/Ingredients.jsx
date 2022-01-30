@@ -36,6 +36,7 @@ function Ingredients() {
         }),
       });
       setStockIngredients(tempList);
+      setUpdating(false);
     } catch (e) {
       console.log(e);
     }
@@ -124,6 +125,7 @@ function Ingredients() {
               className="save-list"
               onClick={() => {
                 update();
+
               }}
             >
               Update Inventory

@@ -73,7 +73,7 @@ function App() {
         .then((Userdata) => {
           console.log("HEER IS THE USER INGREDIENT DATA") 
           Userdata = Userdata[0];
-          console.log(Userdata.ingredients[0]) // test out api fetch
+          //console.log(Userdata.ingredients[0]) // test out api fetch
           dispatch(setStockIngredients(Userdata.ingredients[0]));
         });
     }catch(e){
