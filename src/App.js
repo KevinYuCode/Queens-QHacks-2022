@@ -19,6 +19,7 @@ import Review from './components/Review'
 import { auth } from './firebase/firebase'
 import { setReceipeDb, selectReceipeDb, setIngredients } from "./features/receipeSlice";
 import { useDispatch, useSelector } from "react-redux";
+import Index from './components/index.tsx'
 
 
 
@@ -96,6 +97,7 @@ function App() {
               <Route path ="/login" element={<Login />}/>
               <Route path ="/createpost" element={<CreatePost />}/>
               <Route path ="/review" element={<Review isAuth={isAuth}/>}/>
+              <Route path ="/hotg" element={<Index />}/>
 
 
             </Routes>
