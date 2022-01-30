@@ -4,7 +4,7 @@ import { selectMenu, setCookingReceipe, selectReceipeDb} from "../features/recei
 import DishModal from "../components/dishModal";
 import { NavLink } from "react-router-dom";
 
-import Nav from "./Nav";
+import Nav from "../views/Nav";
 
 function Menu() {
   const dispatch = useDispatch();
