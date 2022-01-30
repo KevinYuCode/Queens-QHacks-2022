@@ -17,14 +17,14 @@ import PrivateRoute from './components/PrivateRoute'
 import CreatePost from './components/CreatePost'
 import Review from './components/Review'
 import { auth } from './firebase/firebase'
-import { setReceipeDb, selectReceipeDb, setIngredients } from "./features/receipeSlice";
 import { useDispatch, useSelector } from "react-redux";
 import Index from './components/index.tsx'
+import { setReceipeDb, selectReceipeDb, setIngredients, setStockIngredients } from "./features/receipeSlice";
 
 
 
 function App() {
-  // const [data, setData] = useState([]);
+   const [data, setData] = useState([]);
   const dispatch = useDispatch();
 
   const fetchData = async () => {
@@ -33,7 +33,7 @@ function App() {
     fetch("/data")
       .then((res) => res.json())
       .then((data) => {
-        // setData(data);
+        setData(data);
         data.map((item, i) => {
           const buildItems = item.ingredients.split(",");
           buildItems[0] = buildItems[0].slice(1, buildItems[0].length);
@@ -43,6 +43,7 @@ function App() {
 
           const buildItems2 = item.steps.split("',");
           console.log(buildItems2);
+          // console.log(buildItems2);
           buildItems2[0] = buildItems2[0].slice(1, buildItems2[0].length);
           let lastItem2 = buildItems2[buildItems2.length - 1];
           lastItem2 = lastItem2.slice(0, lastItem2.length - 1);
@@ -56,7 +57,7 @@ function App() {
             // mainSteps.push(buildItems2[i]);
           }
         });
-        // console.log(data);
+         console.log(data);
         dispatch(setIngredients(mainIngredients));
         dispatch(setReceipeDb(data));
       });
@@ -66,13 +67,18 @@ function App() {
   const [Userdata, setUserData] = useState([]);
   const fetchUserData = async () => {
     // fetch full recipe data from flask on startup
-    fetch("/availability")
-      .then((res) => res.json())
-      .then((Userdata) => {
-        // setData(Userdata);
-        console.log(Userdata) // test out api fetch
-        //dispatch(setReceipeDb(data));
-      });
+    try{
+      fetch("/availability")
+        .then((res) => res.json())
+        .then((Userdata) => {
+          console.log("HEER IS THE USER INGREDIENT DATA") 
+          Userdata = Userdata[0];
+          console.log(Userdata.ingredients[0]) // test out api fetch
+          dispatch(setStockIngredients(Userdata.ingredients[0]));
+        });
+    }catch(e){
+      console.log(e);
+    }
   };
   const [isAuth, setIsAuth] = useState(localStorage.getItem("isAuth"))
   useEffect(() => {
