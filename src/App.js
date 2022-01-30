@@ -103,7 +103,7 @@ function App() {
               <Route path ="/login" element={<Login />}/>
               <Route path ="/createpost" element={<CreatePost />}/>
               <Route path ="/review" element={<Review isAuth={isAuth}/>}/>
-              <Route path ="/hotg" element={<Index />}/>
+              <Route path ="/detection" element={<Index />}/>
 
 
             </Routes>

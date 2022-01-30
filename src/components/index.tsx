@@ -70,10 +70,11 @@ export default function App() {
         .map((p, i) => (<li key={i}>{p}</li>));
 
     return (
-        <div className="index-bg">
+        <div >
             
         <div className="index-bg">
             {/* <h1>Process: ({forge.state})</h1> */}
+            <h1>Ingredient Detection</h1>
             <a href='\' className="index-back"> 
                 Back
              </a>
@@ -88,8 +89,6 @@ export default function App() {
             />
             <ul>{predictions}</ul>
         </div>
-        
-            
              
         </div>
     );
