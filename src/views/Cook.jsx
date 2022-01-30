@@ -5,6 +5,7 @@ import { AiOutlineCheckSquare } from "react-icons/ai";
 
 function Cook() {
   const cookingReceipe = useSelector(selectCookingReceipe);
+  console.log(cookingReceipe.ingredients);
   const { name, image } = cookingReceipe;
   // use displayList array that only stores 5 strings and update it each time next step or previous step is clicked
   const displayList = [];
@@ -12,33 +13,29 @@ function Cook() {
   const [batchIndex, setBatchIndex] = useState(0);
   const ingredients = useSelector(selectIngredients);
 
-  let arrayIngredients = "";
   let chopped = "";
+  // chopped = cookingReceipe.length > 0 ? cookingReceipe.steps.split(",") : [];
 
-  arrayIngredients = cookingReceipe.ingredients.split(",");
-  chopped = cookingReceipe.steps.split(",");
-
-  const [mainInstructions, setMainInstructions] = useState(chopped);
-  const [mainIngredients, setMainIngredients] = useState(arrayIngredients);
+  // const [mainInstructions, setMainInstructions] = useState(chopped);
 
   const formatBatch = () => {
     let tempArray = [];
     let tempInArray = [];
 
-    for (let i = 0; i < mainInstructions.length; i++) {
+    for (let i = 0; i < cookingReceipe.steps.length; i++) {
       //So if we have 5 instructions we add the array into array [[1,2,3,5],]
       if (i !== 0 && i % 5 === 0) {
         tempArray.push(tempInArray);
         tempInArray = [];
       }
       //Checks if we've reached end of the array to store the last batch.
-      if (i === mainInstructions.length - 1) {
+      if (i === cookingReceipe.steps.length - 1) {
         tempArray.push(tempInArray);
         setInstructionBatch(tempArray);
       }
 
       //Fills up the temp batch with the 5 instructions
-      tempInArray.push(mainInstructions[i]);
+      tempInArray.push(cookingReceipe.steps[i]);
     }
   };
   const switchSteps = (val) => {
@@ -93,7 +90,7 @@ function Cook() {
             <h3>Ingredients</h3>
             <div className="ingredient-list">
               {cookingReceipe &&
-                mainIngredients.map((ingredient) => (
+                cookingReceipe.ingredients.map((ingredient) => (
                   <div className="ingredient">
                     <p className="checkmark">
                       <AiOutlineCheckSquare />

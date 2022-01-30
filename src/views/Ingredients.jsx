@@ -35,7 +35,6 @@ function Ingredients() {
     let itemName = e.target.nextElementSibling.innerText;
     for (let i = 0; i < tempList.length; i++) {
       if (tempList[i] === itemName) {
-        console.log("OOF");
         return;
       }
     }
