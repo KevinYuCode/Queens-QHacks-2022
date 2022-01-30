@@ -2,14 +2,18 @@ import React, { useState, useEffect, useRef } from "react";
 import AccIcon from "../assets/JohnnyBravo.png";
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
 import { useDispatch, useSelector } from "react-redux";
-import { selectReceipeDb, setReceipeDb } from "../features/receipeSlice";
+import { selectReceipeDb, setReceipeDb, setCookingReceipe } from "../features/receipeSlice";
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
 import { Carousel } from "react-responsive-carousel";
 import { NavLink } from "react-router-dom";
 
-function Home() {
-  const receipe = useSelector(selectReceipeDb);
 
+function Home() {
+  const dispatch = useDispatch();
+  const receipe = useSelector(selectReceipeDb);
+  const readyCook = (receipe) => {
+    dispatch(setCookingReceipe(receipe));
+  }
   const featuredRef = useRef();
   const [data, setData] = useState([{}]); // state for api query
 
@@ -47,7 +51,13 @@ function Home() {
                       <p className="dish-name">{dish.name}</p>
                     </div>
                     <div className="dish-cook-cta">
-                      <p className="dish-cook-btn">Cook Now</p>
+                    <NavLink to="/cook" className="menu-cook-btn"
+              onClick={() => {
+                readyCook(dish); //Make sure to add more params if needed
+              }}
+            >
+              Cook Now
+            </NavLink>
                     </div>
                   </div>
                 ))}

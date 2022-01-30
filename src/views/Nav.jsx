@@ -1,5 +1,5 @@
 import React from "react";
-import Logo from "../assets/ML COOK.png";
+import Logo from "../assets/cookhack.png";
 import AccIcon from "../assets/JohnnyBravo.png";
 import { NavLink } from "react-router-dom";
 function Nav() {
