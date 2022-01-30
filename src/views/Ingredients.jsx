@@ -104,7 +104,7 @@ function Ingredients() {
           {inventory.length === 0 ? (
             <div className="empty-inventory-container">
               <h2>Ingredient Inventory Empty.</h2>
-              <p>Click the '+' symbol and add ingrident stock</p>
+              <p>Click the '+' symbol and add ingredient stock</p>
             </div>
           ) : (
             inventory.map((item) => (
