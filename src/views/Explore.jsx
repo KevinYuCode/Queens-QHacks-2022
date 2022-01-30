@@ -1,9 +1,16 @@
 import React, { useState, useRef, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { selectReceipeDb, setReceipeDb } from "../features/receipeSlice";
+import { selectReceipeDb, setCookingReceipe, setReceipeDb } from "../features/receipeSlice";
 import DishModal from "../components/dishModal";
 
 function Explore() {
+  const dispatch = useDispatch(setReceipeDb);
+
+  const readyCook = (receipe) => {
+    console.log(receipe);
+    dispatch(setCookingReceipe(receipe));
+  };
+
   const [showModal, setShowModal] = useState(false);
   const [modalProps, setModalProps] = useState({
     name: "",
@@ -32,11 +39,12 @@ function Explore() {
     setFilterList(filtered);
   };
 
-  const passModalProps = (name, image, description) => {
+  const passModalProps = (name, image, description, dish) => {
     setModalProps({
       name,
       image,
       description,
+      dish,
     });
   };
   const toggleModal = () => {
@@ -57,6 +65,7 @@ function Explore() {
             filterSearch();
           }}
         />
+
         <div className="explore-receipe-container">
           {filterList.map((dish, i) => (
             <div className="explore-receipe">
@@ -68,7 +77,7 @@ function Explore() {
                   className="explore-cook"
                   onClick={() => {
                     toggleModal();
-                    passModalProps(dish.name, dish.image, dish.description);
+                    passModalProps(dish.name, dish.image, dish.description, dish);
                   }}
                 >
                   See More
@@ -78,7 +87,7 @@ function Explore() {
           ))}
         </div>
       </div>
-      {showModal && <DishModal toggleModal={toggleModal} modalProps={modalProps} />}
+      {showModal && <DishModal toggleModal={toggleModal} modalProps={modalProps} readyCook={readyCook} />}
     </div>
   );
 }

@@ -9,6 +9,7 @@ import { NavLink } from "react-router-dom";
 
 function Home() {
   const receipe = useSelector(selectReceipeDb);
+
   const featuredRef = useRef();
   const [data, setData] = useState([{}]) // state for api query
 
@@ -28,27 +29,29 @@ function Home() {
           </div>
         </div>
         <div className="image-slider-container">
-          <div className="featured-dishes" id="featured">
-            <Carousel
-              showThumbs={false}
-              showIndicators={false}
-              emulateTouch={true}
-              autoPlay={false}
-              infiniteLoop={true}
-            >
-              {receipe.map((dish, i) => (
-                <div key={i} className="dish-container" ref={featuredRef}>
-                  <div className="dish-image-container">
-                    <img src={dish.image} alt="" className="dish-image" />
-                    <p className="dish-name">{dish.name}</p>
+          {receipe.length > 0 && (
+            <div className="featured-dishes" id="featured">
+              <Carousel
+                showThumbs={false}
+                showIndicators={false}
+                emulateTouch={true}
+                autoPlay={false}
+                infiniteLoop={true}
+              >
+                {receipe.map((dish, i) => (
+                  <div key={i} className="dish-container" ref={featuredRef}>
+                    <div className="dish-image-container">
+                      <img src={dish.image} alt="" className="dish-image" />
+                      <p className="dish-name">{dish.name}</p>
+                    </div>
+                    <div className="dish-cook-cta">
+                      <p className="dish-cook-btn">Cook Now</p>
+                    </div>
                   </div>
-                  <div className="dish-cook-cta">
-                    <p className="dish-cook-btn">Cook Now</p>
-                  </div>
-                </div>
-              ))}
-            </Carousel>
-          </div>
+                ))}
+              </Carousel>
+            </div>
+          )}
         </div>
         <div id="featured" className="featured-dishes-container"></div>
 

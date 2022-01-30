@@ -31,7 +31,7 @@
       font-size: 3rem;
     }
     .instructions-title {
-      margin-top: 5rem;
+      margin-top: 2rem;
       font-size: 2.5rem;
       font-weight: 200;
       margin-bottom: 1rem;
@@ -41,6 +41,7 @@
       flex-direction: column;
       justify-content: start;
       padding: 2rem 2rem;
+      margin-bottom: 6rem;
     }
     .instruction-batch {
       box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
@@ -89,8 +90,12 @@
       padding: 0.5rem 0 0.5rem 2rem;
       @include s-jc-c-ai;
       .instruction-checkbox {
-        width: 25px;
-        height: 25px;
+        width: 25px !important;
+        height: 25px !important;
+        min-width: 25px !important;
+        min-height: 25px !important;
+        max-width: 25px !important;
+        max-height: 25px !important;
       }
       .instruction {
         font-size: 1.4rem;
