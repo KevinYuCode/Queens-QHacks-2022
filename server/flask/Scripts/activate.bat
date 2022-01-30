@@ -8,7 +8,11 @@ if defined _OLD_CODEPAGE (
     "%SystemRoot%\System32\chcp.com" 65001 > nul
 )
 
+<<<<<<< HEAD
 set VIRTUAL_ENV=C:\Users\hunte\Documents\GitHub\QHACKS_2022\server\flask
+=======
+set VIRTUAL_ENV=C:\Users\yukev\Flask\qhacks_beta\server\flask
+>>>>>>> 550ef6878ebbfb572ebc7494d052be2dfc563881
 
 if not defined PROMPT set PROMPT=$P$G
 

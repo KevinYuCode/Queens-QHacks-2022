@@ -37,7 +37,11 @@ deactivate () {
 # unset irrelevant variables
 deactivate nondestructive
 
+<<<<<<< HEAD
 VIRTUAL_ENV="C:\Users\hunte\Documents\GitHub\QHACKS_2022\server\flask"
+=======
+VIRTUAL_ENV="C:\Users\yukev\Flask\qhacks_beta\server\flask"
+>>>>>>> 550ef6878ebbfb572ebc7494d052be2dfc563881
 export VIRTUAL_ENV
 
 _OLD_VIRTUAL_PATH="$PATH"

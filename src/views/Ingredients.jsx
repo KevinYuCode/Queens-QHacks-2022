@@ -21,6 +21,7 @@ function Ingredients() {
   const [reRender, setRerender] = useState(0);
   const ingredients = useSelector(selectIngredients);
   const queryRef = useRef();
+  const dispatch = useDispatch();
 
   const update = async () => {
     try {
@@ -37,6 +38,19 @@ function Ingredients() {
       });
       setStockIngredients(tempList);
     } catch (e) {
+      console.log(e);
+    }
+
+    try{
+      fetch("/availability")
+        .then((res) => res.json())
+        .then((Userdata) => {
+          console.log("HEER IS THE USER INGREDIENT DATA") 
+          Userdata = Userdata[0];
+          console.log(Userdata.ingredients[0]) // test out api fetch
+          dispatch(setStockIngredients(Userdata.ingredients[0]));
+        });
+    }catch(e){
       console.log(e);
     }
   };
