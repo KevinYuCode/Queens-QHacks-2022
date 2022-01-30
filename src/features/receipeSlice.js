@@ -13,51 +13,71 @@ const initialState = {
       name: "new word",
       image: image3,
       description: "HI",
+      ingredients: [],
+      steps: [],
     },
     {
       name: "new word",
       image: image4,
       description: "HI",
+      ingredients: [],
+      steps: [],
     },
     {
       name: "new word",
       image: image4,
       description: "HI",
+      ingredients: [],
+      steps: [],
     },
     {
       name: "new word",
       image: image4,
       description: "HI",
+      ingredients: [],
+      steps: [],
     },
     {
       name: "new word",
       image: image4,
       description: "HI",
+      ingredients: [],
+      steps: [],
     },
     {
       name: "new word",
       image: image4,
       description: "HI",
+      ingredients: [],
+      steps: [],
     },
     {
       name: "new word",
       image: image4,
       description: "HI",
+      ingredients: [],
+      steps: [],
     },
     {
       name: "new word",
       image: image4,
       description: "HI",
+      ingredients: [],
+      steps: [],
     },
     {
       name: "new word",
       image: image4,
       description: "HI",
+      ingredients: [],
+      steps: [],
     },
     {
       name: "new word",
       image: image4,
       description: "HI",
+      ingredients: [],
+      steps: [],
     },
   ],
   menu: [],
@@ -81,6 +101,7 @@ const receipeSlice = createSlice({
       state.receipeDb = action.payload;
     },
     setMenu: (state, action) => {
+      console.log("HELLO");
       state.menu = action.payload;
     },
     setCookingReceipe: (state, action) => {
@@ -96,8 +117,9 @@ const receipeSlice = createSlice({
     setCookingReceipe: (state, action) => {
       state.cookingReceipe = action.payload;
     },
-    stockIngredients: (state, action) => {
-      console.log()
+    setStockIngredients: (state, action) => {
+      console.log("STOCK INGREDIENTSD LOADING");
+
       state.stockIngredients = action.payload;
     },
   },
