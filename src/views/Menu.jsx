@@ -1,7 +1,10 @@
 import React, { useState, useRef, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { selectMenu, setCookingReceipe } from "../features/receipeSlice";
-import Nav from "./Nav";
+import { selectMenu, setCookingReceipe, selectReceipeDb} from "../features/receipeSlice";
+import DishModal from "../components/dishModal";
+import { NavLink } from "react-router-dom";
+import Nav from './Nav'
+
 
 function Menu() {
   const dispatch = useDispatch();

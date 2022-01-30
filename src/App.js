@@ -22,7 +22,7 @@ import Review from './components/Review'
 import { auth } from './firebase/firebase'
 
 function App() {
-  // const [data, setData] = useState([]);
+  const [data, setData] = useState([]);
   const dispatch = useDispatch();
   const [isAuth, setIsAuth] = useState(localStorage.getItem("isAuth"))
 
@@ -32,7 +32,7 @@ function App() {
     fetch("/data")
       .then((res) => res.json())
       .then((data) => {
-        // setData(data);
+        setData(data);
         data.map((item, i) => {
           const buildItems = item.ingredients.split(",");
           buildItems[0] = buildItems[0].slice(1, buildItems[0].length);
@@ -101,5 +101,6 @@ function App() {
           </AuthProvider>
         </Router>
     </div>
-  );
-  }
+  )}
+
+  export default App;
