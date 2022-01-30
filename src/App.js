@@ -74,7 +74,7 @@ function App() {
 
   useEffect(() => {
     fetchData();
-    fetchUserData();
+    // fetchUserData();
   }, []);
 
   return (
