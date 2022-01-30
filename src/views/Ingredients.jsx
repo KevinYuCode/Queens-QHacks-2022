@@ -4,10 +4,7 @@ import { BsTrash } from "react-icons/bs";
 import IngredientsBg from "../assets/IngredientsBG.jpeg";
 import { useDispatch, useSelector } from "react-redux";
 import { selectInventory, selectIngredients } from "../features/receipeSlice";
-<<<<<<< HEAD
-=======
 import Nav from "./Nav";
->>>>>>> forum-branch
 
 function Ingredients() {
   const inventory = useSelector(selectInventory);

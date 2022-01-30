@@ -1,8 +1,5 @@
 import Logo from "../assets/cookhack.png";
-import AccIcon from "../assets/JohnnyBravo.png";
-import { NavLink } from "react-router-dom";
 import React, {useState} from "react";
-import Logo from "../assets/ML COOK.png";
 import AccIcon from "../assets/profile.jpg";
 import { NavLink, Link, useNavigate } from "react-router-dom";
 import {useAuth} from '../contexts/AuthContext'
