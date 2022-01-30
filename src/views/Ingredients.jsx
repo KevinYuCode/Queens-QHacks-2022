@@ -4,6 +4,7 @@ import { BsTrash } from "react-icons/bs";
 import IngredientsBg from "../assets/IngredientsBG.jpeg";
 import { useDispatch, useSelector } from "react-redux";
 import { selectInventory, selectIngredients } from "../features/receipeSlice";
+
 function Ingredients() {
   const inventory = useSelector(selectInventory);
   const [updating, setUpdating] = useState(false);
@@ -12,6 +13,21 @@ function Ingredients() {
   const [reRender, setRerender] = useState(0);
   const ingredients = useSelector(selectIngredients);
   const queryRef = useRef();
+
+  const update = async () => {
+    await fetch("/result", {
+      method: "POST",
+      cache: "no-cache",
+      headers: {
+        "content_type": "application/json",
+      },
+      body: JSON.stringify({
+        email: "samthibault@gmail.com",
+        ingredients: ["hello000000", "world"]
+      })
+    });
+  }
+
 
   const filterIngredient = () => {
     let query = queryRef.current.value;
@@ -91,7 +107,7 @@ function Ingredients() {
               ))}
             </div>
           </div>
-          <button className="save-list">Update Inventory</button>
+          <button className="save-list" onClick={() => { update() }}>Update Inventory</button>
         </div>
       )}
 

@@ -54,7 +54,7 @@ function Explore() {
           className="explore-search"
           ref={queryRef}
           onChange={() => {
-            // filterSearch();
+            filterSearch();
           }}
         />
         <div className="explore-receipe-container">
