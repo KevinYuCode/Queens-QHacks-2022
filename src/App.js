@@ -48,8 +48,22 @@ function App() {
       });
   };
 
+  // this fetches user's ingredient list
+  const [Userdata, setUserData] = useState([]);
+  const fetchUserData = async () => { // fetch full recipe data from flask on startup
+    fetch("/availability")
+      .then((res) => res.json())
+      .then((Userdata) => {
+        setData(Userdata);
+        console.log(Userdata) // test out api fetch
+        //dispatch(setReceipeDb(data));
+      });
+
+  };
+
   useEffect(() => {
     fetchData();
+    fetchUserData();
   }, []);
 
   return (
