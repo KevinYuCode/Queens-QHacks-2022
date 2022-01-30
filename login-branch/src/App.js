@@ -8,9 +8,9 @@ import Login from './components/Login'
 import Dashboard from './components/Dashboard'
 import PrivateRoute from './components/PrivateRoute'
 import Users from './Users'
-import CreatePost from './components/CreatePost'
+import CreatePost from '../../src/components/CreatePost'
 import Review from './components/Review'
-import { auth } from './firebase/firebase'
+import { auth } from '../../src/firebase/firebase'
 
 
 function App() {

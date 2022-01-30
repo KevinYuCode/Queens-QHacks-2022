@@ -37,32 +37,35 @@ async function handleSubmit(e){
 
     return (
         <>
+            <div className="Signup-page">
             <Card className="Signup-card">
                 <Card.Body>
-                    <h2 className="text-center mb-4"> Sign Up</h2>
+                    <h2 className="Signup-header2"> Sign Up</h2>
                    {currentUser && currentUser.password}
                     {error && <Alert variant="danger"> {error}</Alert>}
-                    <Form onSubmit = {handleSubmit}>
+                    <Form onSubmit = {handleSubmit} className="Signup-form">
                         <Form.Group id="email">
-                            <Form.Label>Email</Form.Label>
-                            <Form.Control type = "email" ref={emailRef} required />
+                            <Form.Label className="Signup-input">Email</Form.Label>
+                            <Form.Control className="Signup-field" type = "email" ref={emailRef} required />
                         </Form.Group>
                         <Form.Group id="password">
-                            <Form.Label>Password (6 characters or longer)</Form.Label>
-                            <Form.Control type = "password" ref={passwordRef} required />
+                            <Form.Label className="Signup-input">Password (6 characters or longer)</Form.Label>
+                            <Form.Control className="Signup-field" type = "password" ref={passwordRef} required />
                         </Form.Group>
                         <Form.Group id="password-confirm">
-                            <Form.Label>Password Confirmation</Form.Label>
-                            <Form.Control type = "password" ref={passwordConfirmRef} required />
+                            <Form.Label className="Signup-input">Password Confirmation</Form.Label>
+                            <Form.Control className="Signup-field" type = "password" ref={passwordConfirmRef} required />
                         </Form.Group>
-                        <Button disabled = {loading} className = "w-100 Signup-button" type = "submit">Sign Up</Button>
+                        <Button disabled = {loading} className = "Signup-button" type = "submit">Sign Up</Button>
                     </Form>
                 </Card.Body>
-            </Card>
-            <div className="w-100 text-center mt-2">
+                <div className="Signup-login">
                 Already have an account? <Link to="/login" className="Signup-link">Log In</Link>
 
             </div>
+            </Card>
+            </div>
+
         </>
     )
 }
