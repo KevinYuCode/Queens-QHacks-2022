@@ -83,7 +83,8 @@ const initialState = {
     instructions: "",
   },
   inventory: [],
-  ingredients: ["Tomato", "Potato", "peas", "Maccoroni", "Cheese"],
+  ingredients: [],
+  cookingReceipe: { ingredients: "", steps: "" },
 };
 
 const receipeSlice = createSlice({
@@ -106,6 +107,9 @@ const receipeSlice = createSlice({
     },
     setIngredients: (state, action) => {
       state.ingredients = action.payload;
+    },
+    setCookingReceipe: (state, action) => {
+      state.cookingReceipe = action.payload;
     },
   },
 });

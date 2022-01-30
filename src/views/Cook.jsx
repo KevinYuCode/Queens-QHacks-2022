@@ -11,42 +11,34 @@ function Cook() {
   const [instructionBatch, setInstructionBatch] = useState([[]]);
   const [batchIndex, setBatchIndex] = useState(0);
   const ingredients = useSelector(selectIngredients);
-  const data = [
-    "Put tomato in oven",
-    "Salt Garlic",
-    "Put rice in microwave",
-    "Put tomato in oven",
-    "Put rice in microwave",
-    "2Put tomato in oven",
-    "2Salt Garlic",
-    "2Put rice in microwave",
-    "2Put tomato in oven",
-    "2Put rice in microwave",
-    "3Put tomato in oven",
-    "3Salt Garlic",
-    "3Put rice in microwave",
-    "3Put tomato in oven",
-    "3Put rice in microwaveend",
-  ];
+
+  let arrayIngredients = "";
+  let chopped = "";
+
+  arrayIngredients = cookingReceipe.ingredients.split(",");
+  chopped = cookingReceipe.steps.split(",");
+
+  const [mainInstructions, setMainInstructions] = useState(chopped);
+  const [mainIngredients, setMainIngredients] = useState(arrayIngredients);
 
   const formatBatch = () => {
     let tempArray = [];
     let tempInArray = [];
 
-    for (let i = 0; i < data.length; i++) {
+    for (let i = 0; i < mainInstructions.length; i++) {
       //So if we have 5 instructions we add the array into array [[1,2,3,5],]
       if (i !== 0 && i % 5 === 0) {
         tempArray.push(tempInArray);
         tempInArray = [];
       }
       //Checks if we've reached end of the array to store the last batch.
-      if (i === data.length - 1) {
+      if (i === mainInstructions.length - 1) {
         tempArray.push(tempInArray);
         setInstructionBatch(tempArray);
       }
 
       //Fills up the temp batch with the 5 instructions
-      tempInArray.push(data[i]);
+      tempInArray.push(mainInstructions[i]);
     }
   };
   const switchSteps = (val) => {
@@ -70,12 +62,13 @@ function Cook() {
             <h3 className="instructions-title">Instructions</h3>
             {/* INSTRUCTIONS */}
             <div className="instruction-batch">
-              {instructionBatch[batchIndex].map((step) => (
-                <div className="instruction-item">
-                  <input type="checkbox" className="instruction-checkbox" />
-                  <p className="instruction">{step}</p>
-                </div>
-              ))}
+              {cookingReceipe &&
+                instructionBatch[batchIndex].map((step) => (
+                  <div className="instruction-item">
+                    <input type="checkbox" className="instruction-checkbox" />
+                    <p className="instruction">{step}</p>
+                  </div>
+                ))}
             </div>
             <div className="steps-btn-container">
               <button
@@ -99,19 +92,20 @@ function Cook() {
           <div className="ingredients-container">
             <h3>Ingredients</h3>
             <div className="ingredient-list">
-              {ingredients.map((ingredient) => (
-                <div className="ingredient">
-                  <p className="checkmark">
-                    <AiOutlineCheckSquare />
-                  </p>
-                  <p>{ingredient}</p>
-                </div>
-              ))}
+              {cookingReceipe &&
+                mainIngredients.map((ingredient) => (
+                  <div className="ingredient">
+                    <p className="checkmark">
+                      <AiOutlineCheckSquare />
+                    </p>
+                    <p>{ingredient}</p>
+                  </div>
+                ))}
             </div>
           </div>
         </div>
         <div className="cook-image-container">
-          <img className="cook-image" src={image} alt="Dish Image" />
+          {cookingReceipe && <img className="cook-image" src={image} alt="Dish Image" />}
         </div>
       </div>
     </div>

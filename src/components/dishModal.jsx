@@ -1,9 +1,10 @@
 import React from "react";
 import { AiOutlineClose } from "react-icons/ai";
 import { NavLink } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { selectIngredients, setCookingReceipe } from "../features/receipeSlice";
 
-function dishModal({ modalProps, toggleModal }) {
-  
+function dishModal({ modalProps, toggleModal, readyCook }) {
   return (
     <div className="modal-container">
       <div className="modal-image-container">
@@ -12,12 +13,17 @@ function dishModal({ modalProps, toggleModal }) {
       <div className="modal-dish-info">
         <h2 className="modal-dish-name">{modalProps.name}</h2>
         {/* <p className="modal-description">{modalProps.description}</p> */}
-        <p className="modal-description">
-          {modalProps.description}
-        </p>
+        <p className="modal-description">{modalProps.description}</p>
         <div className="modal-btn-container">
           <NavLink to="/cook">
-            <button className="modal-cook-btn" on>Start Cooking</button>
+            <button
+              className="modal-cook-btn"
+              onClick={() => {
+                readyCook(modalProps.dish);
+              }}
+            >
+              Start Cooking
+            </button>
           </NavLink>
         </div>
         <div
