@@ -54,7 +54,7 @@ function App() {
     fetch("/availability")
       .then((res) => res.json())
       .then((Userdata) => {
-        setData(Userdata);
+        // setData(Userdata);
         console.log(Userdata) // test out api fetch
         //dispatch(setReceipeDb(data));
       });

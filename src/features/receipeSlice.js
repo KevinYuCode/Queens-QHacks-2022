@@ -85,7 +85,7 @@ const initialState = {
   },
   inventory: [],
   ingredients: [],
-  cookingReceipe: { ingredients: "", steps: "" },
+  cookingReceipe: { ingredients: [], steps: [] },
 };
 
 const receipeSlice = createSlice({
