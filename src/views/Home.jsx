@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { selectReceipeDb, setReceipeDb } from "../features/receipeSlice";
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
 import { Carousel } from "react-responsive-carousel";
+import { NavLink } from "react-router-dom";
 
 function Home() {
   const receipe = useSelector(selectReceipeDb);
@@ -20,7 +21,9 @@ function Home() {
             <h3>Explore new receipes and share with others your new cooking skills!</h3>
           </div>
           <div className="cta-container">
+          <NavLink to="/explore">
             <button className="start-btn">Start Cooking</button>
+          </NavLink>
             <button className="explore-btn">See More</button>
           </div>
         </div>
