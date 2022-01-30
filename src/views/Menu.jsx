@@ -1,10 +1,19 @@
-import React from "react";
+import React, { useState, useRef, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { selectMenu, setCookingReceipe } from "../features/receipeSlice";
+import { selectMenu, setCookingReceipe, selectReceipeDb} from "../features/receipeSlice";
+import DishModal from "../components/dishModal";
+import { NavLink } from "react-router-dom";
+
+import Nav from "./Nav";
 
 function Menu() {
   const dispatch = useDispatch();
-  const menu = useSelector(selectMenu);
+  const readyRecipes = useSelector(selectReceipeDb)
+  const readyCook = (receipe) => {
+    dispatch(setCookingReceipe(receipe));
+  }
+  const [data, setData] = useState([{}])
+  const menu = useSelector(selectReceipeDb);
   const cookReceipe = ({ name, image }) => {
     dispatch(
       setCookingReceipe({
@@ -13,7 +22,10 @@ function Menu() {
       })
     );
   };
+
   return (
+    <div>
+      <Nav />
     <div className="menu-container">
       {menu.map((dish, i) => (
         <div className="menu-card" key={i}>
@@ -26,22 +38,24 @@ function Menu() {
               <div className="menu-description">
                 <h3 className="menu-sub-title">Description</h3>
                 <p className="description">
-                  Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ipsa eius fugiat enim cupiditate
-                  consequuntur dolorem, nihil adipisci labore ipsum fugit.
+                  {dish.description}
                 </p>
               </div>
             </div>
+            <NavLink to="/cook">
             <button
               className="menu-cook-btn"
               onClick={() => {
-                cookReceipe(dish); //Make sure to add more params if needed
+                readyCook(dish); //Make sure to add more params if needed
               }}
             >
               Cook Now
             </button>
+            </NavLink>
           </div>
         </div>
       ))}
+    </div>
     </div>
   );
 }
