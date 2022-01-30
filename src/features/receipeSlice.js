@@ -123,4 +123,5 @@ export const selectMenu = (state) => state.receipe.menu;
 export const selectCookingReceipe = (state) => state.receipe.cookingReceipe;
 export const selectInventory = (state) => state.receipe.inventory;
 export const selectIngredients = (state) => state.receipe.ingredients;
+export const selectSteps = (state) => state.receipe.steps;
 export default receipeSlice.reducer;
