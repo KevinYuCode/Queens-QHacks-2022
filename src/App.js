@@ -23,7 +23,7 @@ import { useDispatch, useSelector } from "react-redux";
 
 
 function App() {
-  // const [data, setData] = useState([]);
+   const [data, setData] = useState([]);
   const dispatch = useDispatch();
 
   const fetchData = async () => {
@@ -32,7 +32,7 @@ function App() {
     fetch("/data")
       .then((res) => res.json())
       .then((data) => {
-        // setData(data);
+        setData(data);
         data.map((item, i) => {
           const buildItems = item.ingredients.split(",");
           buildItems[0] = buildItems[0].slice(1, buildItems[0].length);
@@ -53,7 +53,7 @@ function App() {
             mainIngredients.push(buildItems[i]);
           }
         });
-        // console.log(data);
+         console.log(data);
         dispatch(setIngredients(mainIngredients));
         dispatch(setReceipeDb(data));
       });
