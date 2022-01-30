@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { batch, useDispatch, useSelector } from "react-redux";
 import { selectCookingReceipe, selectIngredients } from "../features/receipeSlice";
 import { AiOutlineCheckSquare } from "react-icons/ai";
+import Nav from "./Nav";
 
 function Cook() {
   const cookingReceipe = useSelector(selectCookingReceipe);
@@ -51,6 +52,8 @@ function Cook() {
   }, []);
 
   return (
+    <div>
+      <Nav />
     <div className="cook-container">
       <div className="cook-header">
         <div className="cook-content-container">
@@ -105,6 +108,7 @@ function Cook() {
           {cookingReceipe && <img className="cook-image" src={image} alt="Dish Image" />}
         </div>
       </div>
+    </div>
     </div>
   );
 }

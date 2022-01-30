@@ -5,8 +5,12 @@ import { useDispatch, useSelector } from "react-redux";
 import { selectReceipeDb, setReceipeDb, setCookingReceipe } from "../features/receipeSlice";
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
 import { Carousel } from "react-responsive-carousel";
+<<<<<<< HEAD
 import { NavLink } from "react-router-dom";
 
+=======
+import Nav from "./Nav";
+>>>>>>> forum-branch
 
 function Home() {
   const dispatch = useDispatch();
@@ -18,7 +22,11 @@ function Home() {
   const [data, setData] = useState([{}]); // state for api query
 
   return (
+    
+    <div>
+    <Nav />
     <div id="home" className="container home-bg">
+      
       <div className="home-container">
         <div className="greeting-container">
           <div className="greeting-text">
@@ -67,6 +75,7 @@ function Home() {
         </div>
         <div id="featured" className="featured-dishes-container"></div>
       </div>
+    </div>
     </div>
   );
 }

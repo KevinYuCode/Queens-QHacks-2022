@@ -53,6 +53,16 @@ def GETbyName(name):
     return items_df
 
 
+def GETuserList(email):
+    db = get_database()
+    user = db["user"]
+    recipes_list = [doc for doc in user.find({"user" : email}, {"_id": 0, "user": 0})]
+    json_list = json.dumps(recipes_list)
+    print(json_list)
+    return json_list
+
+
+
 # test to add ingredient to user ingredient list
 def POSTuser(email, ingredients):
     db = get_database()
