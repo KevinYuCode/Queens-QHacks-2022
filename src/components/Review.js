@@ -2,7 +2,7 @@ import React, {useEffect, useState} from 'react';
 import {getDocs, collection, deleteDoc, doc, onSnapshot} from 'firebase/firestore'
 import {auth, db} from '../firebase/firebase'
 import '../styles/Review.css'
-import Nav from '../views/Nav'
+import Nav from "../views/Nav"
 import { FaTrashAlt } from 'react-icons/fa'
 import { Link, useNavigate } from 'react-router-dom'
 
@@ -42,7 +42,7 @@ function Review({isAuth}) {
 
   return (
     <>
-    <div>
+    <div className="Review-nav">
         <Nav />
     <div className="Review-page">
         {postLists.map((post) => {
@@ -77,7 +77,7 @@ function Review({isAuth}) {
         })}
   </div>
     <button className="Review-createpost" onClick={navPost}> 
-        Create Review
+        Post Review
     </button>
   </div>
   </>

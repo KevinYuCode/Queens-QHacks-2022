@@ -5,12 +5,14 @@
 .Review-page {
     width: 100%;
     min-height: calc(100vh - 80px);
-    height: auto;
+    height: 93.25vh;
     display: flex;
     flex-direction: column;
     align-items: center;
     padding-top: 20px;
-    background-color: rgb(255, 255, 255);
+    background: url('../assets/review-background.jpg'); 
+    background-size: cover;
+    background-position: center;
     
 }
 
@@ -19,12 +21,17 @@
     height: auto;
     max-height: 600px;
     background-color: #f8d176;
-    /* box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px; */
+    box-shadow: rgba(0, 0, 0, 0.07) 0px 1px 1px, rgba(0, 0, 0, 0.07) 0px 2px 2px, rgba(0, 0, 0, 0.07) 0px 4px 4px, rgba(0, 0, 0, 0.07) 0px 8px 8px, rgba(0, 0, 0, 0.07) 0px 16px 16px;
+    /* border: 2px solid #eec973;  */
     margin: 5px;
     padding: 10px;
      border-radius: 5px; 
-    border-color: black;
     text-align: left;
+}
+
+.Review-nav {
+    position: fixed;
+    width: 100%;
 }
 
 .Review-postheader {
@@ -40,9 +47,13 @@
 }
 
 .Review-createpost {
-    position: absolute;
-    top: 6rem; 
+    position: fixed;
+    bottom: 1rem; 
     right: 1rem; 
+    width:10vw;
+    height:4vh;
+    background-color: #f8d176;
+    font-size: 120%;
 }
 
 .Review-title {

@@ -35,16 +35,16 @@ async function handleSubmit(e){
         <div className="Login-page">
             <Card className="Login-card">
                 <Card.Body>
-                    <h2 className="text-center mb-4"> Log In</h2>
+                    <h2 className="Login-header2"> Log In</h2>
                     {error && <Alert variant="danger"> {error}</Alert>}
                     <Form onSubmit = {handleSubmit} className="Login-form">
                         <Form.Group id="email" >
-                            <Form.Label className="Login-input">Email</Form.Label>
-                            <Form.Control  type = "email" ref={emailRef} required />
+                            <Form.Label className="Login-input">Email:</Form.Label>
+                            <Form.Control  className = "Login-field" type = "email" ref={emailRef} required />
                         </Form.Group>
                         <Form.Group id="password">
-                            <Form.Label className="Login-input">Password</Form.Label>
-                            <Form.Control type = "password" ref={passwordRef} required />
+                            <Form.Label className="Login-input">Password:</Form.Label>
+                            <Form.Control className = "Login-field" type = "password" ref={passwordRef} required />
                         </Form.Group>
                         <Button disabled = {loading} className = "Login-button" type = "submit">Log In</Button>
                     </Form>

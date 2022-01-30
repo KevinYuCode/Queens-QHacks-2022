@@ -25,18 +25,18 @@ export default function CreatePost({isAuth}) {
 })*/
 
   return (
-      <div>
+      <div className="CreatePost-nav" >
           <Nav />
   <div className="CreatePost-page">
       <div className="CreatePost-container">
-        <h1 className="CreatePost-header">Create A Post</h1>
+        <h1 className="CreatePost-header">Create A Review</h1>
         <div className="inputGp">
-            <label className ="CreatePost-title"> Title: </label>
-            <input  className="CreatePost-input" placeholder="Title..." onChange={(event) => {setTitle(event.target.value)}}/>
+            <label className ="CreatePost-title"> Recipe Name: </label>
+            <input  className="CreatePost-input" placeholder="Recipe..." onChange={(event) => {setTitle(event.target.value)}}/>
         </div>
         <div className="inputGp">
-            <label className="CreatePost-post"> Post:</label>
-            <textarea className="CreatePost-textarea" placeholder="Post..." onChange={(event) => {setPostText(event.target.value)}}/>
+            <label className="CreatePost-post"> Review:</label>
+            <textarea className="CreatePost-textarea" placeholder="Review..." onChange={(event) => {setPostText(event.target.value)}}/>
         </div>
         <button className="CreatePost-button" onClick={createPost}>Submit Post</button>
       </div>
