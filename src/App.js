@@ -7,13 +7,24 @@ import Ingredients from "./views/Ingredients";
 import Explore from "./views/Explore";
 import "./styles/App.scss";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { setReceipeDb, selectReceipeDb, setIngredients } from "./features/receipeSlice";
+
+import React, { useEffect, useState } from "react";
+import Signup from "./components/Signup"
+import { Container} from 'react-bootstrap'
+import { AuthProvider } from './contexts/AuthContext';
+import Login from './components/Login'
+import Dashboard from './components/Dashboard'
+import PrivateRoute from './components/PrivateRoute'
+import CreatePost from './components/CreatePost'
+import Review from './components/Review'
+import { auth } from './firebase/firebase'
 
 function App() {
   // const [data, setData] = useState([]);
   const dispatch = useDispatch();
+  const [isAuth, setIsAuth] = useState(localStorage.getItem("isAuth"))
 
   const fetchData = async () => {
     let mainIngredients = [];
@@ -68,18 +79,25 @@ function App() {
 
   return (
     <div className="App">
-      <Router>
-        <Nav />
-        <Routes>
-          <Route exact path="/" element={<Home />} />
-          <Route path="/explore" element={<Explore />} />
-          <Route path="/menu" element={<Menu />} />
-          <Route path="/cook" element={<Cook />} />
-          <Route path="/ingredients" element={<Ingredients />} />
-        </Routes>
-      </Router>
-    </div>
-  );
-}
+        <Router>
+          <AuthProvider>
+            
+            <Routes>
+               <Route exact path="/" element={<PrivateRoute><Home /></PrivateRoute>}/>
+              <Route exact path="*" element={<PrivateRoute><Home /></PrivateRoute>}/> 
+               <Route exact path="/" element={(<Home />)} />
+               <Route path="/explore" element={(<Explore />)} />
+              <Route path="/menu" element={(<Menu />)} />
+              <Route path="/cook" element={(<Cook />)} />
+              <Route path="/ingredients" element={(<Ingredients/>)} />
+              <Route path ="/signup" element={<Signup />}/>
+              <Route path ="/login" element={<Login />}/>
+              <Route path ="/createpost" element={<CreatePost />}/>
+              <Route path ="/review" element={<Review isAuth={isAuth}/>}/>
 
-export default App;
+
+            </Routes>
+            
+          </AuthProvider>
+        </Router>
+    </div>
