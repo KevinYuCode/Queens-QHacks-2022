@@ -5,12 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { selectReceipeDb, setReceipeDb, setCookingReceipe } from "../features/receipeSlice";
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
 import { Carousel } from "react-responsive-carousel";
-<<<<<<< HEAD
-import { NavLink } from "react-router-dom";
-
-=======
 import Nav from "./Nav";
->>>>>>> forum-branch
 
 function Home() {
   const dispatch = useDispatch();
