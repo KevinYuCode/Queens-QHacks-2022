@@ -26,7 +26,7 @@ function Home() {
           <div className="greeting-container">
             <div className="greeting-text">
               <h1 className="home-title">Welcome to Cook Hack</h1>
-              <h3>Explore new receipes and share with others your new cooking skills!</h3>
+              <h3>Explore new recipes and share with others your new cooking skills!</h3>
             </div>
             <div className="cta-container">
               <NavLink to="/menu" className="start-btn">

@@ -13,12 +13,12 @@ import "../styles/Index.css"
 registerBackend(backend());
 
 const forgeConfig: Parameters = {
-    apiKey: "c8b2fa8916040a0daea179b3c2a55edfa8d415c2",
-    deploymentId: 7,
-    baseURL: "https://stg-forge.hotg.ai",
-    telemetry: {
-        baseURL: "https://stg-telemetry.hotg.ai",
-    }
+    deploymentId: 15,
+                apiKey: "79304708d95fa6cab067031a966ca54d9db0a01b",
+                baseURL: "https://stg-forge.hotg.ai",
+                telemetry: {
+                  baseURL: "https://stg-telemetry.hotg.ai",
+            }
 };
 
 export default function App() {
