@@ -19,8 +19,10 @@ import Review from './components/Review'
 import { auth } from './firebase/firebase'
 import { useDispatch, useSelector } from "react-redux";
 import Index from './components/index.tsx'
+import DisplayImage from "./components/DisplayImage";
+import  Image  from "./components/Image";
+import Resize from "./components/Resize"
 import { setReceipeDb, selectReceipeDb, setIngredients, setStockIngredients } from "./features/receipeSlice";
-
 
 
 function App() {
@@ -103,7 +105,8 @@ function App() {
               <Route path ="/login" element={<Login />}/>
               <Route path ="/createpost" element={<CreatePost />}/>
               <Route path ="/review" element={<Review isAuth={isAuth}/>}/>
-              <Route path ="/detection" element={<Index />}/>
+              <Route path ="/detection" element={<><Nav /><Index /></>}/>
+
 
 
             </Routes>
