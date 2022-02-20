@@ -4,13 +4,14 @@ import React, { useState, useRef, useEffect, Component } from "react";
 import ReactDOM from "react-dom";
 import backend from "@hotg-ai/rune-tflite";
 import Webcam from "react-webcam";
-import {auth, db} from '../firebase/firebase'
+import { auth, db } from "../firebase/firebase";
 import {
   Parameters,
   useForge,
   registerBackend,
   OutputValue,
 } from "@hotg-ai/forge";
+import { FaTrashAlt } from 'react-icons/fa'
 import Nav from "../views/Nav";
 import { NavLink } from "react-router-dom";
 import "../styles/Index.css";
@@ -53,8 +54,8 @@ export default function App(props) {
     const resizedImage = await compress.compress([file], {
       size: 2, // the max size in MB, defaults to 2MB
       quality: 1, // the quality of the image, max is 1,
-      maxWidth: 192, // the max width of the output image, defaults to 1920px
-      maxHeight: 192, // the max height of the output image, defaults to 1920px
+      maxWidth: 300, // the max width of the output image, defaults to 1920px
+      maxHeight: 300, // the max height of the output image, defaults to 1920px
       resize: true, // defaults to true, set false if you do not want to resize the image width and height
     });
     const img = resizedImage[0];
@@ -88,50 +89,55 @@ export default function App(props) {
     .flatMap((v) => [...v.elements])
     .map((p, i) => <li key={i}>{p}</li>);
 
+  const test = predictions[0]
+
   return (
     <>
-    <div className="index-bg">
-      <div className="index-container">
-        <div className ="index-content">
-        <h1>Process: ({forge.state})</h1>
-        <h1>Ingredient Detection</h1>
-        {/* <a href="\" className="index-back">
-          Back
-        </a> */}
-        {selectedImage && (
-          <div>
-            <img
-              className="index-img"
-              alt="not found"
-              src={URL.createObjectURL(selectedImage)}
-            />
-            <br />
-            <button onClick={() => setSelectedImage(null)}>Remove</button>
-            <button
-              onClick={() => setImage(URL.createObjectURL(selectedImage))}
-            >
-              Detect
-            </button>
+      <div className="index-bg">
+        <div className="index-container">
+          <div className="index-content">
+            <h5>{forge.state}</h5>
+            <h1>Ingredient Detection</h1>
+            {forge.state == "loaded" && (
+              <input
+                className="index-input"
+                type="file"
+                accept="image/*"
+                onChange={(event) => {
+                  console.log(event.target.files[0]);
+                  resizeImageFn(event.target.files[0]);
+                }}
+              />
+            )}
+            {selectedImage && (
+              <div className = "index-extra">
+                <img
+                  className="index-img"
+                  alt="not found"
+                  src={URL.createObjectURL(selectedImage)}
+                />
+                <br />
+                
+                <div>
+                <button
+                  className="index-detect"
+                  onClick={() => setImage(URL.createObjectURL(selectedImage))}
+                >
+                  Detect
+                </button>
+                </div>
+                <div>
+                <div className = "index-remove" onClick={() => setSelectedImage(null)}>Remove</div>
+                </div>
+              </div>
+            )}
+            <div className = "index-predict">{predictions[0]}</div>
+            {/* <ul>{predictions[0]}</ul> */}
           </div>
-        )}
-        {forge.state == "loaded" && (
-          <input
-            className="index-input"
-            type="file"
-            accept="image/*"
-            onChange={(event) => {
-              console.log(event.target.files[0]);
-              resizeImageFn(event.target.files[0]);
-            }}
-          />
-        )}
-        <h3>{predictions[0]}</h3>
-        {/* <ul>{predictions[0]}</ul> */}
         </div>
       </div>
-    </div>
-    
     </>
-  )}
+  );
+}
 
 ReactDOM.render(<App />, document.getElementById("root"));
