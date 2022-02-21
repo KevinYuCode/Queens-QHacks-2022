@@ -8,6 +8,7 @@
     "@hotg-ai/rune-tflite": "^0.11.5",
     "@reduxjs/toolkit": "^1.7.1",
     "@tensorflow/tfjs": "^3.13.0",
+    "@tensorflow/tfjs-core": "^3.13.0",
     "@tensorflow/tfjs-tflite": "^0.0.1-alpha.8",
     "@testing-library/jest-dom": "^5.16.1",
     "@testing-library/react": "^12.1.2",

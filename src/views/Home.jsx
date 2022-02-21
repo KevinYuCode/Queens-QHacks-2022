@@ -12,9 +12,6 @@ import Nav from "../views/Nav";
 function Home() {
   const dispatch = useDispatch();
   const receipe = useSelector(selectReceipeDb);
-  const readyCook = (receipe) => {
-    dispatch(setCookingReceipe(receipe));
-  };
   const featuredRef = useRef();
   const [data, setData] = useState([{}]); // state for api query
 
@@ -43,27 +40,23 @@ function Home() {
                 <Carousel
                   showThumbs={false}
                   showIndicators={false}
-                  emulateTouch={true}
-                  autoPlay={false}
+                  emulateTouch={false}
+                  autoPlay={true}
                   infiniteLoop={true}
                 >
                   {receipe.map((dish, i) => (
                     <div key={i} className="dish-container" ref={featuredRef}>
-                      <div className="dish-image-container">
-                        <img src={dish.image} alt="" className="dish-image" />
-                        <p className="dish-name">{dish.name}</p>
-                      </div>
-                      <div className="dish-cook-cta">
-                        <NavLink
-                          to="/cook"
-                          className="menu-cook-btn"
+                      <NavLink to="/cook">
+                        <div
+                          className="dish-image-container"
                           onClick={() => {
-                            readyCook(dish); //Make sure to add more params if needed
+                            dispatch(setCookingReceipe(dish));
                           }}
                         >
-                          Cook Now
-                        </NavLink>
-                      </div>
+                          <img src={dish.image} alt="" className="dish-image" />
+                          <p className="dish-name">{dish.name}</p>
+                        </div>
+                      </NavLink>
                     </div>
                   ))}
                 </Carousel>

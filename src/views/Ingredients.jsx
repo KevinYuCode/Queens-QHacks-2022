@@ -23,39 +23,11 @@ function Ingredients() {
   const queryRef = useRef();
   const dispatch = useDispatch();
 
-  const update = async () => {
-    try {
-      await fetch("/result", {
-        method: "POST",
-        cache: "no-cache",
-        headers: {
-          content_type: "application/json",
-        },
-        body: JSON.stringify({
-          email: auth.currentUser.email,
-          ingredients: [tempList],
-        }),
-      });
-      setStockIngredients(tempList);
-      setUpdating(false);
-    } catch (e) {
-      console.log(e);
-    }
 
-    try{
-      fetch("/availability")
-        .then((res) => res.json())
-        .then((Userdata) => {
-          console.log("HEER IS THE USER INGREDIENT DATA") 
-          Userdata = Userdata[0];
-          //console.log(Userdata.ingredients[0]) // test out api fetch
-          dispatch(setStockIngredients(Userdata.ingredients[0]));
-        });
-    }catch(e){
-      console.log(e);
-    }
-  };
-
+  /**
+   *  Filters the ingredient list based on search input
+   * @returns void
+   */
   const filterIngredient = () => {
     let query = queryRef.current.value;
     let filtered = [];
@@ -74,6 +46,11 @@ function Ingredients() {
     setSuggested(filtered);
   };
 
+  /**
+   * Add temporary stock item.
+   * @param {*} e used to get the user's text input
+   * @returns 
+   */
   const addTempStock = (e) => {
     let itemName = e.target.nextElementSibling.innerText;
     for (let i = 0; i < tempList.length; i++) {
@@ -87,6 +64,8 @@ function Ingredients() {
   const deleteTempItem = (index) => {
     setTempList(tempList.filter((item) => tempList[index] !== item));
   };
+
+  
   return (
     <>
       <Nav />
@@ -138,8 +117,7 @@ function Ingredients() {
             <button
               className="save-list"
               onClick={() => {
-                update();
-
+                //Add Firebase post request
               }}
             >
               Update Inventory
