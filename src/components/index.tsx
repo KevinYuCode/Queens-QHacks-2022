@@ -11,11 +11,12 @@ import {
   registerBackend,
   OutputValue,
 } from "@hotg-ai/forge";
-import { FaTrashAlt } from 'react-icons/fa'
+import { FaTrashAlt } from "react-icons/fa";
 import Nav from "../views/Nav";
 import { NavLink } from "react-router-dom";
 import "../styles/Index.css";
 import Compress from "compress.js";
+import tempImage from "../assets/placeholder.jpg";
 
 // Tell forge to use the tflite model handler
 registerBackend(backend());
@@ -65,6 +66,11 @@ export default function App(props) {
     setSelectedImage(resizedFile);
   }
 
+async function updateImage() {
+  setSelectedImage(null);
+  predictions[0] = null;
+}
+
   // We want to re-run the prediction every time our image or the forge object
   // updates.
 
@@ -89,7 +95,6 @@ export default function App(props) {
     .flatMap((v) => [...v.elements])
     .map((p, i) => <li key={i}>{p}</li>);
 
-  const test = predictions[0]
 
   return (
     <>
@@ -99,6 +104,7 @@ export default function App(props) {
             <h5>{forge.state}</h5>
             <h1>Ingredient Detection</h1>
             {forge.state == "loaded" && (
+
               <input
                 className="index-input"
                 type="file"
@@ -109,29 +115,45 @@ export default function App(props) {
                 }}
               />
             )}
-            {selectedImage && (
-              <div className = "index-extra">
+
+            {selectedImage ? (
+              <div className="index-extra">
                 <img
                   className="index-img"
                   alt="not found"
                   src={URL.createObjectURL(selectedImage)}
                 />
                 <br />
+
                 
-                <div>
-                <button
-                  className="index-detect"
-                  onClick={() => setImage(URL.createObjectURL(selectedImage))}
-                >
-                  Detect
-                </button>
-                </div>
-                <div>
-                <div className = "index-remove" onClick={() => setSelectedImage(null)}>Remove</div>
-                </div>
+              </div>
+            ) : (
+              <div>
+                <img
+                  className="index-placeholder"
+                  alt="not found"
+                  src={tempImage}
+                />
               </div>
             )}
-            <div className = "index-predict">{predictions[0]}</div>
+            <div>
+                  <button
+                    className="index-detect"
+                    disabled = {selectedImage == null}
+                    onClick={() => setImage(URL.createObjectURL(selectedImage))}
+                  >
+                    Detect
+                  </button>
+                </div>
+                <div>
+                  <div
+                    className="index-remove"
+                    onClick={() => updateImage()}
+                  >
+                    Remove
+                  </div>
+                </div>
+            <div className="index-predict">{predictions[0]}</div>
             {/* <ul>{predictions[0]}</ul> */}
           </div>
         </div>
