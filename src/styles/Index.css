@@ -12,23 +12,31 @@
     background-attachment: fixed;
 }
 
-.index-glass {
-    background-color: rgba(224, 224, 224, 0.5);
-    backdrop-filter: blur(10px);
+.index-placeholder {
+    max-height: 300px;
+    max-width: 300px;
+    border: solid 2px black;
+    border-radius: 5px;
 }
-
 
 .index-content {
     position: relative;
     background-color: rgba(218, 218, 218, 0.5);
-    backdrop-filter: blur(1px);
-    padding: 10px;
-    bottom: 20vh;
+    backdrop-filter: blur(2px);
+    padding: 20px;
+    bottom: 10vh;
     border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;    
+    justify-content: center;
+    min-width: 400px;
+    min-height: 468px;
     box-shadow: rgba(0, 0, 0, 0.07) 0px 1px 1px, rgba(0, 0, 0, 0.07) 0px 2px 2px, rgba(0, 0, 0, 0.07) 0px 4px 4px, rgba(0, 0, 0, 0.07) 0px 8px 8px, rgba(0, 0, 0, 0.07) 0px 16px 16px;
 }
 
 .index-container {
+    
     justify-content: center;
     display: flex;
     align-items: center;
@@ -38,6 +46,7 @@
 }
 
 .index-input {
+    margin-left:6rem;
     margin-bottom: 1rem;
 }
 
@@ -81,8 +90,12 @@
     background-color: #f8d176 !important;
     border-color: #f8d176 !important;
     margin-top: 1rem;
-    width: 75%;
+    padding: 15px;
+    width: 10vw;
     height: 3vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     font-size: 18px;
 }
 
