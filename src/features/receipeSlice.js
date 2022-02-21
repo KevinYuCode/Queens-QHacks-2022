@@ -81,11 +81,7 @@ const initialState = {
     },
   ],
   menu: [],
-  cookingReceipe: {
-    name: "new word",
-    image: image3,
-    instructions: "",
-  },
+  cookingReceipe: {},
   inventory: [],
   ingredients: [],
   cookingReceipe: { ingredients: [], steps: [] },
@@ -101,7 +97,6 @@ const receipeSlice = createSlice({
       state.receipeDb = action.payload;
     },
     setMenu: (state, action) => {
-      console.log("HELLO");
       state.menu = action.payload;
     },
     setCookingReceipe: (state, action) => {
@@ -115,11 +110,10 @@ const receipeSlice = createSlice({
       state.ingredients = action.payload;
     },
     setCookingReceipe: (state, action) => {
+      console.log(action.payload);
       state.cookingReceipe = action.payload;
     },
     setStockIngredients: (state, action) => {
-      console.log("STOCK INGREDIENTSD LOADING");
-
       state.stockIngredients = action.payload;
     },
   },

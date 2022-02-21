@@ -8,7 +8,6 @@ function Explore() {
   const dispatch = useDispatch(setReceipeDb);
 
   const readyCook = (receipe) => {
-    console.log(receipe);
     dispatch(setCookingReceipe(receipe));
   };
 
