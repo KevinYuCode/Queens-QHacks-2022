@@ -1,0 +1,93 @@
+.index-bg {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: url('../assets/detection-background.jpg'); 
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+.index-glass {
+    background-color: rgba(224, 224, 224, 0.5);
+    backdrop-filter: blur(10px);
+}
+
+
+.index-content {
+    position: relative;
+    background-color: rgba(218, 218, 218, 0.5);
+    backdrop-filter: blur(1px);
+    padding: 10px;
+    bottom: 20vh;
+    border-radius: 5px;
+    box-shadow: rgba(0, 0, 0, 0.07) 0px 1px 1px, rgba(0, 0, 0, 0.07) 0px 2px 2px, rgba(0, 0, 0, 0.07) 0px 4px 4px, rgba(0, 0, 0, 0.07) 0px 8px 8px, rgba(0, 0, 0, 0.07) 0px 16px 16px;
+}
+
+.index-container {
+    justify-content: center;
+    display: flex;
+    align-items: center;
+    height: 100vh;
+    width: 100vw;
+
+}
+
+.index-input {
+    margin-bottom: 1rem;
+}
+
+.index-predict {
+    list-style-type: none;
+    margin: 0px;
+    padding: 0px;
+    font-size: 20px;
+}
+
+.index-remove {
+    text-decoration: underline;
+    color: red;
+    text-decoration-color: red;
+    cursor: pointer;
+    font-size: 12px;
+}
+.index-remove:hover {
+    color: blue;
+    text-decoration-color: blue;
+  }
+
+.index.extra {
+    position: absolute;
+}
+
+.index-webcam {
+    border: solid 5px black;
+}
+
+.index-save {
+    background-color: rgb(255, 255, 255);
+    padding: 10px;
+    position: relative;
+    bottom: 20vh;
+    opacity: 0.9;
+
+}
+
+.index-detect {
+    background-color: #f8d176 !important;
+    border-color: #f8d176 !important;
+    margin-top: 1rem;
+    width: 75%;
+    height: 3vh;
+    font-size: 18px;
+}
+
+.index-img {
+    justify-content: center;
+    border: solid 2px white;
+    border-radius: 3px;
+}
