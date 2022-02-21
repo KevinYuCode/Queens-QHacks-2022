@@ -13,79 +13,79 @@ const initialState = {
       name: "new word",
       image: image3,
       description: "HI",
+      ingredients: [],
+      steps: [],
     },
     {
       name: "new word",
       image: image4,
       description: "HI",
+      ingredients: [],
+      steps: [],
     },
     {
       name: "new word",
       image: image4,
       description: "HI",
+      ingredients: [],
+      steps: [],
     },
     {
       name: "new word",
       image: image4,
       description: "HI",
+      ingredients: [],
+      steps: [],
     },
     {
       name: "new word",
       image: image4,
       description: "HI",
+      ingredients: [],
+      steps: [],
     },
     {
       name: "new word",
       image: image4,
       description: "HI",
+      ingredients: [],
+      steps: [],
     },
     {
       name: "new word",
       image: image4,
       description: "HI",
+      ingredients: [],
+      steps: [],
     },
     {
       name: "new word",
       image: image4,
       description: "HI",
+      ingredients: [],
+      steps: [],
     },
     {
       name: "new word",
       image: image4,
       description: "HI",
+      ingredients: [],
+      steps: [],
     },
     {
       name: "new word",
       image: image4,
       description: "HI",
+      ingredients: [],
+      steps: [],
     },
   ],
-  menu: [
-    {
-      name: "name1",
-      image: image3,
-    },
-    {
-      name: "new word",
-      image: image4,
-    },
-    {
-      name: "GOOfhgD FOOD",
-      image: image5,
-    },
-    {
-      name: "GOOD FOOD",
-      image: image6,
-    },
-  ],
-  cookingReceipe: {
-    name: "new word",
-    image: image3,
-    instructions: "",
-  },
+  menu: [],
+  cookingReceipe: {},
   inventory: [],
   ingredients: [],
-  cookingReceipe: { ingredients: "", steps: "" },
+  cookingReceipe: { ingredients: [], steps: [] },
+  stockIngredients: [],
 };
 
 const receipeSlice = createSlice({
@@ -110,12 +110,16 @@ const receipeSlice = createSlice({
       state.ingredients = action.payload;
     },
     setCookingReceipe: (state, action) => {
+      console.log(action.payload);
       state.cookingReceipe = action.payload;
+    },
+    setStockIngredients: (state, action) => {
+      state.stockIngredients = action.payload;
     },
   },
 });
 
-export const { setReceipeDb, setMenu, setCookingReceipe, setInventory, setIngredients } =
+export const { setReceipeDb, setMenu, setCookingReceipe, setInventory, setIngredients, setStockIngredients } =
   receipeSlice.actions;
 
 export const selectReceipeDb = (state) => state.receipe.receipeDb;
@@ -123,5 +127,9 @@ export const selectMenu = (state) => state.receipe.menu;
 export const selectCookingReceipe = (state) => state.receipe.cookingReceipe;
 export const selectInventory = (state) => state.receipe.inventory;
 export const selectIngredients = (state) => state.receipe.ingredients;
+<<<<<<< HEAD
 export const selectSteps = (state) => state.receipe.steps;
+=======
+export const selectStockIngredients = (state) => state.receipe.stockIngredients;
+>>>>>>> 159efd38d91db55a4969a587fb13656aed84035b
 export default receipeSlice.reducer;

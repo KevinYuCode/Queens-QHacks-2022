@@ -17,6 +17,12 @@ button {
 }
 a {
   text-decoration: none;
+  color: black;
+}
+
+.app-nav {
+  position: fixed !important;
+  width: 100% !important;
 }
 
 //Scroll Bars
