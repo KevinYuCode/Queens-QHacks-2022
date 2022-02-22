@@ -25,6 +25,7 @@ const recipeSlice = createSlice({
       state.menu = action.payload;
     },
     setCookingrecipe: (state, action) => {
+      console.log("this is the cooking receipe")
       console.log(action.payload);
       state.cookingrecipe = action.payload;
     },
