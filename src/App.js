@@ -21,6 +21,9 @@ import { useDispatch, useSelector } from "react-redux";
 import Index from "./components/index.tsx";
 import { setReceipeDb, selectReceipeDb, setIngredients, setStockIngredients } from "./features/receipeSlice";
 
+import removeIngredients  from "./components/userIngredients";
+import { FaGlassMartiniAlt } from "react-icons/fa";
+
 function App() {
   const dispatch = useDispatch();
 
@@ -45,6 +48,9 @@ function App() {
 
   useEffect(() => {
     getReceipeData();
+    // addIngredients("test32@gmail.com", ["random", "list"]); // <-- use this to create / update user collection
+    removeIngredients("adding")
+
   });
 
   return (

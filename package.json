@@ -1,7 +1,6 @@
 {
   "name": "qhacks_2022",
   "version": "0.1.0",
-  "proxy": "http://localhost:5000",
   "private": true,
   "dependencies": {
     "@hotg-ai/forge": "^0.11.14",
