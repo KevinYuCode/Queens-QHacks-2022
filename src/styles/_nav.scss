@@ -1,19 +1,28 @@
 .nav-bg {
-  background-color: #f8d176;
-  height: 100%;
+  // height: 100%;
   box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
   z-index: 5;
+  position: relative;
+  height: 68px;
+  // background-color: #f8d176;
 }
 
 .nav-container {
-  height: 100%;
+  height: 68px;
   width: 100%;
   @include sb-jc-c-ai;
-  padding: 0.3rem 0;
-  z-index: 5;
-  
+  padding: 0.3rem 0rem;
+  background-color: #f8d176;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+  z-index: 10 !important;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
 }
 .logo-name-container {
+  padding-left: 4rem;
+
   .logo-name {
     width: 80px;
     font-family: "Bitter", serif;
@@ -21,6 +30,7 @@
 }
 .nav-links-container {
   @include c-jc-c-ai;
+  padding-right: 4rem;
   .nav-links {
     @include c-jc-c-ai;
     .nav-link {

@@ -15,38 +15,39 @@ import Dashboard from "./components/Dashboard";
 import PrivateRoute from "./components/PrivateRoute";
 import CreatePost from "./components/CreatePost";
 import Review from "./components/Review";
-import { auth, db } from "./firebase/firebase";
-import { getDocs, collection } from "firebase/firestore";
+import { db } from "./firebase/firebase";
+import { getDocs, collection, auth, setDoc, doc, addDoc, getDoc } from "firebase/firestore";
 import { useDispatch, useSelector } from "react-redux";
 import Index from "./components/index.tsx";
-import { setReceipeDb, selectReceipeDb, setIngredients, setStockIngredients } from "./features/receipeSlice";
+import { setrecipeDb, selectrecipeDb, setIngredients, setStockIngredients } from "./features/recipeSlice";
 
 function App() {
   const dispatch = useDispatch();
-  const [isAuth, setIsAuth] = useState(localStorage.getItem("isAuth"))
-
   const [isAuth, setIsAuth] = useState(localStorage.getItem("isAuth"));
 
-  const getReceipeData = async () => {
-    const receipeCollection = collection(db, "recipes");
+  const getDbData = async () => {
+    const recipeCollection = collection(db, "recipes");
+    const ingredientsRef = collection(db, "ingredients");
 
     let tempData = [];
-    let snapshot = await getDocs(receipeCollection);
+    let snapshot = await getDocs(recipeCollection);
     try {
       snapshot.forEach((doc) => {
         let data = doc.data();
         data.id = doc.id;
         tempData.push(data);
       });
-      dispatch(setReceipeDb(tempData));
+      dispatch(setrecipeDb(tempData));
+      console.log(tempData);
     } catch (e) {
       console.log(e);
     }
+
   };
 
   useEffect(() => {
-    getReceipeData();
-  });
+    getDbData();
+  }, []);
 
   return (
     <div className="App">
@@ -98,4 +99,4 @@ function App() {
   );
 }
 
-  export default App;
+export default App;

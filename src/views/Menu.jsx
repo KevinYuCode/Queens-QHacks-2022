@@ -2,43 +2,42 @@ import React, { useState, useRef, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
   selectMenu,
-  setCookingReceipe,
-  selectReceipeDb,
+  setCookingrecipe,
+  selectrecipeDb,
   selectStockIngredients,
   setMenu,
-} from "../features/receipeSlice";
+} from "../features/recipeSlice";
 import { NavLink } from "react-router-dom";
 import Nav from './Nav'
 
-import Nav from "../views/Nav";
 
 function Menu() {
   const dispatch = useDispatch();
 
-  const menu = useSelector(selectMenu); //Menu receipes that are ready to cook
-  const receipeDb = useSelector(selectReceipeDb); //Receipe database
+  const menu = useSelector(selectMenu); //Menu recipes that are ready to cook
+  const recipeDb = useSelector(selectrecipeDb); //recipe database
   const stockIngredients = useSelector(selectStockIngredients); //User's available stock ingredients
 
   useEffect(() => {
-    const rtcReceipes = [];
-    let receipeIng = [];
-    for (let k = 0; k < receipeDb.length; k++) {
-      receipeIng = receipeDb[k].ingredients;
+    const rtcrecipes = [];
+    let recipeIng = [];
+    for (let k = 0; k < recipeDb.length; k++) {
+      recipeIng = recipeDb[k].ingredients;
       let count;
-      for (let i = 0; i < receipeIng.length; i++) {
+      for (let i = 0; i < recipeIng.length; i++) {
         count = 0;
         //Go through all of the user's ingredients
         for (let j = 0; j < stockIngredients.length; j++) {
-          if (receipeIng[i] === stockIngredients[j]) {
+          if (recipeIng[i] === stockIngredients[j]) {
             count++;
           }
         }
         if (count > 0) {
-          rtcReceipes.push(receipeDb[k]); // if atleast one of the ingredient matches the user's list, return the receipe
+          rtcrecipes.push(recipeDb[k]); // if atleast one of the ingredient matches the user's list, return the recipe
         }
       }
     }
-    dispatch(setMenu(rtcReceipes));
+    dispatch(setMenu(rtcrecipes));
   }, []);
 
   return (
@@ -46,7 +45,7 @@ function Menu() {
       <Nav />
       <div className="menu-container">
         {menu
-          ? <div className="no-menu-receipes"><h1>Currently no available receipes with current stock ingredients...</h1></div>
+          ? <div className="no-menu-recipes"><h1>Currently no available recipes with current stock ingredients...</h1></div>
           : menu.map((dish, i) => (
               <div className="menu-card" key={i}>
                 <div className="menu-dish-image-container">
@@ -64,7 +63,7 @@ function Menu() {
                     <button
                       className="menu-cook-btn"
                       onClick={() => {
-                        dispatch(setCookingReceipe(dish)); //Make sure to add more params if needed
+                        dispatch(setCookingrecipe(dish)); //Make sure to add more params if needed
                       }}
                     >
                       Cook Now

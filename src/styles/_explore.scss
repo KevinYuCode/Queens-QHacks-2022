@@ -18,7 +18,7 @@
   border-bottom: 1.5px solid black;
   outline: none;
 }
-.explore-receipe-container {
+.explore-recipe-container {
   display: flex;
   justify-content: center;
   margin: auto;
@@ -26,19 +26,19 @@
   flex-wrap: wrap;
   grid-gap: 2rem;
 }
-.receipe-info-container {
+.recipe-info-container {
   text-align: left;
   width: 100%;
   padding-top: 1rem;
 }
-.explore-receipe {
+.explore-recipe {
   @include c-jc-c-ai;
   padding: 1rem;
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
   background: linear-gradient(#f5f2f1, #f2edeb);
   flex-direction: column;
 }
-.receipe-image {
+.recipe-image {
   width: 350px;
   height: 400px;
   object-fit: cover;
@@ -52,3 +52,4 @@
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
   cursor: pointer;
 }
+
