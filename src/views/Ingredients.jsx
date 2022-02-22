@@ -9,7 +9,7 @@ import {
   selectIngredients,
   selectStockIngredients,
   setStockIngredients,
-} from "../features/receipeSlice";
+} from "../features/recipeSlice";
 import Nav from "../views/Nav";
 
 function Ingredients() {
@@ -22,7 +22,6 @@ function Ingredients() {
   const ingredients = useSelector(selectIngredients);
   const queryRef = useRef();
   const dispatch = useDispatch();
-
 
   /**
    *  Filters the ingredient list based on search input
@@ -49,7 +48,7 @@ function Ingredients() {
   /**
    * Add temporary stock item.
    * @param {*} e used to get the user's text input
-   * @returns 
+   * @returns
    */
   const addTempStock = (e) => {
     let itemName = e.target.nextElementSibling.innerText;
@@ -65,68 +64,66 @@ function Ingredients() {
     setTempList(tempList.filter((item) => tempList[index] !== item));
   };
 
-  
   return (
     <>
       <Nav />
       <div className="ingredient-container">
         {/* UPDATE INGREDIENTS */}
-        {updating && (
-          <div className="ingredient-input-container">
-            <h2>Add Ingredients</h2>
-            <input
-              ref={queryRef}
-              className="ingredient-search-input"
-              onChange={filterIngredient}
-              placeholder="Search Ingredient"
-              type="text"
-            />
-            <div className="suggested-ingredient">
-              {suggested.map((item) => (
-                <div className="suggested-item">
+        <div className="ingredient-input-container">
+          <h2>Add Ingredients</h2>
+          <input
+            ref={queryRef}
+            className="ingredient-search-input"
+            onChange={filterIngredient}
+            placeholder="Search Ingredient"
+            type="text"
+          />
+          <div className="suggested-ingredient">
+            {suggested.map((item) => (
+              <div className="suggested-item">
+                <button
+                  onClick={(e) => {
+                    addTempStock(e);
+                  }}
+                >
+                  +
+                </button>
+                <p>{item}</p>
+              </div>
+            ))}
+          </div>
+
+          {/* Existing Stock Inventory */}
+          <div className="added-stock-container">
+            <h2>Ingredients List</h2>
+            <div className="stock-list">
+              {tempList.map((item, i) => (
+                <div key={i} className="temp-stock">
                   <button
-                    onClick={(e) => {
-                      addTempStock(e);
+                    className="delete-temp-stock"
+                    onClick={() => {
+                      deleteTempItem(i);
                     }}
                   >
-                    +
+                    X
                   </button>
                   <p>{item}</p>
                 </div>
               ))}
             </div>
-
-            <div className="added-stock-container">
-              <h2>Ingredients List</h2>
-              <div className="stock-list">
-                {tempList.map((item, i) => (
-                  <div key={i} className="temp-stock">
-                    <button
-                      className="delete-temp-stock"
-                      onClick={() => {
-                        deleteTempItem(i);
-                      }}
-                    >
-                      X
-                    </button>
-                    <p>{item}</p>
-                  </div>
-                ))}
-              </div>
-            </div>
-            <button
-              className="save-list"
-              onClick={() => {
-                //Add Firebase post request
-              }}
-            >
-              Update Inventory
-            </button>
           </div>
-        )}
+          <button
+            className="save-list"
+            onClick={() => {
+              //Add Firebase post request
+            }}
+          >
+            Update Inventory
+          </button>
+        </div>
 
         {/* Main Inventory Page */}
-        <div className="ingredient-list" style={{ gridColumn: updating ? "1/2" : "1/-1" }}>
+        <div className="ingredient-list" style={{ gridColumn: "1/2" }}>
           <div className="ingredients-header">
             <h1>Ingredient Inventory</h1>
           </div>
@@ -134,7 +131,7 @@ function Ingredients() {
             {inventory.length === 0 ? (
               <div className="empty-inventory-container">
                 <h2>Ingredient Inventory Empty.</h2>
-                <p>Click the '+' symbol and add ingredient stock</p>
+                <p>Search and add ingredients on the right panel.</p>
               </div>
             ) : (
               inventory.map((item) => (
@@ -148,7 +145,7 @@ function Ingredients() {
             )}
           </div>
         </div>
-        {!updating ? (
+        {/* {!updating ? (
           <div
             className="add-ingredient"
             onClick={() => {
@@ -166,7 +163,7 @@ function Ingredients() {
           >
             X
           </div>
-        )}
+        )} */}
       </div>
     </>
   );
