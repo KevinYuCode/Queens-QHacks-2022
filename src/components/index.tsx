@@ -96,7 +96,7 @@ export default function App(props) {
         {["Ingredients"].map((text) => (
           
           <ListItem>
-            <div className="index-pos">
+            <div className="index-titlepos">
             <ListItemText primary={text} />
             </div>
           </ListItem>
