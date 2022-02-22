@@ -1,27 +1,23 @@
+import React, { useState } from "react";
 import Logo from "../assets/cookhack.png";
-import React, {useState} from "react";
 import AccIcon from "../assets/profile.jpg";
 import { NavLink, Link, useNavigate } from "react-router-dom";
-import {useAuth} from '../contexts/AuthContext'
-
-
+import { useAuth } from "../contexts/AuthContext";
 function Nav() {
-  const [error, setError] = useState("")
-  const {currentUser, logout} = useAuth()
-  const history = useNavigate()
+  const [error, setError] = useState("");
+  const { currentUser, logout } = useAuth();
+  const history = useNavigate();
 
-    async function handleLogout()
-    {
-        setError('')
+  async function handleLogout() {
+    setError("");
 
-        try {
-            await logout()
-            history.push('/login')
-        } catch {
-            setError("Failed to log out")
-        }
+    try {
+      await logout();
+      history.push("/login");
+    } catch {
+      setError("Failed to log out");
     }
-
+  }
 
   return (
     <nav className="container nav-bg">
@@ -48,6 +44,9 @@ function Nav() {
             </NavLink>
             <NavLink className="nav-link" to="/ingredients">
               Ingredients
+            </NavLink>
+            <NavLink className="nav-link" to="/detection">
+              Detection
             </NavLink>
             <NavLink className="nav-link" to="/login" onClick={handleLogout}>
               Log Out

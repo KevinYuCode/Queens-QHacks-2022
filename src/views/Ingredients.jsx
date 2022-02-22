@@ -1,35 +1,32 @@
 import React, { useEffect, useRef, useState } from "react";
 import { AiOutlinePlus, AiOutlineCheckSquare } from "react-icons/ai";
+import { auth, db } from "../firebase/firebase";
 import { BsTrash } from "react-icons/bs";
 import IngredientsBg from "../assets/IngredientsBG.jpeg";
 import { useDispatch, useSelector } from "react-redux";
-import { selectInventory, selectIngredients } from "../features/receipeSlice";
-import Nav from "./Nav";
+import {
+  selectInventory,
+  selectIngredients,
+  selectStockIngredients,
+  setStockIngredients,
+} from "../features/recipeSlice";
+import Nav from "../views/Nav";
 
 function Ingredients() {
   const inventory = useSelector(selectInventory);
   const [updating, setUpdating] = useState(false);
   const [tempList, setTempList] = useState([]);
+  const stockIngredients = useSelector(selectStockIngredients);
   const [suggested, setSuggested] = useState([]);
   const [reRender, setRerender] = useState(0);
   const ingredients = useSelector(selectIngredients);
   const queryRef = useRef();
+  const dispatch = useDispatch();
 
-  const update = async () => {
-    await fetch("/result", {
-      method: "POST",
-      cache: "no-cache",
-      headers: {
-        "content_type": "application/json",
-      },
-      body: JSON.stringify({
-        email: "samthibault@gmail.com",
-        ingredients: ["hello000000", "world"]
-      })
-    });
-  }
-
-
+  /**
+   *  Filters the ingredient list based on search input
+   * @returns void
+   */
   const filterIngredient = () => {
     let query = queryRef.current.value;
     let filtered = [];
@@ -48,6 +45,11 @@ function Ingredients() {
     setSuggested(filtered);
   };
 
+  /**
+   * Add temporary stock item.
+   * @param {*} e used to get the user's text input
+   * @returns
+   */
   const addTempStock = (e) => {
     let itemName = e.target.nextElementSibling.innerText;
     for (let i = 0; i < tempList.length; i++) {
@@ -61,12 +63,12 @@ function Ingredients() {
   const deleteTempItem = (index) => {
     setTempList(tempList.filter((item) => tempList[index] !== item));
   };
+
   return (
-    <div>
+    <>
       <Nav />
-    <div className="ingredient-container">
-      {/* UPDATE INGREDIENTS */}
-      {updating && (
+      <div className="ingredient-container">
+        {/* UPDATE INGREDIENTS */}
         <div className="ingredient-input-container">
           <h2>Add Ingredients</h2>
           <input
@@ -91,6 +93,7 @@ function Ingredients() {
             ))}
           </div>
 
+          {/* Existing Stock Inventory */}
           <div className="added-stock-container">
             <h2>Ingredients List</h2>
             <div className="stock-list">
@@ -109,54 +112,60 @@ function Ingredients() {
               ))}
             </div>
           </div>
-          <button className="save-list" onClick={() => { update() }}>Update Inventory</button>
+          <button
+            className="save-list"
+            onClick={() => {
+              //Add Firebase post request
+            }}
+          >
+            Update Inventory
+          </button>
         </div>
-      )}
 
-      {/* Main Inventory Page */}
-      <div className="ingredient-list" style={{ gridColumn: updating ? "1/2" : "1/-1" }}>
-        <div className="ingredients-header">
-          <h1>Ingredient Inventory</h1>
-        </div>
-        <div className="inventory-container">
-          {inventory.length === 0 ? (
-            <div className="empty-inventory-container">
-              <h2>Ingredient Inventory Empty.</h2>
-              <p>Click the '+' symbol and add ingredient stock</p>
-            </div>
-          ) : (
-            inventory.map((item) => (
-              <div className="ingredient">
-                <p className="item-name">{item}</p>
-                <div className="trash">
-                  <BsTrash />
-                </div>
+        {/* Main Inventory Page */}
+        <div className="ingredient-list" style={{ gridColumn: "1/2" }}>
+          <div className="ingredients-header">
+            <h1>Ingredient Inventory</h1>
+          </div>
+          <div className="inventory-container">
+            {inventory.length === 0 ? (
+              <div className="empty-inventory-container">
+                <h2>Ingredient Inventory Empty.</h2>
+                <p>Search and add ingredients on the right panel.</p>
               </div>
-            ))
-          )}
+            ) : (
+              inventory.map((item) => (
+                <div className="ingredient">
+                  <p className="item-name">{item}</p>
+                  <div className="trash">
+                    <BsTrash />
+                  </div>
+                </div>
+              ))
+            )}
+          </div>
         </div>
+        {/* {!updating ? (
+          <div
+            className="add-ingredient"
+            onClick={() => {
+              setUpdating(true);
+            }}
+          >
+            <AiOutlinePlus />
+          </div>
+        ) : (
+          <div
+            className="exit-ingredient"
+            onClick={() => {
+              setUpdating(false);
+            }}
+          >
+            X
+          </div>
+        )} */}
       </div>
-      {!updating ? (
-        <div
-          className="add-ingredient"
-          onClick={() => {
-            setUpdating(true);
-          }}
-        >
-          <AiOutlinePlus />
-        </div>
-      ) : (
-        <div
-          className="exit-ingredient"
-          onClick={() => {
-            setUpdating(false);
-          }}
-        >
-          X
-        </div>
-      )}
-    </div>
-    </div>
+    </>
   );
 }
 

@@ -5,38 +5,47 @@
 }
 .cook-header {
   display: grid;
-  grid-template-columns: 4fr 1fr;
+  grid-template-columns: 3fr 1fr;
   width: 100%;
   margin: 1rem;
-  column-gap: 2rem;
+
   .cook-image-container {
-    grid-column: 2/3;
-    background: #f8d176;
+    @include c-jc-c-ai;
+    grid-column: span 1;
+    grid-row: span 1;
+    // padding: 0 1rem;
     // padding: 1rem;
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-    height: 100%;
 
+    margin:0 0 0 1rem;
     .cook-image {
-      padding: 1rem;
-      max-width: 500px;
+      // padding: 1rem;
+      width: 100%;
+      max-height: 700px;
+      overflow: hidden;
+      object-fit: cover;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+
     }
   }
   .cook-content-container {
     display: grid;
     grid-template-columns: 3fr 1fr;
     height: 100%;
+    max-height: 700px;
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
     position: relative;
-    .cook-receipe-name {
+    .cook-recipe-name {
       font-size: 3rem;
     }
     .instructions-title {
       margin-top: 2rem;
-      font-size: 2.5rem;
+      font-size: 2rem;
       font-weight: 200;
       margin-bottom: 1rem;
     }
     .instructions-container {
+      grid-column: 1/2;
       @include c-jc-s-ai;
       flex-direction: column;
       justify-content: start;
@@ -44,7 +53,6 @@
       margin-bottom: 6rem;
     }
     .instruction-batch {
-      box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
       width: 80%;
       padding: 1rem 0;
       position: relative;
@@ -100,6 +108,7 @@
       .instruction {
         font-size: 1.4rem;
         padding-left: 2rem;
+        text-align: left;
       }
     }
     // Instructions button
@@ -132,23 +141,26 @@
     }
     .ingredients-container {
       grid-column: 2/3;
-      grid-row: 1/-1;
       height: 100%;
-      background-color: #f4f1f0;
+      max-height: 700px;
+      // background-color: #f4f1f0;
+      box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+      scrollbar-width: none;
       @include c-jc-c-ai;
       justify-content: flex-start;
       flex-direction: column;
+      overflow-y: scroll;
       h3 {
         padding: 2rem 0 0 0;
-
         font-size: 1.5rem;
       }
     }
     .ingredient-list {
       width: 100%;
       padding: 2rem 0;
-      margin-left: 2rem;
+      // margin-left: 2rem;
       .ingredient {
+        text-align: left;
         @include s-jc-c-ai;
         .checkmark {
           font-size: 2rem;
