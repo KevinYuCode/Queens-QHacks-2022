@@ -23,7 +23,6 @@ function Ingredients() {
   const queryRef = useRef();
   const dispatch = useDispatch();
 
-
   /**
    *  Filters the ingredient list based on search input
    * @returns void
@@ -49,7 +48,7 @@ function Ingredients() {
   /**
    * Add temporary stock item.
    * @param {*} e used to get the user's text input
-   * @returns 
+   * @returns
    */
   const addTempStock = (e) => {
     let itemName = e.target.nextElementSibling.innerText;
@@ -59,13 +58,11 @@ function Ingredients() {
       }
     }
     tempList.push(itemName);
-    setRerender(reRender + 1);
   };
   const deleteTempItem = (index) => {
     setTempList(tempList.filter((item) => tempList[index] !== item));
   };
 
-  
   return (
     <>
       <Nav />
@@ -126,7 +123,10 @@ function Ingredients() {
         )}
 
         {/* Main Inventory Page */}
-        <div className="ingredient-list" style={{ gridColumn: updating ? "1/2" : "1/-1" }}>
+        <div
+          className="ingredient-list"
+          style={{ gridColumn: updating ? "1/2" : "1/-1" }}
+        >
           <div className="ingredients-header">
             <h1>Ingredient Inventory</h1>
           </div>

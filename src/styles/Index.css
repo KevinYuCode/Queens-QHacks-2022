@@ -1,106 +1,158 @@
 .index-bg {
-    width: 100%;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    background: url('../assets/detection-background.jpg'); 
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: url("../assets/detection-background.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
 }
 
 .index-placeholder {
-    max-height: 300px;
-    max-width: 300px;
-    border: solid 2px black;
-    border-radius: 5px;
+  max-height: 300px;
+  max-width: 300px;
+  border: solid 2px black;
+  border-radius: 5px;
+}
+
+.index-panelbutton {
+  position: absolute;
+  bottom: 8vh;
+  right: 1vw;
+  border-radius: 2px;
+  background-color: white;
+}
+
+.index-close {
+  cursor: pointer;
+  color: red;
+}
+
+.index-closepos {
+  position: absolute;
+  bottom: 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+.save-ingredients-btn {
+  font-size: 1rem;
+  padding: 0.5rem 2rem;
+  background-color: #28a745;
+  color: white;
+  border: none;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
 
 .index-content {
-    position: relative;
-    background-color: rgba(218, 218, 218, 0.5);
-    backdrop-filter: blur(2px);
-    padding: 20px;
-    bottom: 10vh;
-    border-radius: 5px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;    
-    justify-content: center;
-    min-width: 400px;
-    min-height: 468px;
-    box-shadow: rgba(0, 0, 0, 0.07) 0px 1px 1px, rgba(0, 0, 0, 0.07) 0px 2px 2px, rgba(0, 0, 0, 0.07) 0px 4px 4px, rgba(0, 0, 0, 0.07) 0px 8px 8px, rgba(0, 0, 0, 0.07) 0px 16px 16px;
+  position: relative;
+  background-color: rgba(218, 218, 218, 0.5);
+  backdrop-filter: blur(2px);
+  padding: 20px;
+  bottom: 10vh;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-width: 400px;
+  min-height: 468px;
+  box-shadow: rgba(0, 0, 0, 0.07) 0px 1px 1px, rgba(0, 0, 0, 0.07) 0px 2px 2px,
+    rgba(0, 0, 0, 0.07) 0px 4px 4px, rgba(0, 0, 0, 0.07) 0px 8px 8px,
+    rgba(0, 0, 0, 0.07) 0px 16px 16px;
 }
 
 .index-container {
-    
-    justify-content: center;
-    display: flex;
-    align-items: center;
-    height: 100vh;
-    width: 100vw;
-
+  justify-content: center;
+  display: flex;
+  align-items: center;
+  height: 100vh;
+  width: 100vw;
 }
 
 .index-input {
-    margin-left:6rem;
-    margin-bottom: 1rem;
+  margin-left: 6rem;
+  margin-bottom: 1rem;
 }
 
 .index-predict {
-    list-style-type: none;
-    margin: 0px;
-    padding: 0px;
-    font-size: 20px;
+  list-style-type: none;
+  margin: 0px;
+  padding: 0px;
+  font-size: 20px;
+  display: flex;
+}
+
+.index-predictdisplay {
+  font-weight: bold;
 }
 
 .index-remove {
-    text-decoration: underline;
-    color: red;
-    text-decoration-color: red;
-    cursor: pointer;
-    font-size: 12px;
+  text-decoration: underline;
+  color: red;
+  text-decoration-color: red;
+  cursor: pointer;
+  font-size: 12px;
+  padding-bottom: 10px;
 }
 .index-remove:hover {
-    color: blue;
-    text-decoration-color: blue;
-  }
+  color: blue;
+  text-decoration-color: blue;
+}
 
 .index.extra {
-    position: absolute;
+  position: absolute;
+}
+
+.index-add {
+  background-color: #f8d176 !important;
+  border-color: #f8d176 !important;
+  padding: 5px;
+  width: 5vw;
+  height: 2vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 10px;
 }
 
 .index-webcam {
-    border: solid 5px black;
+  border: solid 5px black;
 }
 
 .index-save {
-    background-color: rgb(255, 255, 255);
-    padding: 10px;
-    position: relative;
-    bottom: 20vh;
-    opacity: 0.9;
-
+  background-color: rgb(255, 255, 255);
+  padding: 10px;
+  position: relative;
+  bottom: 20vh;
+  opacity: 0.9;
 }
 
 .index-detect {
-    background-color: #f8d176 !important;
-    border-color: #f8d176 !important;
-    margin-top: 1rem;
-    padding: 15px;
-    width: 10vw;
-    height: 3vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 18px;
+  background-color: #f8d176 !important;
+  border-color: #f8d176 !important;
+  margin-top: 1rem;
+  padding: 15px;
+  width: 10vw;
+  height: 3vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 18px;
 }
 
 .index-img {
-    justify-content: center;
-    border: solid 2px white;
-    border-radius: 3px;
+  justify-content: center;
+  border: solid 2px white;
+  border-radius: 3px;
+}
+
+.index-display {
+  padding-right: 5px;
 }

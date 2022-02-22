@@ -4,8 +4,12 @@
   "proxy": "http://localhost:5000",
   "private": true,
   "dependencies": {
+    "@emotion/react": "^11.8.1",
+    "@emotion/styled": "^11.8.1",
     "@hotg-ai/forge": "^0.11.14",
     "@hotg-ai/rune-tflite": "^0.11.5",
+    "@mui/icons-material": "^5.4.2",
+    "@mui/material": "^5.4.3",
     "@reduxjs/toolkit": "^1.7.1",
     "@tensorflow/tfjs": "^3.13.0",
     "@tensorflow/tfjs-core": "^3.13.0",
