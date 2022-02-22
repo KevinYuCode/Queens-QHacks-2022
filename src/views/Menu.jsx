@@ -1,5 +1,8 @@
 import React, { useState, useRef, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import userQuery from '../components/userIngredients'
+import { auth } from '../firebase/firebase'
+
 import {
   selectMenu,
   setCookingrecipe,
@@ -37,7 +40,7 @@ function Menu() {
         }
       }
     }
-    dispatch(setMenu(rtcrecipes));
+    dispatch(setMenu(userQuery("COMPARE", auth.currentUser.email, [])));
   }, []);
 
   return (
@@ -47,31 +50,31 @@ function Menu() {
         {menu
           ? <div className="no-menu-recipes"><h1>Currently no available recipes with current stock ingredients...</h1></div>
           : menu.map((dish, i) => (
-              <div className="menu-card" key={i}>
-                <div className="menu-dish-image-container">
-                  <img src={dish.image} alt="" className="menu-dish-image" />
-                </div>
-                <div className="menu-content">
-                  <div className="menu-info">
-                    <h1 className="menu-dish-name">{dish.name}</h1>
-                    <div className="menu-description">
-                      <h3 className="menu-sub-title">Description</h3>
-                      <p className="description">{dish.description}</p>
-                    </div>
-                  </div>
-                  <NavLink to="/cook">
-                    <button
-                      className="menu-cook-btn"
-                      onClick={() => {
-                        dispatch(setCookingrecipe(dish)); //Make sure to add more params if needed
-                      }}
-                    >
-                      Cook Now
-                    </button>
-                  </NavLink>
-                </div>
+            <div className="menu-card" key={i}>
+              <div className="menu-dish-image-container">
+                <img src={dish.image} alt="" className="menu-dish-image" />
               </div>
-            ))}
+              <div className="menu-content">
+                <div className="menu-info">
+                  <h1 className="menu-dish-name">{dish.name}</h1>
+                  <div className="menu-description">
+                    <h3 className="menu-sub-title">Description</h3>
+                    <p className="description">{dish.description}</p>
+                  </div>
+                </div>
+                <NavLink to="/cook">
+                  <button
+                    className="menu-cook-btn"
+                    onClick={() => {
+                      dispatch(setCookingrecipe(dish)); //Make sure to add more params if needed
+                    }}
+                  >
+                    Cook Now
+                  </button>
+                </NavLink>
+              </div>
+            </div>
+          ))}
       </div>
     </div>
   );
