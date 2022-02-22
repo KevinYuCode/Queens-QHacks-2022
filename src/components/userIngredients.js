@@ -3,7 +3,7 @@ import React from "react";
 import { onSnapshot, updateDoc, arrayUnion, setDoc, doc, getDocs, getDoc, query, where, collection } from "firebase/firestore";
 import { db } from "../firebase/firebase";
 import { useDispatch, useSelector } from "react-redux";
-import { setMenu } from "../features/receipeSlice";
+import { setMenu } from "../features/recipeSlice";
 
 export default async function userQuery(operation, userEmail, ingredientsList) {
     // find document with corresponding user email
