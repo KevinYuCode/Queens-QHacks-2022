@@ -20,11 +20,11 @@ import { getDocs, collection, getDoc } from "firebase/firestore";
 import { useDispatch, useSelector } from "react-redux";
 import Index from "./components/index.tsx";
 import {
-  setReceipeDb,
-  selectReceipeDb,
+  setrecipeDb,
+  selectrecipeDb,
   setIngredients,
   setStockIngredients,
-} from "./features/receipeSlice";
+} from "./features/recipeSlice";
 
 import { userQuery } from "./components/userIngredients";
 function App() {
