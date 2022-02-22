@@ -78,7 +78,7 @@
   }
 }
 
-//-----------------------------------------------INPUTTING INGREDIENTS-----------------------------------------------//
+//Adding Ingredients Right Section
 .ingredient-input-container {
   grid-column: 2/3;
   grid-row: 1/2;
@@ -155,13 +155,13 @@
     font-size: 1.5rem;
     margin-bottom: 1rem;
   }
-  // .stock-list {
-  //   width: 100%;
-  //   height: 200px;
-  //   max-height: 400px;
-  //   overflow-y: scroll;
-  //   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-  // }
+  .stock-list {
+    width: 100%;
+    height: 200px;
+    max-height: 400px;
+    overflow-y: scroll;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  }
   .temp-stock {
     padding: 0.5rem 1rem;
     @include s-jc-c-ai;

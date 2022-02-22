@@ -58,7 +58,6 @@ function Ingredients() {
       }
     }
     tempList.push(itemName);
-    setRerender(reRender + 1);
   };
   const deleteTempItem = (index) => {
     setTempList(tempList.filter((item) => tempList[index] !== item));
