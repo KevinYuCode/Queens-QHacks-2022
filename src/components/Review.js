@@ -65,7 +65,6 @@ function Review({ isAuth }) {
                       <button
                         onClick={() => {
                           deletePost(post.id);
-                          setRerender(reRender + 1);
                         }}
                         className="Review-button"
                       >

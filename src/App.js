@@ -15,12 +15,18 @@ import Dashboard from "./components/Dashboard";
 import PrivateRoute from "./components/PrivateRoute";
 import CreatePost from "./components/CreatePost";
 import Review from "./components/Review";
-import { db } from "./firebase/firebase";
-import { getDocs, collection, auth, setDoc, doc, addDoc, getDoc } from "firebase/firestore";
+import { auth, db } from "./firebase/firebase";
+import { getDocs, collection, getDoc } from "firebase/firestore";
 import { useDispatch, useSelector } from "react-redux";
 import Index from "./components/index.tsx";
-import { setrecipeDb, selectrecipeDb, setIngredients, setStockIngredients } from "./features/recipeSlice";
+import {
+  setReceipeDb,
+  selectReceipeDb,
+  setIngredients,
+  setStockIngredients,
+} from "./features/receipeSlice";
 
+import { userQuery } from "./components/userIngredients";
 function App() {
   const dispatch = useDispatch();
   const [isAuth, setIsAuth] = useState(localStorage.getItem("isAuth"));
@@ -44,6 +50,25 @@ function App() {
     }
 
   };
+
+  const getUsersIngredients = async () => {
+    const docRef = collection(db, "users", auth.currentUser.email);
+    console.log(auth.currentUser.email);
+    await getDoc(docRef).then((docSnap) => {
+      console.log("hi");
+      if (docSnap.exists()) {
+        let userIngredients = docSnap.data().ingredients;
+        console.log(userIngredients);
+      } else {
+        console.log("No such document!");
+      }
+    });
+  };
+
+  useEffect(() => {
+    //Loads user's ingredients when logged in
+    getUsersIngredients();
+  }, []);
 
   useEffect(() => {
     getDbData();
