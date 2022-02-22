@@ -1,70 +1,44 @@
-# Getting Started with Create React App
+(Current dev branch: working_version)
+## Inspiration
+CookHack was inspired by the fact that students in university are always struggling with the responsibility of cooking their next healthy and nutritious meal. However, most of the time, we as students are always too busy to decide and learn how to cook basic meals, and we resort to the easy route and start ordering Uber Eats or Skip the Dishes. Now, the goal with CookHack was to eliminate the mental resistance and make the process of cooking healthy and delicious meals at home as streamlined as possible while sharing the process online. 
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+## What it does
+CookHack, in a nutshell, is a full-stack web application that provides users with the ability to log in to a personalized account to browse a catalog of 50 different recipes from our database and receive simple step-by-step instructions on how to cook delicious homemade dishes. CookHack also provides the ability for users to add the ingredients that they have readily available and start cooking recipes with those associated ingredients. Lastly, CookHack encourages the idea of interconnection by sharing their cooking experiences online by allowing users to post updates and blog forums about their cooking adventures.
 
-In the project directory, you can run:
+## How we built it
+The web application was built using the following tech stack: React, MongoDB, Firebase, and Flask. The frontend was developed with React to make the site fast and performant for the web application and allow for dynamic data to be passed to and from the backend server built with Flask. Flask connects to MongoDB to store our recipe documents on the backend, and Flask essentially serves as the delivery system for the recipes between MongoDB and React. For our authentication, Firebase was used to implement user authentication using Firebase Auth, and Firestore was used for storing and updating documents about the blog/forum posts on the site. Lastly, the Hammer of the Gods API was connected to the frontend, allowing us to use machine learning image detection.
 
-### `npm start`
+## Challenges we ran into
+- Lack of knowledge with Flask and how it works together with react. 
+- Implementing the user ingredients and sending back available recipes 
+- Had issues with the backend 
+- Developing the review page 
+- Implementing HoTG API
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Accomplishments that we're proud of
+- The frontend UI and UX design for the site
+- How to use Flask and React together
+- The successful transfer of data flow between frontend, backend, and the database
+- How to create a "forum" page in react
+- The implementation of Hammer of the Gods API
+- The overall functionality of the project 
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## What we learned
+- How to setup Flask backend server
+- How to use Figma and do UI and UX design
+- How to implement Hammer of the Gods API
+- How to make a RESTFUL API
+- How to create a forum page
+- How to create a login system
+- How to implement Firebase Auth
+- How to implement Firestore
+- How to use MongoDB
 
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## What's next for CookHack
+- Fix any nit-picky things on each web page
+- Make sure all the functionality works reliably
+- Write error checking code to prevent the site from crashing due to unloaded data
+- Add animations to the frontend UI
+- Allow users to have more interconnections by allowing others to share their own recipes to the database
+- Make sure all the images have the same size proportions
