@@ -19,6 +19,16 @@
   border-radius: 5px;
 }
 
+.index-removeingredient {
+margin-right: 2rem;
+background-color: rgb(224, 40, 40);
+color: white;
+}
+
+.index-removeingredient:hover {
+    background-color: rgb(211, 26, 26);
+}
+
 .index-panelbutton {
   position: absolute;
   bottom: 8vh;
@@ -30,6 +40,15 @@
 .index-close {
   cursor: pointer;
   color: red;
+}
+
+.index-pos {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 225px;
 }
 
 .index-closepos {
