@@ -49,9 +49,8 @@ function App() {
 
   useEffect(() => {
     getReceipeData();
-    userQuery("OVERWRITE", "sam@gmail.com", ["list 5884"])
-
-  });
+    userQuery("COMPARE", "sam@gmail.com", [])
+  },[]);
 
   return (
     <div className="App">
