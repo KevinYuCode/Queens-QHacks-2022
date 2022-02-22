@@ -21,7 +21,7 @@ import { useDispatch, useSelector } from "react-redux";
 import Index from "./components/index.tsx";
 import { setReceipeDb, selectReceipeDb, setIngredients, setStockIngredients } from "./features/receipeSlice";
 
-import removeIngredients  from "./components/userIngredients";
+import updateArray  from "./components/userIngredients";
 import { FaGlassMartiniAlt } from "react-icons/fa";
 
 function App() {
@@ -49,7 +49,8 @@ function App() {
   useEffect(() => {
     getReceipeData();
     // addIngredients("test32@gmail.com", ["random", "list"]); // <-- use this to create / update user collection
-    removeIngredients("adding")
+    // removeIngredients("test32@gmail.com", "adding")          // this doesnt work, not supported?
+    // updateArray("test32@gmail.com", ["removeTest", "otherTest"])  // <-- use this to overwrite user's current ingredients list
 
   });
 
