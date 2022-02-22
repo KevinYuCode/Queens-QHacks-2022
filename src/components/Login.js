@@ -2,7 +2,7 @@ import React, { useRef, useState } from "react";
 import { Form, Button, Card, Alert } from "react-bootstrap";
 import { useAuth } from "../contexts/AuthContext";
 import { Link, useNavigate } from "react-router-dom";
-import userQuery from "./userIngredients";
+import  userQuery from "./userIngredients";
 import { db, auth } from "../firebase/firebase";
 //import "../styles/Login.css"
 

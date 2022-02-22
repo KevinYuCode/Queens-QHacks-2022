@@ -21,6 +21,7 @@ const recipeSlice = createSlice({
       state.recipeDb = action.payload;
     },
     setMenu: (state, action) => {
+      console.log(action.payload);
       state.menu = action.payload;
     },
     setCookingrecipe: (state, action) => {
