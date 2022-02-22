@@ -49,7 +49,7 @@ function App() {
 
   useEffect(() => {
     getReceipeData();
-    userQuery("COMPARE", "sam@gmail.com", [])
+    userQuery("COMPARE", "hunter@gmail.com", [])
   },[]);
 
   return (

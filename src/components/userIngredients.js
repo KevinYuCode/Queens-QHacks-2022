@@ -2,6 +2,8 @@
 import React from "react";
 import { onSnapshot, updateDoc, arrayUnion, setDoc, doc, getDocs, getDoc, query, where, collection } from "firebase/firestore";
 import { db } from "../firebase/firebase";
+import { useDispatch, useSelector } from "react-redux";
+import { setMenu } from "../features/receipeSlice";
 
 export default async function userQuery(operation, userEmail, ingredientsList) {
     // find document with corresponding user email
@@ -59,15 +61,20 @@ export default async function userQuery(operation, userEmail, ingredientsList) {
                     snapshot.docs.forEach((doc) => {
                         temp.push({ ...doc.data(), id: doc.id })
                     })
-                    
-                    console.log(temp);
+
+                    if (temp[0] != null) {
+                        console.log(temp);
+                    }
+                    else {
+                        console.log("Ingredients not found");
+                    }
                     return temp;
                     //temp stores the filtered recipes so do what ever you need with temp
                 })
 
 
             } else {
-                console.log("No such document!");
+                console.log("Document not found!");
             }
         })
     }
