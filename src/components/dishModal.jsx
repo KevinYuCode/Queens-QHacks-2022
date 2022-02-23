@@ -11,7 +11,7 @@ function dishModal({ modalProps, toggleModal, readyCook }) {
       <div className="modal-dish-info">
         <h2 className="modal-dish-name">{modalProps.name.toUpperCase()}</h2>
         {/* <p className="modal-description">{modalProps.description}</p> */}
-        <p className="modal-description">{modalProps.description}</p>
+        <p className="modal-description">{modalProps.description.charAt(0).toUpperCase() + modalProps.description.slice(1)}</p>
         <div className="modal-btn-container">
           <NavLink to="/cook">
             <button
