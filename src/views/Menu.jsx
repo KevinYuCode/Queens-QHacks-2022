@@ -1,8 +1,7 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { auth, db } from '../firebase/firebase'
+import { auth, db } from "../firebase/firebase";
 import { onSnapshot, doc, getDoc, query, where, collection } from "firebase/firestore";
-
 
 import {
   selectMenu,
@@ -12,34 +11,39 @@ import {
   setMenu,
 } from "../features/recipeSlice";
 import { NavLink } from "react-router-dom";
-import Nav from './Nav'
-
+import Nav from "./Nav";
 
 function Menu() {
   const dispatch = useDispatch();
 
   const menu = useSelector(selectMenu); //Menu recipes that are ready to cook
-  const recipeDb = useSelector(selectrecipeDb); //recipe database
-  const stockIngredients = useSelector(selectStockIngredients); //User's available stock ingredients
 
   useEffect(() => {
-
     getMenuData();
-    // dispatch(setMenu());
   }, []);
 
-  const getMenuData = async () => { //Gets the user's possible menu dishes
+  // const collectionListener = (collection)=>{
+  //   const collectionQuery = query(db, "users", where("email", "==", auth.currentUser.email));
+
+  //   onSnapshot(collectionQuery, (querySnapshot) => {
+  //     console.log("FIREBASE LISTENER");
+  //     console.log(querySnapshot)
+  //     // console.log(doc);
+  //   });
+  // }
+
+  const getMenuData = async () => {
+    //Gets the user's possible menu dishes
     let temp = [];
     var userArray = [];
 
-
     // retrieve user's unique document
-    const docRef = doc(db, "users", auth.currentUser.email)
+    const docRef = doc(db, "users", auth.currentUser.email);
 
     // get ingredients list from user
-    await getDoc(docRef).then(docSnap => {
+    await getDoc(docRef).then((docSnap) => {
       if (docSnap.exists()) {
-        userArray = docSnap.data().ingredients
+        userArray = docSnap.data().ingredients;
 
         // retrieve recipes collection, find all recipes that contain ingredients that the user has
         const recipesRef = collection(db, "recipes")
@@ -54,24 +58,26 @@ function Menu() {
         // push these recipes to temp array to set the menu page with recommendations
         onSnapshot(q, (snapshot) => {
           snapshot.docs.forEach((doc) => {
-            temp.push({ ...doc.data(), id: doc.id })
-          })
+            temp.push({ ...doc.data(), id: doc.id });
+          });
           dispatch(setMenu(temp));
-        })
+        });
       } else {
         console.log("Document not found!");
       }
-    })
-
-  }
+    });
+  };
 
   return (
     <div>
       <Nav />
       <div className="menu-container">
-        {menu === undefined
-          ? <div className="no-menu-recipes"><h1>Currently no available recipes with current stock ingredients...</h1></div>
-          : menu.map((dish, i) => (
+        {menu.length === 0 ? (
+          <div className="no-menu-recipes">
+            <h1>Currently no available recipes with current stock ingredients...</h1>
+          </div>
+        ) : (
+          menu.map((dish, i) => (
             <div className="menu-card" key={i}>
               <div className="menu-dish-image-container">
                 <img src={dish.image} alt="" className="menu-dish-image" />
@@ -96,7 +102,8 @@ function Menu() {
                 </NavLink>
               </div>
             </div>
-          ))}
+          ))
+        )}
       </div>
     </div>
   );
