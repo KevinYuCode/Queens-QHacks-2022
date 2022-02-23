@@ -1,4 +1,3 @@
-import logo from "./logo.svg";
 import Nav from "./views/Nav";
 import Home from "./views/Home";
 import Menu from "./views/Menu";
@@ -16,8 +15,8 @@ import PrivateRoute from "./components/PrivateRoute";
 import CreatePost from "./components/CreatePost";
 import Review from "./components/Review";
 import { auth, db } from "./firebase/firebase";
-import { onSnapshot, updateDoc, arrayUnion, setDoc, doc, getDocs, getDoc, query, where, collection } from "firebase/firestore";
-import { useDispatch, useSelector } from "react-redux";
+import { getDocs, getDoc, collection } from "firebase/firestore";
+import { useDispatch } from "react-redux";
 import Index from "./components/index.tsx";
 import {
   setrecipeDb,
@@ -27,9 +26,6 @@ import {
   setMenu
 } from "./features/recipeSlice";
 
-import userQuery from "./components/userIngredients";
-import { FaGlassMartiniAlt } from "react-icons/fa";
-// import { getTimeMeasureUtils } from "@reduxjs/toolkit/dist/utils";
 
 function App() {
   const dispatch = useDispatch();
@@ -37,7 +33,6 @@ function App() {
 
   const getDbData = async () => {
     const recipeCollection = collection(db, "recipes");
-    const ingredientsRef = collection(db, "ingredients");
 
     let tempData = [];
     let snapshot = await getDocs(recipeCollection);
@@ -55,10 +50,10 @@ function App() {
 
   };
 
+  // retrieve ingredients array from user document, populate local userIngredients array
   const getUsersIngredients = async () => {
     const docRef = collection(db, "users", auth.currentUser.email);
     await getDoc(docRef).then((docSnap) => {
-      console.log("hi");
       if (docSnap.exists()) {
         let userIngredients = docSnap.data().ingredients;
         console.log(userIngredients);
