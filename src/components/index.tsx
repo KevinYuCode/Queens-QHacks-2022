@@ -212,8 +212,6 @@ export default function App(props) {
     .map((p, i) => <li key={i}>{p}</li>);
 
   async function storeLocal() {
-    console.log(tempArray);
-    console.log(predictions[0].props.children);
     tempArray.push(predictions[0].props.children);
     setIngredientList(tempArray);
     setRerender(rerender + 1);

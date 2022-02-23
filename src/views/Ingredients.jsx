@@ -4,18 +4,24 @@ import { auth, db } from "../firebase/firebase";
 import { BsTrash } from "react-icons/bs";
 import IngredientsBg from "../assets/IngredientsBG.jpeg";
 import { useDispatch, useSelector } from "react-redux";
+import { doc, getDoc } from "firebase/firestore";
+
 import {
   selectInventory,
   selectIngredients,
   selectStockIngredients,
   setStockIngredients,
+  setUsersIngredients,
+  selectUsersIngredients,
 } from "../features/recipeSlice";
 import Nav from "../views/Nav";
+import userQuery from "../components/userIngredients";
 
 function Ingredients() {
   const inventory = useSelector(selectInventory);
   const [updating, setUpdating] = useState(false);
   const [tempList, setTempList] = useState([]);
+  const usersIngredients = useSelector(selectUsersIngredients);
   const stockIngredients = useSelector(selectStockIngredients);
   const [suggested, setSuggested] = useState([]);
   const [reRender, setRerender] = useState(0);
@@ -58,10 +64,45 @@ function Ingredients() {
       }
     }
     tempList.push(itemName);
+    setRerender(reRender + 1);
   };
   const deleteTempItem = (index) => {
     setTempList(tempList.filter((item) => tempList[index] !== item));
   };
+
+  const updateInventory = async () => {
+    await userQuery("OVERWRITE", auth.currentUser.email, tempList);
+    alert("Updated Inventory Successfully.")
+    getUsersIngredients();
+  };
+
+  const getUsersIngredients = async () => {
+    var userArray = [];
+    const docRef = doc(db, "users", auth.currentUser.email);
+
+    await getDoc(docRef).then((docSnap) => {
+      if (docSnap.exists()) {
+        // console.log("Document data:", docSnap.data());
+        //console.log(docSnap.data().ingredients);
+        userArray = docSnap.data().ingredients;
+        dispatch(setUsersIngredients(userArray));
+      } else {
+        console.log("No such document!");
+      }
+    });
+  };
+
+  useEffect(() => {
+    let tempList = [];
+    usersIngredients.forEach((item) => {
+      tempList.push(item);
+    });
+    setTempList(tempList);
+  }, [usersIngredients]);
+  
+  useEffect(() => {
+    getUsersIngredients();
+  }, []);
 
   return (
     <>
@@ -114,7 +155,7 @@ function Ingredients() {
           <button
             className="save-list"
             onClick={() => {
-              //Add Firebase post request
+              updateInventory();
             }}
           >
             Update Inventory
@@ -127,18 +168,15 @@ function Ingredients() {
             <h1>Ingredient Inventory</h1>
           </div>
           <div className="inventory-container">
-            {inventory.length === 0 ? (
+            {usersIngredients.length === 0 ? (
               <div className="empty-inventory-container">
                 <h2>Ingredient Inventory Empty.</h2>
                 <p>Search and add ingredients on the right panel.</p>
               </div>
             ) : (
-              inventory.map((item) => (
+              usersIngredients.map((item) => (
                 <div className="ingredient">
                   <p className="item-name">{item}</p>
-                  <div className="trash">
-                    <BsTrash />
-                  </div>
                 </div>
               ))
             )}

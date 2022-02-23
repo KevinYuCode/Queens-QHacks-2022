@@ -37,6 +37,7 @@ export default async function userQuery(operation, userEmail, ingredientsList) {
                 // console.log("Document data:", docSnap.data());
                 //console.log(docSnap.data().ingredients);
                 userArray = docSnap.data().ingredients
+                console.log(userArray);
                 return userArray;
             } else {
                 console.log("No such document!");

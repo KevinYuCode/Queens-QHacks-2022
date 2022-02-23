@@ -16,7 +16,18 @@ import PrivateRoute from "./components/PrivateRoute";
 import CreatePost from "./components/CreatePost";
 import Review from "./components/Review";
 import { auth, db } from "./firebase/firebase";
-import { onSnapshot, updateDoc, arrayUnion, setDoc, doc, getDocs, getDoc, query, where, collection } from "firebase/firestore";
+import {
+  onSnapshot,
+  updateDoc,
+  arrayUnion,
+  setDoc,
+  doc,
+  getDocs,
+  getDoc,
+  query,
+  where,
+  collection,
+} from "firebase/firestore";
 import { useDispatch, useSelector } from "react-redux";
 import Index from "./components/index.tsx";
 import {
@@ -24,7 +35,8 @@ import {
   selectrecipeDb,
   setIngredients,
   setStockIngredients,
-  setMenu
+  setMenu,
+  setUsersIngredients,
 } from "./features/recipeSlice";
 
 import userQuery from "./components/userIngredients";
@@ -40,6 +52,7 @@ function App() {
     const ingredientsRef = collection(db, "ingredients");
 
     let tempData = [];
+    let tempIngredients = [];
     let snapshot = await getDocs(recipeCollection);
     try {
       snapshot.forEach((doc) => {
@@ -53,24 +66,21 @@ function App() {
       console.log(e);
     }
 
-  };
-
-  const getUsersIngredients = async () => {
-    const docRef = collection(db, "users", auth.currentUser.email);
-    await getDoc(docRef).then((docSnap) => {
-      console.log("hi");
-      if (docSnap.exists()) {
-        let userIngredients = docSnap.data().ingredients;
-        console.log(userIngredients);
-      } else {
-        console.log("No such document!");
-      }
-    });
+    let ingredientSnapshot = await getDocs(ingredientsRef);
+    try {
+      ingredientSnapshot.forEach((doc) => {
+        let data = doc.data();
+        data.id = doc.id;
+        tempIngredients.push(...data.ingredients);
+        dispatch(setIngredients(tempIngredients));
+      });
+    } catch (e) {
+      console.log(e);
+    }
   };
 
   useEffect(() => {
     //Loads user's ingredients when logged in
-    getUsersIngredients();
     getDbData();
   }, []);
 
