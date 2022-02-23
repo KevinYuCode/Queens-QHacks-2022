@@ -1,8 +1,6 @@
 import React from "react";
 import { AiOutlineClose } from "react-icons/ai";
 import { NavLink } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
-import { selectIngredients, setCookingrecipe } from "../features/recipeSlice";
 
 function dishModal({ modalProps, toggleModal, readyCook }) {
   return (
