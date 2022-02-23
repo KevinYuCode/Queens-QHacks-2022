@@ -95,29 +95,31 @@ export default function App(props) {
       role="presentation"
       onKeyDown={toggleDrawer(anchor, false)}
     >
-      <List>
+      
+      <List >
         {["Ingredients"].map((text) => (
+          
           <ListItem>
+            <div className="index-titlepos">
             <ListItemText primary={text} />
+            </div>
           </ListItem>
+          
         ))}
       </List>
+      
       <Divider />
       <List>
         {ingredientList.map((text, i) => (
           <ListItem key={i}>
-            {/* <ListItemIcon>
-                {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-              </ListItemIcon> */}
-            <button
+            <button className = "index-removeingredient"
               onClick={() => {
                 //Add a delete function here!!!!
                 tempArray = tempArray.filter((item) => tempArray[i] !== item);
-
                 setIngredientList(tempArray);
               }}
             >
-              Delete
+              Remove
             </button>
             <ListItemText primary={text} />
           </ListItem>
