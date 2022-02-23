@@ -56,6 +56,8 @@
       width: 80%;
       padding: 1rem 0;
       position: relative;
+      max-height: 300px;
+      overflow-y: scroll;
     }
     $borderlen: 100px;
     .border-style1 {
