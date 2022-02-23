@@ -42,7 +42,7 @@ color: white;
   color: red;
 }
 
-.index-pos {
+.index-titlepos {
     position: absolute;
     display: flex;
     flex-direction: column;
@@ -67,6 +67,10 @@ color: white;
   color: white;
   border: none;
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+.save-ingredients-btn:hover {
+    background-color: #1d9739;
 }
 
 .index-content {
@@ -121,8 +125,8 @@ color: white;
   padding-bottom: 10px;
 }
 .index-remove:hover {
-  color: blue;
-  text-decoration-color: blue;
+  color: rgb(209, 0, 0);
+  text-decoration-color: rgb(209, 0, 0);
 }
 
 .index.extra {
@@ -155,8 +159,9 @@ color: white;
 
 .index-detect {
   background-color: #f8d176 !important;
-  border-color: #f8d176 !important;
+  border: none;
   margin-top: 1rem;
+  margin-bottom: 2px;
   padding: 15px;
   width: 10vw;
   height: 3vh;
@@ -164,6 +169,11 @@ color: white;
   justify-content: center;
   align-items: center;
   font-size: 18px;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+.index-detect:hover {
+    background-color: #f3c558 !important;
 }
 
 .index-img {
