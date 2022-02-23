@@ -1,7 +1,9 @@
 import React, { useState, useRef, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import userQuery from '../components/userIngredients'
-import { auth } from '../firebase/firebase'
+import { auth, db } from '../firebase/firebase'
+import { onSnapshot, updateDoc, arrayUnion, setDoc, doc, getDocs, getDoc, query, where, collection } from "firebase/firestore";
+
 
 import {
   selectMenu,
@@ -22,32 +24,45 @@ function Menu() {
   const stockIngredients = useSelector(selectStockIngredients); //User's available stock ingredients
 
   useEffect(() => {
-    const rtcrecipes = [];
-    let recipeIng = [];
-    for (let k = 0; k < recipeDb.length; k++) {
-      recipeIng = recipeDb[k].ingredients;
-      let count;
-      for (let i = 0; i < recipeIng.length; i++) {
-        count = 0;
-        //Go through all of the user's ingredients
-        for (let j = 0; j < stockIngredients.length; j++) {
-          if (recipeIng[i] === stockIngredients[j]) {
-            count++;
-          }
-        }
-        if (count > 0) {
-          rtcrecipes.push(recipeDb[k]); // if atleast one of the ingredient matches the user's list, return the recipe
-        }
-      }
-    }
-    dispatch(setMenu(userQuery("COMPARE", auth.currentUser.email, [])));
+
+    getMenuData();
+    // dispatch(setMenu());
   }, []);
+
+  const getMenuData = async () => { //Gets the user's possible menu dishes
+    let temp = [];
+    var userArray = [];
+
+
+    const docRef = doc(db, "users", auth.currentUser.email)
+
+    await getDoc(docRef).then(docSnap => {
+      if (docSnap.exists()) {
+        // console.log("Document data:", docSnap.data());
+        //console.log(docSnap.data().ingredients);
+        userArray = docSnap.data().ingredients
+
+        const recipesRef = collection(db, "recipes")
+        const q = query(recipesRef, where('ingredients', 'array-contains-any', userArray))
+
+        onSnapshot(q, (snapshot) => {
+          snapshot.docs.forEach((doc) => {
+            temp.push({ ...doc.data(), id: doc.id })
+          })
+          dispatch(setMenu(temp));
+        })
+      } else {
+        console.log("Document not found!");
+      }
+    })
+
+  }
 
   return (
     <div>
       <Nav />
       <div className="menu-container">
-        {menu
+        {menu === undefined
           ? <div className="no-menu-recipes"><h1>Currently no available recipes with current stock ingredients...</h1></div>
           : menu.map((dish, i) => (
             <div className="menu-card" key={i}>

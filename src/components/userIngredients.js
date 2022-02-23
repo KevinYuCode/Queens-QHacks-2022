@@ -30,51 +30,16 @@ export default async function userQuery(operation, userEmail, ingredientsList) {
     // returns the user's ingredients list
     // var userArray = userQuery("GET", "sam@gmail.com", [])
     else if (operation === "GET") {
-        console.log("GET");
+        // console.log("GET");
 
         await getDoc(docRef).then(docSnap => {
             if (docSnap.exists()) {
-                console.log("Document data:", docSnap.data());
+                // console.log("Document data:", docSnap.data());
                 //console.log(docSnap.data().ingredients);
                 userArray = docSnap.data().ingredients
                 return userArray;
             } else {
                 console.log("No such document!");
-            }
-        })
-    }
-    else if (operation === "COMPARE") {
-        await getDoc(docRef).then(async docSnap => {
-
-            if (docSnap.exists()) {
-                console.log("Document data:", docSnap.data());
-                //console.log(docSnap.data().ingredients);
-                userArray = docSnap.data().ingredients
-                console.log(userArray);
-
-                // we need to do query for each userArray element using getDocs, then store each query result to displa
-
-                const recipesRef = collection(db, "recipes")
-                const q = query(recipesRef, where('ingredients', 'array-contains-any', userArray))
-                onSnapshot(q, (snapshot) => {
-                    let temp = []
-                    snapshot.docs.forEach((doc) => {
-                        temp.push({ ...doc.data(), id: doc.id })
-                    })
-
-                    if (temp[0] != null) {
-                        console.log(temp);
-                    }
-                    else {
-                        console.log("Ingredients not found");
-                    }
-                    return temp;
-                    //temp stores the filtered recipes so do what ever you need with temp
-                })
-
-
-            } else {
-                console.log("Document not found!");
             }
         })
     }

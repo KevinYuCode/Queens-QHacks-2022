@@ -16,7 +16,7 @@ import PrivateRoute from "./components/PrivateRoute";
 import CreatePost from "./components/CreatePost";
 import Review from "./components/Review";
 import { auth, db } from "./firebase/firebase";
-import { getDocs, collection, getDoc } from "firebase/firestore";
+import { onSnapshot, updateDoc, arrayUnion, setDoc, doc, getDocs, getDoc, query, where, collection } from "firebase/firestore";
 import { useDispatch, useSelector } from "react-redux";
 import Index from "./components/index.tsx";
 import {
@@ -24,9 +24,10 @@ import {
   selectrecipeDb,
   setIngredients,
   setStockIngredients,
+  setMenu
 } from "./features/recipeSlice";
 
-import userQuery  from "./components/userIngredients";
+import userQuery from "./components/userIngredients";
 import { FaGlassMartiniAlt } from "react-icons/fa";
 // import { getTimeMeasureUtils } from "@reduxjs/toolkit/dist/utils";
 
@@ -56,7 +57,6 @@ function App() {
 
   const getUsersIngredients = async () => {
     const docRef = collection(db, "users", auth.currentUser.email);
-    console.log(auth.currentUser.email);
     await getDoc(docRef).then((docSnap) => {
       console.log("hi");
       if (docSnap.exists()) {
@@ -71,9 +71,6 @@ function App() {
   useEffect(() => {
     //Loads user's ingredients when logged in
     getUsersIngredients();
-  }, []);
-
-  useEffect(() => {
     getDbData();
   }, []);
 
