@@ -1,8 +1,7 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import userQuery from '../components/userIngredients'
 import { auth, db } from '../firebase/firebase'
-import { onSnapshot, updateDoc, arrayUnion, setDoc, doc, getDocs, getDoc, query, where, collection } from "firebase/firestore";
+import { onSnapshot, doc, getDoc, query, where, collection } from "firebase/firestore";
 
 
 import {
@@ -34,17 +33,19 @@ function Menu() {
     var userArray = [];
 
 
+    // retrieve user's unique document
     const docRef = doc(db, "users", auth.currentUser.email)
 
+    // get ingredients list from user
     await getDoc(docRef).then(docSnap => {
       if (docSnap.exists()) {
-        // console.log("Document data:", docSnap.data());
-        //console.log(docSnap.data().ingredients);
         userArray = docSnap.data().ingredients
 
+        // retrieve recipes collection, find all recipes that contain ingredients that the user has
         const recipesRef = collection(db, "recipes")
         const q = query(recipesRef, where('ingredients', 'array-contains-any', userArray))
 
+        // push these recipes to temp array to set the menu page with recommendations
         onSnapshot(q, (snapshot) => {
           snapshot.docs.forEach((doc) => {
             temp.push({ ...doc.data(), id: doc.id })
