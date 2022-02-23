@@ -54,11 +54,19 @@ function Cook() {
       return;
     }
     setBatchIndex(batchIndex + val);
+    resetCheckBox();
   };
 
   useEffect(() => {
     formatBatch();
   }, []);
+
+const resetCheckBox = ()=>{
+  let inputs = document.querySelectorAll('.checkbox');
+  for (var i = 0; i < inputs.length; i++) {
+    inputs[i].checked = false;
+}
+}
 
   return (
     <>
@@ -68,7 +76,7 @@ function Cook() {
           <div className="no-cooking-recipe">
             <h1>
               No recipe Selected to Cook. <br /> Try browsing our menu!
-            </h1>
+            </h1> 
           </div>
         ) : (
           <div className="cook-header">
@@ -79,9 +87,9 @@ function Cook() {
                 {/* INSTRUCTIONS */}
                 <div className="instruction-batch">
                   {cookingrecipe &&
-                    instructionBatch[batchIndex].map((step) => (
-                      <div className="instruction-item">
-                        <input type="checkbox" className="instruction-checkbox" />
+                    instructionBatch[batchIndex].map((step,i) => (
+                      <div className="instruction-item" key={i}>
+                        <input id="checkbox" type="checkbox" className="checkbox instruction-checkbox" />
                         <p className="instruction">{step}</p>
                       </div>
                     ))}

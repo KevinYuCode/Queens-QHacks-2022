@@ -129,6 +129,7 @@
 
   .suggested-item {
     padding: 0.5rem 0;
+    text-align:left;
     @include s-jc-c-ai;
     p {
       padding-left: 1rem;
@@ -160,10 +161,11 @@
     height: 200px;
     max-height: 400px;
     overflow-y: scroll;
-    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    // box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
   }
   .temp-stock {
     padding: 0.5rem 1rem;
+    text-align: left;
     @include s-jc-c-ai;
     button {
       border: none;
