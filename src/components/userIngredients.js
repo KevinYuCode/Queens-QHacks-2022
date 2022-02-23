@@ -19,6 +19,12 @@ export default async function userQuery(operation, userEmail, ingredientsList) {
     // alternative: overwrite ingredients field with updated ingredients array altogether
     // this assumes that we have parsed through the local array, removed the ingredient, updated indexes, then pass this as parameter
     else if (operation === "OVERWRITE") {
+
+        // if empty, change to non-empty for valid query call
+        if (ingredientsList.length === 0) {
+            ingredientsList = ["DEFAULT"]
+        }
+
         await updateDoc(docRef, {
             ingredients: ingredientsList
         })
