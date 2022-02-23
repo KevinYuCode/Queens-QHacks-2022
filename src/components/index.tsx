@@ -131,7 +131,8 @@ export default function App(props) {
         <button
           className="save-ingredients-btn"
           onClick={() => {
-            saveIngredients();
+            saveIngredients()
+            alert("Your Ingredients Have Been Saved")
           }}
         >
           Save
