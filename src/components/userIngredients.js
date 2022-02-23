@@ -21,9 +21,9 @@ export default async function userQuery(operation, userEmail, ingredientsList) {
     else if (operation === "OVERWRITE") {
 
         // if empty, change to non-empty for valid query call
-        if (ingredientsList.length === 0) {
-            ingredientsList = ["DEFAULT"]
-        }
+        // if (ingredientsList.length === 0) {
+        //     ingredientsList = ["DEFAULT"]
+        // }
 
         await updateDoc(docRef, {
             ingredients: ingredientsList
@@ -31,7 +31,6 @@ export default async function userQuery(operation, userEmail, ingredientsList) {
     }
 
     // returns the user's ingredients list
-    // var userArray = userQuery("GET", "sam@gmail.com", [])
     else if (operation === "GET") {
         // console.log("GET");
 
