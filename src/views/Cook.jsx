@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
-import { batch, useDispatch, useSelector } from "react-redux";
-import { selectCookingrecipe, selectIngredients } from "../features/recipeSlice";
+import { useSelector } from "react-redux";
+import { selectCookingrecipe } from "../features/recipeSlice";
 import { AiOutlineCheckSquare } from "react-icons/ai";
 import Nav from "../views/Nav";
 

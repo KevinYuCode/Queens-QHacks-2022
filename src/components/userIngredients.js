@@ -1,15 +1,12 @@
 // To send a receive information on the user's ingredients list *** IN TESTING ***
 import React from "react";
-import { onSnapshot, updateDoc, arrayUnion, setDoc, doc, getDocs, getDoc, query, where, collection } from "firebase/firestore";
+import { updateDoc, arrayUnion, setDoc, doc, getDoc, } from "firebase/firestore";
 import { db } from "../firebase/firebase";
-import { useDispatch, useSelector } from "react-redux";
-import { setMenu } from "../features/recipeSlice";
 
 export default async function userQuery(operation, userEmail, ingredientsList) {
     // find document with corresponding user email
     const docRef = doc(db, "users", userEmail)
     var userArray = [];
-    var ingrArray = [];
 
     // check if user already has account, if not, create document in "users", else append the ingredients list (no duplicates)
     if (operation === "UPDATE") {

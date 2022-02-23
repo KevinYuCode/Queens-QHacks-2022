@@ -1,4 +1,3 @@
-import logo from "./logo.svg";
 import Nav from "./views/Nav";
 import Home from "./views/Home";
 import Menu from "./views/Menu";
@@ -39,9 +38,6 @@ import {
   setUsersIngredients,
 } from "./features/recipeSlice";
 
-import userQuery from "./components/userIngredients";
-import { FaGlassMartiniAlt } from "react-icons/fa";
-// import { getTimeMeasureUtils } from "@reduxjs/toolkit/dist/utils";
 
 function App() {
   const dispatch = useDispatch();
@@ -49,7 +45,6 @@ function App() {
 
   const getDbData = async () => {
     const recipeCollection = collection(db, "recipes");
-    const ingredientsRef = collection(db, "ingredients");
 
     let tempData = [];
     let tempIngredients = [];
