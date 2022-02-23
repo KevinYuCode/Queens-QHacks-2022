@@ -48,20 +48,18 @@ function Menu() {
         // retrieve recipes collection, find all recipes that contain ingredients that the user has
         const recipesRef = collection(db, "recipes")
 
-        // if (!(userArray.length === 0))
-        // {
-        //   q = query(recipesRef, where('ingredients', 'array-contains-any', userArray))
-        // }
-
         const q = query(recipesRef, where('ingredients', 'array-contains-any', userArray))
-
-        // push these recipes to temp array to set the menu page with recommendations
-        onSnapshot(q, (snapshot) => {
-          snapshot.docs.forEach((doc) => {
-            temp.push({ ...doc.data(), id: doc.id });
+        try {
+          // push these recipes to temp array to set the menu page with recommendations
+          onSnapshot(q, (snapshot) => {
+            snapshot.docs.forEach((doc) => {
+              temp.push({ ...doc.data(), id: doc.id });
+            });
+            dispatch(setMenu(temp));
           });
-          dispatch(setMenu(temp));
-        });
+        } catch {
+          dispatch(setMenu([]));
+        }
       } else {
         console.log("Document not found!");
       }
