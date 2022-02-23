@@ -45,6 +45,7 @@ function App() {
 
   const getDbData = async () => {
     const recipeCollection = collection(db, "recipes");
+    const ingredientsRef = collection(db, "ingredients");
 
     let tempData = [];
     let tempIngredients = [];
