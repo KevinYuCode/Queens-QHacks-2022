@@ -38,7 +38,6 @@ import {
   setUsersIngredients,
 } from "./features/recipeSlice";
 
-
 function App() {
   const dispatch = useDispatch();
   const [isAuth, setIsAuth] = useState(localStorage.getItem("isAuth"));
@@ -74,6 +73,7 @@ function App() {
       console.log(e);
     }
   };
+
 
   useEffect(() => {
     //Loads user's ingredients when logged in

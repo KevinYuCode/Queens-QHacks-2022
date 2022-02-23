@@ -21,6 +21,7 @@ const recipeSlice = createSlice({
       state.recipeDb = action.payload;
     },
     setMenu: (state, action) => {
+      console.log(action.payload)
       state.menu = action.payload;
     },
     setCookingrecipe: (state, action) => {
@@ -30,7 +31,6 @@ const recipeSlice = createSlice({
       state.inventory = action.payload;
     },
     setIngredients: (state, action) => {
-      console.log(action.payload);
       state.ingredients = action.payload;
     },
     setCookingrecipe: (state, action) => {
@@ -41,7 +41,6 @@ const recipeSlice = createSlice({
       state.stockIngredients = action.payload;
     },
     setUsersIngredients: (state, action) => {
-      console.log(action.payload);
       state.usersIngredients = action.payload;
     },
   },
