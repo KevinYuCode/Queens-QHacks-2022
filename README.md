@@ -1,4 +1,4 @@
-(Current dev branch: working_version)
+# QHacks 2022 Hackathon Submission CookHack
 ## Inspiration
 CookHack was inspired by the fact that students in university are always struggling with the responsibility of cooking their next healthy and nutritious meal. However, most of the time, we as students are always too busy to decide and learn how to cook basic meals, and we resort to the easy route and start ordering Uber Eats or Skip the Dishes. Now, the goal with CookHack was to eliminate the mental resistance and make the process of cooking healthy and delicious meals at home as streamlined as possible while sharing the process online. 
 
